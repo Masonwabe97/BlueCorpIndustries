@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inquiry - Blue Corp Industries</title>
+</head>
+<body>
+
+    <header>
+        <h1>Blue Corp Industries</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../Pages/AboutUs.html">About</a></li>
+                <li><a href="../Pages/contact.html">Contact</a></li>
+                <li><a href="../Pages/GameDetail.html">Games</a></li>
+                <li><a href="../Pages/enquiry.html">Enquiry</a></li>
+                <li><a href="../Pages/CommunityHub&Workshop.html">Community Hub & Workshop</a></li>
+                <li><a href="../Pages/Wishlist.html">Wishlist</a></li>
+                <li><a href="../Pages/UserProfile&Inventory.html">User Profile & Inventory</a></li>
+                <li><a href="../Pages/Menu.html">Menu</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Submit an Enquiry</h2>
+        <form>
+            <p>
+                <label for="name">Your Name:</label><br>
+                <input type="text" id="name" name="name" placeholder="Tell us who you are" required>
+            </p>
+
+            <p>
+                <label for="email">Email Address:</label><br>
+                <input type="email" id="email" name="email" placeholder="Where we can reply to you" required>
+            </p>
+
+            <p>
+                <label for="project-type">Project Type:</label><br>
+                <select id="project-type" name="project_type" required>
+                    <option value="">--Select--</option>
+                    <option value="pc-build">PC Build Assistance</option>
+                    <option value="game-dev">Solo Developer Program</option>
+                    <option value="other">Other Inquiry</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="budget">Estimated Budget:</label><br>
+                <input type="text" id="budget" name="budget" placeholder="Helps us suggest the right hardware setup">
+            </p>
+
+            <p>
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" placeholder="Provide extra project details here..." rows="8" cols="40" required></textarea>
+            </p>
+
+            <p>
+                <button type="submit">Submit Enquiry</button>
+            </p>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Blue Corp Industries. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
