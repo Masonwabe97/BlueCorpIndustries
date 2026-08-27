@@ -1,11 +1,11 @@
 # BlueCorpIndustries
-==================================================================================================================================
+===========================
 #Organisation 
 
 #Blue Corp Industries: 
 
-Blue Corp Industries is a well-known company for its ability to sell and             advertise video games for all consols and even PC for a reasonable price, along that it also has PC build assistance for beginners. The only complaint about the company is that it never had a proper website so people would always end up on shady websites when trying to access their website. 
-====================================================================================================================================
+Blue Corp Industries is a well-known company for its ability to sell and advertise video games for all consols and even PC for a reasonable price, along that it also has PC build assistance for beginners. The only complaint about the company is that it never had a proper website so people would always end up on shady websites when trying to access their website. 
+=====================================
 #Mission: Help game developers become global, make buying, selling and playing games easier for consumers while helping them build their own PCs at an affordable price. 
 
 #Vision: Create an open, flexible, and scalable digital and physical ecosystem for the global gaming community. 
@@ -34,7 +34,7 @@ Launch hype: Promote exclusive holiday games along with its DLCs (Downloadable C
 
 Gamification: Run daily flash sales, plushies, and voting events  
 
-=========================================================================================================================================
+===========================
 
 2.#“Increase gross revenue within the next 8 months” 
 
