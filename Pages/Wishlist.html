@@ -6,9 +6,9 @@
     <title>Your Wishlist Registry Matrix | Alerts - Blue Corp Industries</title>
     
     <!-- Typography: Plus Jakarta Sans -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Link back up to directory stylesheet -->
     <link rel="stylesheet" href="../css/style.css">
@@ -104,12 +104,14 @@
             color: var(--accent-cyber, #66c0f4);
             border: 1px solid var(--accent-cyber, #66c0f4);
             padding: 10px;
-            font-family: var(--font-primary);
+            font-family: var(--font-primary), inherit;
             font-weight: 700;
             border-radius: 4px;
             text-transform: uppercase;
             font-size: 0.8rem;
             letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
         }
 
         .btn-simulate-trigger:hover {
@@ -123,7 +125,7 @@
     <!-- Shared Navigation Matrix Bar Header -->
     <header class="header-top">
         <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px;">
-            <div class="logo" style="font-size: 1.5rem; font-weight: 800; color: #ffffff;">
+            <div class="logo" style="font-size: 1.5rem; font-weight: 800; color: #66c0f4;">
                 Blue Corp<span style="color: var(--accent-cyber, #66c0f4);"> Industries.</span>
             </div>
             <nav class="main-nav" aria-label="Primary site navigation">
@@ -204,14 +206,10 @@
         </div>
     </main>
 
-    <!-- Structural Infrastructure Unified Footer -->
-    <footer class="main-footer" style="background-color: #060b1a; border-top: 1px solid rgba(255,255,255,0.05); padding: 30px 0; text-align: center; font-size: 0.9rem; color: var(--text-muted, #94a3b8);">
-        <div class="container">
-            <p style="margin-bottom: 8px;">&copy; 2026 Blue Corp Industries. Automated Pricing Framework System.</p>
-            <p style="font-size: 0.8rem; opacity: 0.7;">Cloud Infrastructure Node: ZA-South Base Server Frame</p>
-        </div>
+    <footer>
+        <p>&copy; 2026 Blue Corp Industries. Automated Pricing Framework System.</p>
+        <p>Cloud Infrastructure Node: ZA-South Base Server Frame</p>
     </footer>
 
 </body>
 </html>
-

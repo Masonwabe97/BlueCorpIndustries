@@ -3,13 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile & Inventory - Blue Corp Industries</title>
+    <title>Account Dashboard Matrix | Blue Corp Industries</title>
+    
+    <!-- Typography: Plus Jakarta Sans from Proposal Specs -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- External stylesheet directory fallback mapping -->
     <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        /* CSS variables based on Design and UX Specifications */
+        :root {
+            --proposal-bg-dark: #0B132B;
+            --proposal-surface: #1C2541;
+            --proposal-cyan: #66c0f4;
+            --proposal-mint: #48CAE4;
+            --proposal-offwhite: #E2E8F0;
+            --proposal-muted: #94A3B8;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--proposal-bg-dark);
+            color: var(--proposal-offwhite);
+        }
+
+        /* Modular Interface & Banner Component */
+        .profile-header-banner {
+            background: linear-gradient(135deg, rgba(28, 37, 65, 0.85), rgba(11, 19, 43, 0.95));
+            border-left: 4px solid var(--proposal-cyan);
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .profile-header-banner h2 {
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive Dashboard Layout Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .dashboard-item-card {
+            background: var(--proposal-surface);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 8px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .dashboard-item-card:hover {
+            border-color: rgba(102, 192, 244, 0.25);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        .dashboard-item-card h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 0.5rem;
+        }
+
+        /* User Proposal UI/UX Indicators & Alert Badges */
+        .alert-state-indicator {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 6px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .state-premium {
+            background: rgba(72, 202, 228, 0.12);
+            color: var(--proposal-mint);
+            border: 1px solid rgba(72, 202, 228, 0.25);
+        }
+
+        .state-active {
+            background: rgba(102, 192, 244, 0.12);
+            color: var(--proposal-cyan);
+            border: 1px solid rgba(102, 192, 244, 0.25);
+        }
+
+        /* Core Metadata Fields */
+        .meta-field {
+            margin-bottom: 1.25rem;
+        }
+
+        .meta-label {
+            color: var(--proposal-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .meta-value {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--proposal-offwhite);
+        }
+
+        /* Inventory Token List Items */
+        .inventory-list {
+            list-style: none;
+        }
+
+        .inventory-list li {
+            background: rgba(6, 11, 24, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            border-radius: 6px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .inventory-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .inventory-list strong {
+            color: #ffffff;
+            font-size: 1.1rem;
+        }
+
+        .tag-badge {
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+            text-transform: uppercase;
+        }
+
+        .tag-game { background: rgba(255, 0, 127, 0.15); color: #ff007f; border: 1px solid rgba(255, 0, 127, 0.3); }
+        .tag-service { background: rgba(102, 192, 244, 0.15); color: var(--proposal-cyan); border: 1px solid rgba(102, 192, 244, 0.3); }
+        .tag-access { background: rgba(72, 202, 228, 0.15); color: var(--proposal-mint); border: 1px solid rgba(72, 202, 228, 0.3); }
+
+        .inventory-list p {
+            color: var(--proposal-muted);
+            margin: 0.25rem 0 0 0;
+            font-size: 0.9rem;
+        }
+
+        /* Weakness Fix: Action-Oriented Live Package Tracking Matrix Component */
+        .tracking-banner-block {
+            background: rgba(6, 11, 24, 0.5);
+            border: 1px solid rgba(255, 0, 127, 0.3);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 1rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        .tracking-status-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .progress-bar-container {
+            flex: 1;
+            min-width: 280px;
+            background: rgba(255, 255, 255, 0.05);
+            height: 8px;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            background: linear-gradient(90deg, var(--proposal-cyan), #ff007f);
+            width: 75%; /* In-transit placeholder indicator */
+            height: 100%;
+            border-radius: 4px;
+        }
+
+        .compensation-box {
+            background: rgba(255, 0, 127, 0.12);
+            border: 1px dashed #ff007f;
+            padding: 1rem 1.5rem;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        /* Action-Oriented Control Buttons */
+        .btn-matrix-action {
+            background: linear-gradient(135deg, #ff007f, #b30059);
+            color: #ffffff;
+            border: none;
+            padding: 0.85rem 1.5rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 12px rgba(255, 0, 127, 0.3);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .btn-matrix-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(255, 0, 127, 0.5);
+        }
+
+        .btn-outline-action {
+            background: transparent;
+            color: var(--proposal-cyan);
+            border: 1px solid var(--proposal-cyan);
+            box-shadow: none;
+        }
+
+        .btn-outline-action:hover {
+            background: var(--proposal-cyan);
+            color: var(--proposal-bg-dark);
+            box-shadow: 0 4px 14px rgba(102, 192, 244, 0.3);
+        }
+    </style>
 </head>
 <body>
 
+    <!-- Shared Navigation Matrix Bar Header -->
     <header>
-        <h1>Blue Corp Industries.</h1>
+        <h1>Blue Corp Industries</h1>
         <nav>
             <ul>
                 <li><a href="../index.html">Home</a></li>
@@ -17,55 +263,32 @@
                 <li><a href="../Pages/contact.html">Contact</a></li>
                 <li><a href="../Pages/GameDetail.html">Games</a></li>
                 <li><a href="../Pages/enquiry.html">Enquiry</a></li>
-                <li><a href="../Pages/CommunityHub&Workshop.html">Community Hub & Workshop</a></li>
+                <li><a href="../Pages/CommunityHub&Workshop.html">Community Hub</a></li>
                 <li><a href="../Pages/Wishlist.html">Wishlist</a></li>
-                <li><a href="../Pages/UserProfile&Inventory.html">User Profile & Inventory</a></li>
+                <li><a href="../Pages/UserProfile&Inventory.html">Profile</a></li>
                 <li><a href="../Pages/Menu.html">Menu</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <h2>Account Dashboard</h2>
+    <!-- Custom Main Metric Tracker Dashboard Container -->
+    <main style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
         
-        <div class="dashboard-grid">
-            <section class="profile-section">
-                <h2>User Profile</h2>
-                <div id="profileContent">
-                    <h3>Alpha_Gamer_ZA</h3>
-                    <p>Premium Platform Member</p>
-                    <p><strong>Account Identification ID:</strong> #BCI-99843-ZA</p>
-                    <p><strong>Registered Email:</strong> alpha.gamer@mail.co.za</p>
-                    <p><strong>Active Accumulation Tokens:</strong> 1,450 XP Credits</p>
-                </div>
-            </section>
-
-            <section>
-                <h2>Inventory Stash</h2>
-                <div id="inventoryContent">
-                    <ul>
-                        <li>
-                            <strong>Resident Evil Village</strong> - <span style="color: var(--neon-pink);">[GAME]</span>
-                            <p>Pre-ordered Standard Edition License</p>
-                        </li>
-                        <li>
-                            <strong>Custom PC Builder Pass</strong> - <span style="color: var(--neon-blue);">[SERVICE]</span>
-                            <p>Tier 2 Priority Assistance Ticket</p>
-                        </li>
-                        <li>
-                            <strong>Solo Developer Beta Token</strong> - <span style="color: #ffcc00;">[ACCESS]</span>
-                            <p>Community Mod testing verification node key</p>
-                        </li>
-                    </ul>
-                </div>
-            </section>
+        <div class="profile-header-banner">
+            <h2>Account Dashboard Matrix</h2>
+            <p style="color: var(--proposal-offwhite); margin: 0; font-size: 0.95rem;">
+                Securely review identity allocation milestones, active distribution catalogs, and real-time parcel tracking telemetry nodes.
+            </p>
         </div>
-    </main>
 
-    <footer>
-        <p>&copy; 2026 Blue Corp Industries. All rights reserved.</p>
-        <p>Cloud Infrastructure Node: ZA-South Base Server Frame</p>
-    </footer>
-
-</body>
-</html>
+        <div class="dashboard-grid">
+            
+            <!-- Core User Profile Module Block -->
+            <section class="dashboard-item-card">
+                <div>
+                    <h3>User Profile</h3>
+                    <span class="alert-state-indicator state-premium">Premium Platform Member</span>
+                    
+                    <div class="meta-field">
+                        <span class="meta-label">Identity Node Username:</span>
+                        <span class="meta-value" style="color: var(--proposal-cyan); font-size: 1.25rem;">Alpha_Gamer_ZA</span>
