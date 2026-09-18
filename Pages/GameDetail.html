@@ -3,20 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Details - Blue Corp Industries</title>
+    <title>Game Showroom - Blue Corp Industries</title>
     <link rel="stylesheet" href="../css/style.css">
-    <!-- Direct link to external style engine (Internal styles stripped to prevent footer overlaps) -->  
+    <style>
+        .logo-wrapper {
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.75rem !important;
+            text-decoration: none;
+        }
+        .header-logo-icon {
+            width: 35px !important;
+            height: auto !important;
+            margin: 0 !important;
+            border: none !important;
+            box-shadow: none !important;
+            background: transparent !important;
+        }
+        header h1 {
+            margin-bottom: 0 !important;
+            white-space: nowrap;
+        }
+    </style>
 </head>
 <body>
 
     <header>
-        <h1>Blue Corp Industries.</h1>
+        <a href="../index.html" class="logo-wrapper">
+            <img src="../Assets/images/ChatGPT Image Sep 18, 2026, 03_52_37 PM (1).png" class="header-logo-icon" alt="Blue Corp Industries Microchip Emblem">
+            <h1>Blue Corp <span>Industries.</span></h1>
+        </a>
+        
+        <input type="checkbox" id="nav-trigger">
+        <label for="nav-trigger" class="menu-toggle-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
         <nav>
             <ul>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../Pages/AboutUs.html">About</a></li>
                 <li><a href="../Pages/contact.html">Contact</a></li>
-                <li><a href="../Pages/GameDetail.html">Games</a></li>
+                <li><a href="../Pages/GameDetail.html" class="active">Games</a></li>
                 <li><a href="../Pages/enquiry.html">Enquiry</a></li>
                 <li><a href="../Pages/CommunityHub&Workshop.html">Community Hub & Workshop</a></li>
                 <li><a href="../Pages/Wishlist.html">Wishlist</a></li>
@@ -26,117 +56,80 @@
         </nav>
     </header>
 
+    <div class="sub-nav-bar">
+        <ul>
+            <li><a href="#catalog">Featured Catalog</a></li>
+            <li><a href="#resident-evil">Resident Evil Specs</a></li>
+            <li><a href="#god-of-war">God of War Specs</a></li>
+            <li><a href="#peak">Peak Specs Node</a></li>
+        </ul>
+    </div>
+
     <main>
-        <h1>Exciting Games</h1>
-        <section>
-            <h2>Featured Catalog</h2>
-            <ul class="game-catalog">
-                <li>
-                    <strong>Resident Evil Village</strong> Price: R600
+        <h2>Ecosystem Game Distribution Showroom</h2>
+        
+        <section id="catalog">
+            <h2>Exciting Title Catalog Matrix</h2>
+            <div class="showroom-grid">
+                <div class="showroom-card">
+                    <h3 style="color:#ffffff">Resident Evil Village</h3>
+                    <p style="color:var(--proposal-mint)">Price Parameters: R600</p>
                     <img src="../Assets/images/Resident Evil village.jpg" alt="Resident Evil Village box cover artwork">
-                </li>
-                <li>
-                    <strong>God of War IV</strong> Price: R700
+                </div>
+                <div class="showroom-card">
+                    <h3 style="color:#ffffff">God of War IV</h3>
+                    <p style="color:var(--proposal-cyan)">Price Parameters: R700</p>
                     <img src="../Assets/images/God_of_War_4_cover.webp" alt="God of War 4 cover art layout profile image">
-                </li>
-                <li>
-                    <strong>Peak</strong> Price: R330
+                </div>
+                <div class="showroom-card">
+                    <h3 style="color:#ffffff">Peak</h3>
+                    <p style="color:var(--neon-pink)">Price Parameters: R330</p>
                     <img src="../Assets/images/Peak.jpg" alt="Peak adventure puzzle experience cover visual profile">
-                </li>
-            </ul>
+                </div>
+            </div>
         </section>
 
-        <article>
+        <article id="resident-evil">
             <h2>Resident Evil Village</h2>
-            <p>Released by Capcom in 2021, Resident Evil Village is the eighth major story entry in the survival horror series. Players control Ethan Winters as he navigates a snowy, monster-infested European settlement to rescue his kidnapped infant daughter, Rose, after a violent intrusion by series veteran Chris Redfield.</p>
-            <p>Set a few years after Resident Evil 7: Biohazard, it follows Ethan Winters as he navigates a snowy, myth-laden European village to rescue his kidnapped infant daughter from four eccentric mutant lords and their supreme leader, Mother Miranda.</p>
-            
-            <h3>Specifications</h3>
-            <p>To run Resident Evil Village on PC, you need a minimum of an Intel Core i5-7500 or AMD Ryzen 3 1200 CPU, 8 GB of RAM, and an NVIDIA GeForce GTX 1050 Ti or AMD Radeon RX 560 with 4GB of VRAM, targeting 1080p/60fps with performance priorities.</p>
-            <ul>
-                <li><strong>Developer:</strong> Capcom</li>
-                <li><strong>Publisher:</strong> Capcom</li>
-                <li><strong>Release Date:</strong> October 1, 2021</li>
-                <li><strong>Genre:</strong> Survival Horror, Action</li>
-            </ul>
-
-            <h3>Gameplay Screenshots</h3>
-            <div class="screenshot-gallery">
-                <img src="../Assets/images/gameplay screenshot 1.jpg" alt="Resident Evil Village combat layout sequence">
-                <img src="../Assets/images/gameplay screenshot 2.jpg" alt="Exploring the dark castle halls area">
-                <img src="../Assets/images/gameplay screenshot 3.jpg" alt="Inventory screen and shop interactions">
+            <p>Released by Capcom in 2021, Resident Evil Village follows Ethan Winters as he navigates a snowy, myth-laden European village to rescue his kidnapped infant daughter from four eccentric mutant lords.</p>
+            <p><strong>System Specifications Required:</strong> Intel Core i5-7500 / AMD Ryzen 3 1200 CPU, 8 GB RAM, and an NVIDIA GeForce GTX 1050 Ti 4GB.</p>
+            <div class="screenshot-gallery" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:1rem;">
+                <img src="../Assets/images/gameplay screenshot 1.jpg" alt="Screenshot 1">
+                <img src="../Assets/images/gameplay screenshot 2.jpg" alt="Screenshot 2">
+                <img src="../Assets/images/gameplay screenshot 3.jpg" alt="Screenshot 3">
             </div>
-
-            <h3>Reviews</h3>
-            <ul class="review-list">
-                <li>"An excellent addition to the series!" - GameSpot</li>
-                <li>"Great atmosphere and engaging gameplay." - IGN</li>
-                <li>"One of the best Resident Evil games yet." - PC Gamer</li>
-            </ul>
         </article>
 
-        <article>
+        <article id="god-of-war">
             <h2>God of War IV</h2>
-            <p>God of War IV is an action-adventure game developed by Santa Monica Studio and published by Sony Interactive Entertainment. The game follows Kratos and his son Atreus as they journey through the Norse realms.</p>
-            <p>An older Kratos tries to live a quiet life and mentors his young son, Atreus. Together, they embark on a deeply emotional quest to scatter the ashes of Kratos's late wife at the highest peak in the realms.</p>
-            
-            <h3>Specifications</h3>
-            <p>To run God of War IV on PC, you need a minimum of an Intel Core i5-6600K or AMD Ryzen 5 1400 CPU, 8 GB of RAM, and an NVIDIA GeForce GTX 970 or AMD Radeon R9 290 with 4GB of VRAM, targeting 1080p/60fps with performance priorities.</p>
-            <ul>
-                <li><strong>Developer:</strong> Santa Monica Studio</li>
-                <li><strong>Publisher:</strong> Sony Interactive Entertainment</li>
-                <li><strong>Release Date:</strong> April 20, 2018</li>
-                <li><strong>Genre:</strong> Action-Adventure</li>
-            </ul>
-
-            <h3>Gameplay Screenshots</h3>
-            <div class="screenshot-gallery">
-                <img src="../Assets/images/gameplay screenshot 4.jpg" alt="Kratos throwing the Leviathan Axe">
-                <img src="../Assets/images/gameplay screenshot 5.jpg" alt="Atreus shooting magical arrows in combat layout">
-                <img src="../Assets/images/gameplay screenshot 6.jpg" alt="Stunning landscape panoramic of Midgard">
+            <p>God of War IV follows Kratos and his son Atreus as they journey through the Norse realms on a deeply emotional quest to scatter his late wife's ashes at the highest peak.</p>
+            <p><strong>System Specifications Required:</strong> Intel Core i5-6600K / AMD Ryzen 5 1400 CPU, 8 GB RAM, and an NVIDIA GeForce GTX 970 4GB.</p>
+            <div class="screenshot-gallery" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:1rem;">
+                <img src="../Assets/images/gameplay screenshot 4.jpg" alt="Screenshot 4">
+                <img src="../Assets/images/gameplay screenshot 5.jpg" alt="Screenshot 5">
+                <img src="../Assets/images/gameplay screenshot 6.jpg" alt="Screenshot 6">
             </div>
-
-            <h3>Reviews</h3>
-            <ul class="review-list">
-                <li>"A masterpiece of storytelling and gameplay." - Game Informer</li>
-                <li>"Stunning visuals and a compelling narrative." - IGN</li>
-                <li>"An unforgettable journey through Norse mythology." - Polygon</li>
-            </ul>
         </article>
 
-        <article>
+        <article id="peak">
             <h2>Peak</h2>
-            <p>Peak is a puzzle game developed by Blue Corp Industries. The game challenges players to solve increasingly complex puzzles by manipulating the environment and using logic and strategy.</p>
-            <p>The game features a minimalist art style and a relaxing soundtrack, providing a calming experience for players.</p>
-            
-            <h3>Specifications</h3>
-            <p>To run Peak on PC, you need a minimum of an Intel Core i3-6100 or AMD Ryzen 3 1200 CPU, 4 GB of RAM, and an NVIDIA GeForce GTX 750 or AMD Radeon R7 250 with 2GB of VRAM, targeting 1080p/60fps with performance priorities.</p>
-            <ul>
-                <li><strong>Developer:</strong> Team PEAK (Aggro Crab & Landfall Games)</li>
-                <li><strong>Publisher:</strong> Aggro Crab & Landfall Games</li>
-                <li><strong>Release Date:</strong> June 16, 2025</li>
-                <li><strong>Genre:</strong> Indie, Adventure, Action, Co-operative Survival</li>
-            </ul>
-
-            <h3>Gameplay Screenshots</h3>
-            <div class="screenshot-gallery">
-                <img src="../Assets/images/gameplay screenshot 7.jpg" alt="Minimalist environment navigation interface map">
-                <img src="../Assets/images/gameplay screenshot 8.jpg" alt="Cooperative action puzzle logic grid challenge">
-                <img src="../Assets/images/gameplay screenshot 9.jpg" alt="Level complete reward sequence animation screen">
+            <p>Peak is a minimalist indie puzzle strategy title developed inside the Blue Corp program matrix challenging logic and strategical positioning parameters.</p>
+            <p><strong>System Specifications Required:</strong> Intel Core i3-6100 / AMD Ryzen 3 1200 CPU, 4 GB RAM, and an NVIDIA GeForce GTX 750 2GB.</p>
+            <div class="screenshot-gallery" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:1rem;">
+                <img src="../Assets/images/gameplay screenshot 7.jpg" alt="Screenshot 7">
+                <img src="../Assets/images/gameplay screenshot 8.jpg" alt="Screenshot 8">
+                <img src="../Assets/images/gameplay screenshot 9.jpg" alt="Screenshot 9">
             </div>
-
-            <h3>Reviews</h3>
-            <ul class="review-list">
-                <li>"A delightfully innovative cooperative logic design breakout." - IndieGameMag</li>
-                <li>"Relaxing yet incredibly brain-bending puzzle progression loops." - Eurogamer</li>
-            </ul>
         </article>
     </main>
 
     <footer>
-        <p>&copy; 2026 Blue Corp Industries. All rights reserved.</p>
-        <p>Cloud Infrastructure Node: ZA-South Base Server Frame</p>
+        <p>&copy; 2026 Blue Corp Industries. Fulfilling Frictional UI Framework Requirements.</p>
+        <p>SSL/TLS Infrastructure Node: ZA-South Base Server Frame</p>
     </footer>
 
 </body>
 </html>
+
+
+

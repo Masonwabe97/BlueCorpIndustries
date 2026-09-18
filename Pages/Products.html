@@ -1,111 +1,570 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecosystem Framework Matrix | Products & Services</title>
+
+    <title>Blue Corp Industries | Products & Services</title>
+
+    <!-- Typography: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Shared Stylesheet -->
     <link rel="stylesheet" href="../css/style.css">
+
     <style>
-        /* Embedding design system background grid pattern matching wishlist parameters */
+        /* General Page Layout */
         body {
-            background-image: 
-                linear-gradient(rgba(102, 192, 244, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(102, 192, 244, 0.02) 1px, transparent 1px);
-            background-size: 30px 30px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: #07111f;
+            color: #e2e8f0;
+            font-family: "Plus Jakarta Sans", sans-serif;
         }
 
-        /* SVG Layout graphic element enhancements */
-        section::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            right: -10px;
-            width: 100px;
-            height: 100px;
-            opacity: 0.05;
-            background-repeat: no-repeat;
-            background-size: contain;
-            transition: opacity 0.3s ease, transform 0.3s ease;
+        main {
+            flex: 1;
+            width: 100%;
+            padding: 3rem 0;
         }
 
-        section:nth-of-type(1)::after {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='none' stroke='%23ff007f' stroke-width='2'%3E%3Cpath d='M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z'%3E%3C/path%3E%3Cline x1='3' y1='6' x2='21' y2='6'%3E%3C/line%3E%3Cpath d='M16 10a4 4 0 0 1-8 0'%3E%3C/path%3E%3C/svg%3E");
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        section:nth-of-type(2)::after {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='none' stroke='%23ff007f' stroke-width='2'%3E%3Cpolygon points='23 7 16 12 23 17 23 7'%3E%3C/polygon%3E%3Crect x='1' y='5' width='15' height='14' rx='2' ry='2'%3E%3C/rect%3E%3C/svg%3E");
+        /* Header */
+        .header-top {
+            width: 100%;
+            background: #0b132b;
+            border-bottom: 1px solid rgba(102, 192, 244, 0.15);
         }
 
-        section:nth-of-type(3)::after {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='none' stroke='%23ff007f' stroke-width='2'%3E%3Cpath d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71'%3E%3C/path%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'%3E%3C/path%3E%3C/svg%3E");
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            padding-top: 20px;
+            padding-bottom: 20px;
         }
 
-        section.featured-rewards::after {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='none' stroke='%2366c0f4' stroke-width='2'%3E%3Cpolygon points='12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2'%3E%3C/polygon%3E%3Cpolygon points='12 7 14.7 12.4 20.7 13.3 16.4 17.5 17.4 23.5 12 20.7 6.6 23.5 7.6 17.5 3.3 13.3 9.3 12.4 12 7'%3E%3C/polygon%3E%3C/svg%3E");
+        .logo {
+            color: #66c0f4;
+            font-size: 1.5rem;
+            font-weight: 800;
+            white-space: nowrap;
         }
 
-        section:hover::after {
-            opacity: 0.15;
-            transform: scale(1.08) rotate(-4deg);
+        .main-nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 15px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-nav a {
+            color: #d2e3ed;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active {
+            color: #66c0f4;
+        }
+
+        /* Hero Section */
+        .hero-layout-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 2.5rem;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: #0d1b2a;
+            border: 1px solid #1e4055;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-text-block h2 {
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            font-size: 2.5rem;
+            line-height: 1.15;
+            font-weight: 800;
+        }
+
+        .hero-text-block p {
+            color: #d2e3ed;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .hero-graphic-canvas {
+            display: block;
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border: 1px solid rgba(102, 192, 244, 0.2);
+            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Services Grid */
+        .services-matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .service-feature-card {
+            padding: 2.2rem;
+            background: #0d1b2a;
+            border: 1px solid #1e4055;
+            border-bottom: 3px solid #66c0f4;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            transition:
+                transform 0.2s ease,
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .service-feature-card:hover {
+            transform: translateY(-4px);
+            border-color: #66c0f4;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .service-number {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #66c0f4;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .service-feature-card h2 {
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-size: 1.3rem;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        .service-feature-card p {
+            margin-bottom: 0;
+            color: #d2e3ed;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* Rewards Section */
+        .contact-summary-strip {
+            padding: 2.5rem;
+            margin: 3rem 0;
+            background: #0d1b2a;
+            border: 1px dashed rgba(102, 192, 244, 0.35);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rewards-badge {
+            display: inline-block;
+            padding: 6px 10px;
+            margin-bottom: 1.25rem;
+            background: rgba(102, 192, 244, 0.12);
+            border: 1px solid rgba(102, 192, 244, 0.25);
+            border-radius: 5px;
+            color: #66c0f4;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .contact-summary-strip h2 {
+            margin-bottom: 0.7rem;
+            color: #ffffff;
+            font-size: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .contact-summary-strip p {
+            color: #94a3b8;
+            line-height: 1.8;
+        }
+
+        .rewards-button {
+            display: inline-block;
+            padding: 0.85rem 1.5rem;
+            margin-top: 1rem;
+            background: #66c0f4;
+            border: none;
+            border-radius: 5px;
+            color: #07111f;
+            cursor: pointer;
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .rewards-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(102, 192, 244, 0.3);
+        }
+
+        .rewards-button:focus-visible {
+            outline: 2px solid #ffffff;
+            outline-offset: 3px;
+        }
+
+        /* Footer */
+        .main-footer {
+            width: 100%;
+            padding: 30px 0;
+            background: #060b1a;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #94a3b8;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .main-footer p {
+            margin-bottom: 8px;
+        }
+
+        .main-footer p:last-child {
+            margin-bottom: 0;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1000px) {
+            .header-top .container {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .main-nav ul {
+                justify-content: center;
+            }
+
+            .services-matrix-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-layout-box {
+                grid-template-columns: 1fr;
+                padding: 1.8rem;
+            }
+
+            .hero-text-block h2 {
+                font-size: 2rem;
+            }
+
+            .hero-graphic-canvas {
+                height: 240px;
+            }
+
+            .services-matrix-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            main {
+                padding: 1.5rem 0;
+            }
+
+            .header-top .container {
+                padding: 15px 20px;
+            }
+
+            .main-nav {
+                width: 100%;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .hero-layout-box {
+                padding: 1.2rem;
+            }
+
+            .hero-text-block h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero-graphic-canvas {
+                height: 200px;
+            }
+
+            .service-feature-card,
+            .contact-summary-strip {
+                padding: 1.5rem;
+            }
+
+            .rewards-button {
+                width: 100%;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <header>
-        <h1>Blue Corp Industries.</h1>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../Pages/AboutUs.html">About</a></li>
-                <li><a href="../Pages/contact.html">Contact</a></li>
-                <li><a href="../Pages/GameDetail.html">Games</a></li>
-                <li><a href="../Pages/enquiry.html">Enquiry</a></li>
-                <li><a href="../Pages/CommunityHub&Workshop.html">Community Hub & Workshop</a></li>
-                <li><a href="../Pages/Wishlist.html">Wishlist</a></li>
-                <li><a href="../Pages/UserProfile&Inventory.html">User Profile & Inventory</a></li>
-                <li><a href="../Pages/Menu.html">Menu</a></li>
-            </ul>
-        </nav>
+    <!-- Global Navigation -->
+    <header class="header-top">
+
+        <div class="container">
+
+            <div class="logo">
+                Blue Corp Industries
+            </div>
+
+            <nav class="main-nav" aria-label="Primary site navigation">
+
+                <ul>
+                    <li>
+                        <a href="../index.html">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="../Pages/AboutUs.html">About</a>
+                    </li>
+
+                    <li>
+                        <a href="../Pages/contact.html">Contact</a>
+                    </li>
+
+                    <li>
+                        <a href="../Pages/GameDetail.html">Games</a>
+                    </li>
+
+                    <li>
+                        <a href="../Pages/enquiry.html">Enquiry</a>
+                    </li>
+
+                    <li>
+                        <a href="../Pages/CommunityHub&Workshop.html">
+                            Community Hub
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="../Pages/Wishlist.html">Wishlist</a>
+                    </li>
+
+                    <li>
+                        <a href="../Pages/UserProfile&Inventory.html">
+                            Profile
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="../Pages/Menu.html" class="active">
+                            Menu
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+
+        </div>
+
     </header>
 
+    <!-- Main Content -->
     <main>
-        <div>
-            <h2>Ecosystem Products & Operations Architecture</h2>
-            <p>Comprehensive overview of infrastructure layers and consumer portal applications.</p>
+
+        <div class="container">
+
+            <!-- Hero Section -->
+            <section
+                class="hero-layout-box"
+                aria-label="Products and Services Overview"
+            >
+
+                <div class="hero-text-block">
+
+                    <h2>
+                        Products &amp; Services
+                    </h2>
+
+                    <p>
+                        Explore the Blue Corp Industries ecosystem,
+                        including digital commerce, live gaming
+                        experiences, creator commission systems,
+                        and seasonal rewards.
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <img
+                        src="../Assets/images/Logo - Edited.png"
+                        class="hero-graphic-canvas"
+                        alt="Blue Corp Industries gaming logo"
+                    >
+
+                </div>
+
+            </section>
+
+            <!-- Services Section -->
+            <section
+                class="services-matrix-grid"
+                aria-label="Ecosystem Capabilities"
+            >
+
+                <!-- Service 01 -->
+                <article class="service-feature-card">
+
+                    <span class="service-number">
+                        Service 01
+                    </span>
+
+                    <h2>
+                        Digital Commerce System
+                    </h2>
+
+                    <p>
+                        Instant transaction routing offering
+                        anti-review bombing protections,
+                        optimized game bundling patterns,
+                        and explicit hardware deployment models.
+                    </p>
+
+                </article>
+
+                <!-- Service 02 -->
+                <article class="service-feature-card">
+
+                    <span class="service-number">
+                        Service 02
+                    </span>
+
+                    <h2>
+                        Live Streams &amp; Festival Nodes
+                    </h2>
+
+                    <p>
+                        Running structural demo systems
+                        and open testing parameters directly
+                        over CDN matrices to maximize
+                        audience hype matrices.
+                    </p>
+
+                </article>
+
+                <!-- Service 03 -->
+                <article class="service-feature-card">
+
+                    <span class="service-number">
+                        Service 03
+                    </span>
+
+                    <h2>
+                        Commission Infrastructure
+                    </h2>
+
+                    <p>
+                        Rewarding high-reach external content
+                        creators with programmatic conversion
+                        link codes that pay a clear margin
+                        cut dynamically.
+                    </p>
+
+                </article>
+
+            </section>
+
+            <!-- Seasonal Rewards Section -->
+            <section
+                class="contact-summary-strip"
+                aria-labelledby="rewards-strip-title"
+            >
+
+                <span class="rewards-badge">
+                    Featured Rewards
+                </span>
+
+                <h2 id="rewards-strip-title">
+                    ★ Seasonal Gamification Rewards
+                </h2>
+
+                <p>
+                    Earn progressive tier profile account marks
+                    automatically for every platform game
+                    transaction cleared throughout the
+                    seasonal calendar cycle.
+                </p>
+
+                <form action="#" method="POST">
+
+                    <button
+                        type="submit"
+                        class="rewards-button"
+                    >
+                        Review Earned Badges Inventory
+                        (Authentication Required)
+                    </button>
+
+                </form>
+
+            </section>
+
         </div>
 
-        <!-- Transformed layout structure from list layout into multi-column dashboard grid -->
-        <div class="wishlist-grid">
-            <section>
-                <h3>1. Digital Commerce System</h3>
-                <p>Instant transaction routing offering anti-review bombing protections, optimized game bundling patterns, and explicit hardware deployment models.</p>
-            </section>
-
-            <section>
-                <h3>2. Live Streams & Festival Nodes</h3>
-                <p>Running structural demo systems and open testing parameters directly over CDN matrices to maximize audience hype matrices.</p>
-            </section>
-
-            <section>
-                <h3>3. Commission Infrastructure</h3>
-                <p>Rewarding high-reach external content creators with programmatic conversion link codes that pay a clear margin cut dynamically.</p>
-            </section>
-        </div>
-
-        <!-- Highlighted reward module mapped to the lower grid line layout -->
-        <section class="featured-rewards" style="margin-top: 2.5rem;">
-            <h3>★ Seasonal Gamification Rewards</h3>
-            <p>Earn progressive tier profile account marks automatically for every platform game transaction cleared throughout the seasonal calendar cycle.</p>
-            <form action="#" method="POST">
-                <button type="submit">Review Earned Badges Inventory (Authentication Required)</button>
-            </form>
-        </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 Blue Corp Industries. All rights reserved.</p>
-        <p>Cloud Infrastructure Node: ZA-South Base Server Frame</p>
+    <!-- Global Footer -->
+    <footer class="main-footer">
+
+        <div class="container">
+
+            <p>
+                &copy; 2026 Blue Corp Industries.
+                All rights reserved.
+            </p>
+
+            <p>
+                Cloud Infrastructure Node:
+                ZA-South Base Server Frame
+            </p>
+
+        </div>
+
     </footer>
 
 </body>

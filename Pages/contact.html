@@ -3,95 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Blue Corp Industries</title>
+    <title>Contact Hub Matrix - Blue Corp Industries</title>
     <link rel="stylesheet" href="../css/style.css">
     <style>
-        /* Modern Content Realignment & Background Clearing Constraints */
-        .info-layout-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
+        .logo-wrapper {
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.75rem !important;
+            text-decoration: none;
         }
-
-        .info-card {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            background: var(--surface-secondary, #1c2541);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(102, 192, 244, 0.1);
-        }
-
-        .info-card img {
-            width: 60px; /* Compact structural icon constraints */
-            height: 60px;
-            object-fit: contain;
-            background: transparent !important; /* Forces background clearing */
-            flex-shrink: 0;
-        }
-
-        .info-card h3 {
-            margin: 0 0 0.25rem 0;
-            font-size: 1.1rem;
-            color: #ffffff;
-        }
-
-        .info-card p {
-            margin: 0;
-            color: var(--text-main, #e2e8f0);
-            font-size: 0.95rem;
-        }
-
-        /* Message Layout Realignment Section */
-        .message-section-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(102, 192, 244, 0.2);
-            padding-bottom: 0.5rem;
-        }
-
-        .message-section-header img.msg-icon {
-            width: 40px; /* Compact section-header level layout size */
-            height: 40px;
-            object-fit: contain;
+        .header-logo-icon {
+            width: 35px !important;
+            height: auto !important;
+            margin: 0 !important;
+            border: none !important;
+            box-shadow: none !important;
             background: transparent !important;
         }
-
-        .message-section-header h2 {
-            margin: 0;
+        header h1 {
+            margin-bottom: 0 !important;
+            white-space: nowrap;
         }
-
-        /* Map Embed Container Wrapper */
-        .map-container {
-            width: 100%;
+        .contact-media-row {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: space-between;
+            align-items: stretch;
+            flex-wrap: wrap;
             margin-top: 1.5rem;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(102, 192, 244, 0.1);
         }
-
-        .map-container iframe {
+        .contact-col-item {
+            flex: 1;
+            min-width: 280px;
+            background-color: rgba(6, 11, 24, 0.25);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .contact-col-item img, 
+        .contact-col-item iframe {
             width: 100%;
-            height: 400px;
-            display: block;
+            height: 220px;
+            border-radius: 6px;
+            object-fit: cover;
+            margin-top: 1rem;
+            border: 1px solid rgba(102, 192, 244, 0.2);
+        }
+        .contact-col-item h3 {
+            color: #66c0f4;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Blue Corp Industries.</h1>
+        <a href="../index.html" class="logo-wrapper">
+            <img src="../Assets/images/ChatGPT Image Sep 18, 2026, 03_52_37 PM (1).png" class="header-logo-icon" alt="Blue Corp Industries Microchip Emblem">
+            <h1>Blue Corp <span>Industries.</span></h1>
+        </a>
+        
+        <input type="checkbox" id="nav-trigger">
+        <label for="nav-trigger" class="menu-toggle-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
         <nav>
             <ul>
-                <li><a href="../index.html">Home</a></li>                               
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="../Pages/AboutUs.html">About</a></li>
-                <li><a href="../Pages/contact.html">Contact</a></li>
+                <li><a href="../Pages/contact.html" class="active">Contact</a></li>
                 <li><a href="../Pages/GameDetail.html">Games</a></li>
                 <li><a href="../Pages/enquiry.html">Enquiry</a></li>
                 <li><a href="../Pages/CommunityHub&Workshop.html">Community Hub & Workshop</a></li>
@@ -102,78 +92,82 @@
         </nav>
     </header>
 
-    <main class="container">
-        <section>
-            <h2>Contact Us</h2>                                 
-            <p>Get in touch with Blue Corp Industries</p>
+    <div class="sub-nav-bar">
+        <ul>
+            <li><a href="#desk">Support Desk</a></li>
+            <li><a href="#info">Information Node</a></li>
+            <li><a href="#message">Secure Form</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <h2>Contact Hub Operations Center</h2>
+        
+        <section id="desk">
+            <h2>Contact Us</h2>
+            <p>Get in touch with Blue Corp Industries support desk nodes.</p>
         </section>
 
-        <!-- Information Layout Matrix (Icons placed next to text content) -->
-        <section class="info-layout-grid">
-            <div class="info-card">
+        <div class="contact-media-row">
+            <div class="contact-col-item">
+                <div>
+                    <h3>Voice Support Desk</h3>
+                    <p>Connect immediately to our local telemetry communication nodes for live assistance.</p>
+                </div>
                 <img src="../Assets/images/Call Icon.jpg" alt="Call support line visual">
-                <div>
-                    <h3>Phone Support</h3>
-                    <p>+27 993 458 773</p>
-                </div>
             </div>
 
-            <div class="info-card">
-                <img src="../Assets/images/Message Icon - Edited.png" alt="Email communication visual">
+            <div class="contact-col-item">
                 <div>
-                    <h3>Email Address</h3>
-                    <p>bluecorpindustries@gmail.com</p>
+                    <h3>Digital Mailing Core</h3>
+                    <p>Submit platform inquiries directly to our secure central operations data pool.</p>
                 </div>
+                <img src="../Assets/images/Message Icon - Edited.png" alt="Message delivery icon">
             </div>
 
-            <div class="info-card">
-                <!-- Reusing call/map asset structure safely context-wise -->
-                <img src="../Assets/images/Call Icon.jpg" style="filter: hue-rotate(140deg);" alt="Physical headquarters locator visual">
+            <div class="contact-col-item">
                 <div>
-                    <h3>Headquarters</h3>
-                    <p>32 Frere Rd, Vincent, KuGompo City, 5241</p>
+                    <h3>Operational Base Map</h3>
+                    <p>Review geographical positioning parameters for our advanced logistics server center.</p>
                 </div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3346.690525784862!2d27.899190011772454!3d-32.985565773746124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e66e028faa5e7fb%3A0x82924b3462ee96c9!2sBlue-Corp!5e0!3m2!1sen!2sza!4v1789740499546!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
+        </div>
+
+        <section id="info" class="info-section" style="margin-top: 2.5rem;">
+            <h2>Contact Information Metadata</h2>
+            <p><strong>Physical Address Coordinate:</strong> 32 Frere Rd, Vincent, KuGompo City, 5241</p>
+            <p><strong>Support Phone Line:</strong> +27 993 458 773</p>
+            <p><strong>Operations Mail Terminal:</strong> bluecorpindustries@gmail.com</p>
         </section>
 
-        <!-- Message Transmission Module -->
-        <section>
-            <div class="message-section-header">
-                <h2>Send us a Message</h2>
-            </div>
-            
+        <section id="message">
+            <h2>Send us a Message</h2>
             <form action="#" method="POST">
                 <p>
-                    <label for="contact-name">Name:</label>
+                    <label for="contact-name">Your Profile Name:</label>
                     <input type="text" id="contact-name" placeholder="Name" required>
                 </p>
                 <p>
-                    <label for="contact-email">Email:</label>
+                    <label for="contact-email">Email Node Endpoint:</label>
                     <input type="email" id="contact-email" placeholder="Email" required>
                 </p>
                 <p>
-                    <label for="contact-msg">Message:</label>
-                    <textarea id="contact-msg" placeholder="Message" rows="5" required></textarea>
+                    <label for="contact-msg">Message Core Details:</label>
+                    <textarea id="contact-msg" placeholder="Type your message text here..." rows="5" required></textarea>
                 </p>
                 <p>
-                    <button type="submit">Send Message</button>
+                    <button type="submit">Submit Platform Message</button>
                 </p>
             </form>
-        </section>
-
-        <!-- Regional Infrastructure Location Tracking Frame -->
-        <section class="info-section">
-            <h2>Location</h2>
-            <p>Our base of operations and main building.</p>
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3346.6905257806634!2d27.899195376521202!3d-32.98556577385686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e66e028faa5e7fb%3A0x82924b3462ee96c9!2sBlue-Corp!5e0!3m2!1sen!2sza!4v1789655474639!5m2!1sen!2sza" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Blue Corp Industries. All rights reserved.</p>
-        <p>Cloud Infrastructure Node: ZA-South Base Server Frame</p>
+        <p>&copy; 2026 Blue Corp Industries. Fulfilling Frictional UI Framework Requirements.</p>
+        <p>SSL/TLS Infrastructure Node: ZA-South Base Server Frame</p>
     </footer>
+
 </body>
 </html>
+

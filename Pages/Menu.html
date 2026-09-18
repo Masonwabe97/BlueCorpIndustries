@@ -3,13 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Menu - Blue Corp Industries</title>
+    <title>Ecosystem Framework Matrix - Blue Corp Industries</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .logo-wrapper {
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.75rem !important;
+            text-decoration: none;
+        }
+        .header-logo-icon {
+            width: 35px !important;
+            height: auto !important;
+            margin: 0 !important;
+            border: none !important;
+            box-shadow: none !important;
+            background: transparent !important;
+        }
+        header h1 {
+            margin-bottom: 0 !important;
+            white-space: nowrap;
+        }
+    </style>
 </head>
 <body>
 
     <header>
-        <h1>Blue Corp Industries.</h1>
+        <a href="../index.html" class="logo-wrapper">
+            <img src="../Assets/images/ChatGPT Image Sep 18, 2026, 03_52_37 PM (1).png" class="header-logo-icon" alt="Blue Corp Industries Microchip Emblem">
+            <h1>Blue Corp <span>Industries.</span></h1>
+        </a>
+        
+        <input type="checkbox" id="nav-trigger">
+        <label for="nav-trigger" class="menu-toggle-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
         <nav>
             <ul>
                 <li><a href="../index.html">Home</a></li>
@@ -20,59 +51,59 @@
                 <li><a href="../Pages/CommunityHub&Workshop.html">Community Hub & Workshop</a></li>
                 <li><a href="../Pages/Wishlist.html">Wishlist</a></li>
                 <li><a href="../Pages/UserProfile&Inventory.html">User Profile & Inventory</a></li>
-                <li><a href="../Pages/Menu.html">Menu</a></li>
+                <li><a href="../Pages/Menu.html" class="active">Menu</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <div>
-            <h2>Sitemap Navigation</h2>
-            <p>Quick access directory for all platforms, tools, and community centers.</p>
-        </div>
+    <div class="sub-nav-bar">
+        <ul>
+            <li><a href="#directory">Sitemap Directory Matrix</a></li>
+        </ul>
+    </div>
 
-        <section>
-            <ul>
-                <li>
+    <main>
+        <h2>Ecosystem Products & Operations Architecture</h2>
+        
+        <section id="directory">
+            <h2>Sitemap Navigation Links</h2>
+            <div class="wishlist-grid">
+                <div class="wishlist-item-card">
                     <h3><a href="../index.html">Home Landing</a></h3>
-                    <p>Return to the main portal welcoming screen and overview updates.</p>
-                </li>
-                <li>
+                    <p>Main portal welcoming screen and overview updates.</p>
+                </div>
+                <div class="wishlist-item-card">
                     <h3><a href="../Pages/AboutUs.html">About Us</a></h3>
-                    <p>Learn about our mission, vision, and core company values.</p>
-                </li>
-                <li>
+                    <p>Platform mission parameters, core values, and vision statements.</p>
+                </div>
+                <div class="wishlist-item-card">
                     <h3><a href="../Pages/contact.html">Contact Hub</a></h3>
-                    <p>Find our physical operational base map, phone support, and address.</p>
-                </li>
-                <li>
+                    <p>Physical base coordinates map location and support nodes.</p>
+                </div>
+                <div class="wishlist-item-card">
                     <h3><a href="../Pages/GameDetail.html">Games Showroom</a></h3>
-                    <p>Browse specs, reviews, pricing, and system details for our title releases.</p>
-                </li>
-                <li>
+                    <p>Catalog pricing, reviews, specs, and screenshots matrix.</p>
+                </div>
+                <div class="wishlist-item-card">
                     <h3><a href="../Pages/enquiry.html">Enquiry Desk</a></h3>
-                    <p>Submit custom project proposals, budgets, and hardware requests.</p>
-                </li>
-                <li>
-                    <h3><a href="../Pages/CommunityHub&Workshop.html">Community Workshop</a></h3>
-                    <p>Participate in active user discussion rooms, guides, and mod shares.</p>
-                </li>
-                <li>
-                    <h3><a href="../Pages/Wishlist.html">Saved Wishlist</a></h3>
-                    <p>Keep track of titles and custom hardware configs you want to acquire.</p>
-                </li>
-                <li>
-                    <h3><a href="../Pages/UserProfile&Inventory.html">User Profile</a></h3>
-                    <p>Manage your developer badge metadata, inventory stash, and settings.</p>
-                </li>
-            </ul>
+                    <p>Submit solo developer programs and beginner build entries.</p>
+                </div>
+                <div class="wishlist-item-card">
+                    <h3><a href="../Pages/CommunityHub&Workshop.html">Community Hub</a></h3>
+                    <p>Active discussion rooms, guides, and testing mod file uploads.</p>
+                </div>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Blue Corp Industries. All rights reserved.</p>
+        <p>&copy; 2026 Blue Corp Industries. Automated Pricing Framework System.</p>
         <p>Cloud Infrastructure Node: ZA-South Base Server Frame</p>
     </footer>
 
 </body>
 </html>
+
+
+
+
