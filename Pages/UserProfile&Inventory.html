@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile & Inventory - Blue Corp Industries</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
@@ -27,35 +28,32 @@
     <main>
         <h2>Account Dashboard</h2>
         
-        <div>
-            <!-- Profile Section -->
-            <section>
+        <div class="dashboard-grid">
+            <section class="profile-section">
                 <h2>User Profile</h2>
                 <div id="profileContent">
                     <h3>Alpha_Gamer_ZA</h3>
                     <p>Premium Platform Member</p>
-                    
                     <p><strong>Account Identification ID:</strong> #BCI-99843-ZA</p>
                     <p><strong>Registered Email:</strong> alpha.gamer@mail.co.za</p>
                     <p><strong>Active Accumulation Tokens:</strong> 1,450 XP Credits</p>
                 </div>
             </section>
-            <br>
-            <!-- Inventory Section -->
+
             <section>
                 <h2>Inventory Stash</h2>
                 <div id="inventoryContent">
                     <ul>
                         <li>
-                            <strong>Resident Evil Village</strong> - [GAME]
+                            <strong>Resident Evil Village</strong> - <span style="color: var(--neon-pink);">[GAME]</span>
                             <p>Pre-ordered Standard Edition License</p>
                         </li>
                         <li>
-                            <strong>Custom PC Builder Pass</strong> - [SERVICE]
+                            <strong>Custom PC Builder Pass</strong> - <span style="color: var(--neon-blue);">[SERVICE]</span>
                             <p>Tier 2 Priority Assistance Ticket</p>
                         </li>
                         <li>
-                            <strong>Solo Developer Beta Token</strong> - [ACCESS]
+                            <strong>Solo Developer Beta Token</strong> - <span style="color: #ffcc00;">[ACCESS]</span>
                             <p>Community Mod testing verification node key</p>
                         </li>
                     </ul>
@@ -66,6 +64,7 @@
 
     <footer>
         <p>&copy; 2026 Blue Corp Industries. All rights reserved.</p>
+        <p>Cloud Infrastructure Node: ZA-South Base Server Frame</p>
     </footer>
 
 </body>

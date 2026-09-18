@@ -4,6 +4,219 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecosystem Framework Matrix | Products & Services</title>
+    <style>
+        /* Base Reset & Design Tokens */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0f111a;
+            --bg-card: #171a26;
+            --neon-blue: #00d2ff;
+            --neon-pink: #ff007f;
+            --text-main: #f0f4f8;
+            --text-muted: #95a5a6;
+            --nav-bg: #0b0d14;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 80px; /* Leave room for fixed footer */
+            /* Embedded cyber grid matrix background pattern */
+            background-image: 
+                linear-gradient(rgba(0, 210, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 210, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--nav-bg);
+            border-bottom: 2px solid var(--neon-blue);
+            padding: 1.25rem 2rem;
+        }
+
+        header h1 {
+            color: var(--neon-blue);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 8px var(--neon-blue);
+        }
+
+        /* Content Layout Framework */
+        main {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Main Section Heading */
+        main > h2 {
+            color: var(--neon-blue);
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+        }
+
+        section {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            border-left: 4px solid var(--neon-pink);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Embedded Dynamic SVG Icon Graphics for Sections */
+        section::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            width: 100px;
+            height: 100px;
+            opacity: 0.06;
+            background-repeat: no-repeat;
+            background-size: contain;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Digital Commerce Box Icon */
+        section:nth-of-type(1)::after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='none' stroke='%23ff007f' stroke-width='2'%3E%3Cpath d='M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z'%3E%3C/path%3E%3Cline x1='3' y1='6' x2='21' y2='6'%3E%3C/line%3E%3Cpath d='M16 10a4 4 0 0 1-8 0'%3E%3C/path%3E%3C/svg%3E");
+        }
+
+        /* Live Streams Server Icon */
+        section:nth-of-type(2)::after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='none' stroke='%23ff007f' stroke-width='2'%3E%3Cpolygon points='23 7 16 12 23 17 23 7'%3E%3C/polygon%3E%3Crect x='1' y='5' width='15' height='14' rx='2' ry='2'%3E%3C/rect%3E%3C/svg%3E");
+        }
+
+        /* Commission Network Link Icon */
+        section:nth-of-type(3)::after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='none' stroke='%23ff007f' stroke-width='2'%3E%3Cpath d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71'%3E%3C/path%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'%3E%3C/path%3E%3C/svg%3E");
+        }
+
+        /* Gamification Rewards Star Shield Icon */
+        section.featured-rewards::after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='none' stroke='%2300d2ff' stroke-width='2'%3E%3Cpolygon points='12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2'%3E%3C/polygon%3E%3Cpolygon points='12 7 14.7 12.4 20.7 13.3 16.4 17.5 17.4 23.5 12 20.7 6.6 23.5 7.6 17.5 3.3 13.3 9.3 12.4 12 7'%3E%3C/polygon%3E%3C/svg%3E");
+        }
+
+        section:hover::after {
+            opacity: 0.15;
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        /* Secondary highlighted section matched to standard page tokens */
+        section.featured-rewards {
+            border-left: 4px solid var(--neon-blue);
+        }
+
+        h2, h3 {
+            margin-bottom: 1.25rem;
+            color: var(--neon-blue);
+            letter-spacing: 0.5px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            text-transform: uppercase;
+        }
+
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text-main);
+            font-size: 1.05rem;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Action Buttons */
+        button {
+            background: linear-gradient(45deg, var(--neon-pink), #b30059);
+            color: white;
+            border: none;
+            padding: 0.85rem 1.5rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            width: 100%;
+            margin-top: 1rem;
+            letter-spacing: 0.5px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 12px rgba(255, 0, 127, 0.6);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: var(--nav-bg);
+            color: var(--text-muted);
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer p:first-child {
+            margin-bottom: 0.25rem;
+        }
+        
+        footer p:last-child {
+            font-size: 0.75rem;
+            color: rgba(0, 212, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
 </head>
 <body>
 
@@ -23,7 +236,6 @@
             </ul>
         </nav>
     </header>
-    <hr>
 
     <main>
         <h2>Ecosystem Products & Operations Architecture</h2>
@@ -42,9 +254,8 @@
             <h3>3. Commission Infrastructure</h3>
             <p>Rewarding high-reach external content creators with programmatic conversion link codes that pay a clear margin cut dynamically.</p>
         </section>
-        <hr>
 
-        <section>
+        <section class="featured-rewards">
             <h3>★ Seasonal Gamification Rewards</h3>
             <p>Earn progressive tier profile account marks automatically for every platform game transaction cleared throughout the seasonal calendar cycle.</p>
             <form action="#" method="POST">
@@ -52,7 +263,6 @@
             </form>
         </section>
     </main>
-    <hr>
 
     <footer>
         <p>&copy; 2026 Blue Corp Industries. All rights reserved.</p>
