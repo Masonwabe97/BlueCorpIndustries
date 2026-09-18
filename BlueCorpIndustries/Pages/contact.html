@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Hub Matrix - Blue Corp Industries</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .logo-wrapper {
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.75rem !important;
+            text-decoration: none;
+        }
+        .header-logo-icon {
+            width: 35px !important;
+            height: auto !important;
+            margin: 0 !important;
+            border: none !important;
+            box-shadow: none !important;
+            background: transparent !important;
+        }
+        header h1 {
+            margin-bottom: 0 !important;
+            white-space: nowrap;
+        }
+        .contact-media-row {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: space-between;
+            align-items: stretch;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        .contact-col-item {
+            flex: 1;
+            min-width: 280px;
+            background-color: rgba(6, 11, 24, 0.25);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .contact-col-item img, 
+        .contact-col-item iframe {
+            width: 100%;
+            height: 220px;
+            border-radius: 6px;
+            object-fit: cover;
+            margin-top: 1rem;
+            border: 1px solid rgba(102, 192, 244, 0.2);
+        }
+        .contact-col-item h3 {
+            color: #66c0f4;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="../index.html" class="logo-wrapper">
+            <img src="../Assets/images/ChatGPT Image Sep 18, 2026, 03_52_37 PM (1).png" class="header-logo-icon" alt="Blue Corp Industries Microchip Emblem">
+            <h1>Blue Corp <span>Industries.</span></h1>
+        </a>
+        
+        <input type="checkbox" id="nav-trigger">
+        <label for="nav-trigger" class="menu-toggle-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../Pages/AboutUs.html">About</a></li>
+                <li><a href="../Pages/contact.html" class="active">Contact</a></li>
+                <li><a href="../Pages/GameDetail.html">Games</a></li>
+                <li><a href="../Pages/enquiry.html">Enquiry</a></li>
+                <li><a href="../Pages/CommunityHub&Workshop.html">Community Hub & Workshop</a></li>
+                <li><a href="../Pages/Wishlist.html">Wishlist</a></li>
+                <li><a href="../Pages/UserProfile&Inventory.html">User Profile & Inventory</a></li>
+                <li><a href="../Pages/Menu.html">Menu</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="sub-nav-bar">
+        <ul>
+            <li><a href="#desk">Support Desk</a></li>
+            <li><a href="#info">Information Node</a></li>
+            <li><a href="#message">Secure Form</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <h2>Contact Hub Operations Center</h2>
+        
+        <section id="desk">
+            <h2>Contact Us</h2>
+            <p>Get in touch with Blue Corp Industries support desk nodes.</p>
+        </section>
+
+        <div class="contact-media-row">
+            <div class="contact-col-item">
+                <div>
+                    <h3>Voice Support Desk</h3>
+                    <p>Connect immediately to our local telemetry communication nodes for live assistance.</p>
+                </div>
+                <img src="../Assets/images/Call Icon.jpg" alt="Call support line visual">
+            </div>
+
+            <div class="contact-col-item">
+                <div>
+                    <h3>Digital Mailing Core</h3>
+                    <p>Submit platform inquiries directly to our secure central operations data pool.</p>
+                </div>
+                <img src="../Assets/images/Message Icon - Edited.png" alt="Message delivery icon">
+            </div>
+
+            <div class="contact-col-item">
+                <div>
+                    <h3>Operational Base Map</h3>
+                    <p>Review geographical positioning parameters for our advanced logistics server center.</p>
+                </div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3346.690525784862!2d27.899190011772454!3d-32.985565773746124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e66e028faa5e7fb%3A0x82924b3462ee96c9!2sBlue-Corp!5e0!3m2!1sen!2sza!4v1789740499546!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+        </div>
+
+        <section id="info" class="info-section" style="margin-top: 2.5rem;">
+            <h2>Contact Information Metadata</h2>
+            <p><strong>Physical Address Coordinate:</strong> 32 Frere Rd, Vincent, KuGompo City, 5241</p>
+            <p><strong>Support Phone Line:</strong> +27 993 458 773</p>
+            <p><strong>Operations Mail Terminal:</strong> bluecorpindustries@gmail.com</p>
+        </section>
+
+        <section id="message">
+            <h2>Send us a Message</h2>
+            <form action="#" method="POST">
+                <p>
+                    <label for="contact-name">Your Profile Name:</label>
+                    <input type="text" id="contact-name" placeholder="Name" required>
+                </p>
+                <p>
+                    <label for="contact-email">Email Node Endpoint:</label>
+                    <input type="email" id="contact-email" placeholder="Email" required>
+                </p>
+                <p>
+                    <label for="contact-msg">Message Core Details:</label>
+                    <textarea id="contact-msg" placeholder="Type your message text here..." rows="5" required></textarea>
+                </p>
+                <p>
+                    <button type="submit">Submit Platform Message</button>
+                </p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Blue Corp Industries. Fulfilling Frictional UI Framework Requirements.</p>
+        <p>SSL/TLS Infrastructure Node: ZA-South Base Server Frame</p>
+    </footer>
+
+</body>
+</html>
+

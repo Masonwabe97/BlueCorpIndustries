@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Hub & Workshop - Blue Corp Industries</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .logo-wrapper {
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.75rem !important;
+            text-decoration: none;
+        }
+        .header-logo-icon {
+            width: 35px !important;
+            height: auto !important;
+            margin: 0 !important;
+            border: none !important;
+            box-shadow: none !important;
+            background: transparent !important;
+        }
+        header h1 {
+            margin-bottom: 0 !important;
+            white-space: nowrap;
+        }
+        .guides-image-row {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        .guide-col-item {
+            flex: 1;
+            min-width: 250px;
+            background-color: rgba(6, 11, 24, 0.25);
+            padding: 1.25rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .guide-col-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            margin: 1rem 0 0 0;
+        }
+        .members-profile-row {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: space-between;
+            align-items: stretch;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+        .member-profile-card {
+            flex: 1;
+            min-width: 260px;
+            background-color: rgba(6, 11, 24, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        .member-profile-card img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 1rem 0 0 0;
+            border: 2px solid rgba(102, 192, 244, 0.25);
+        }
+        .member-info-text {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="../index.html" class="logo-wrapper">
+            <img src="../Assets/images/ChatGPT Image Sep 18, 2026, 03_52_37 PM (1).png" class="header-logo-icon" alt="Blue Corp Industries Microchip Emblem">
+            <h1>Blue Corp <span>Industries.</span></h1>
+        </a>
+        
+        <input type="checkbox" id="nav-trigger">
+        <label for="nav-trigger" class="menu-toggle-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../Pages/AboutUs.html">About</a></li>
+                <li><a href="../Pages/contact.html">Contact</a></li>
+                <li><a href="../Pages/GameDetail.html">Games</a></li>
+                <li><a href="../Pages/enquiry.html">Enquiry</a></li>
+                <li><a href="../Pages/CommunityHub&Workshop.html" class="active">Community Hub & Workshop</a></li>
+                <li><a href="../Pages/Wishlist.html">Wishlist</a></li>
+                <li><a href="../Pages/UserProfile&Inventory.html">User Profile & Inventory</a></li>
+                <li><a href="../Pages/Menu.html">Menu</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="sub-nav-bar">
+        <ul>
+            <li><a href="#discussions">Discussions Feed</a></li>
+            <li><a href="#guides">Guides Node</a></li>
+            <li><a href="#workshop">Workshop Sharing</a></li>
+            <li><a href="#mods">Verified Mods</a></li>
+            <li><a href="#members">Active Members</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <h2>Ecosystem Communication Network</h2>
+        
+        <section id="discussions">
+            <h2>Discussions</h2>
+            <p>Share ideas, review patches, and engage live with active developers and community members globally.</p>
+            <img src="../Assets/images/Discussions.jpg" alt="discussion picture">
+        </section>
+
+        <section id="guides">
+            <h2>Guides & Tutorials</h2>
+            <p>Review our custom hardware modifications, network optimization tutorials, and integration metrics:</p>
+            
+            <div class="guides-image-row">
+                <div class="guide-col-item">
+                    <p><strong>Beginner Custom Overclocking Setup:</strong></p>
+                    <img src="../Assets/images/Guide pic.webp" alt="how to build PC">
+                </div>
+                
+                <div class="guide-col-item">
+                    <p><strong>Transaction Routing Debug Vectors:</strong></p>
+                    <img src="../Assets/images/Transaction Routing.png" alt="Transaction Routing">
+                </div>
+                
+                <div class="guide-col-item">
+                    <p><strong>Cross-Platform Patch Integration:</strong></p>
+                    <img src="../Assets/images/PC building 2.avif" alt="cross platform">
+                </div>
+            </div>
+        </section>
+
+        <section id="workshop">
+            <h2>Workshop</h2>
+            <p>Upload files, request asset code verification nodes, and share your operational setup configurations.</p>
+        </section>
+
+        <section id="mods">
+            <h2>Mods & Content</h2>
+            <p style="line-height:2">
+                ● Tactical Alliance: HD Texture Node File Pack<br>
+                ● Custom PC Fan Curve UI Configuration Template<br>
+                ● Community Hub Re-Shade Matrix Script Layout
+            </p>
+        </section>
+
+        <section id="members">
+            <h2>Community Members</h2>
+            <p>Meet our active verified network operators and platform contributors:</p>
+            
+            <div class="members-profile-row">
+                <div class="member-profile-card">
+                    <div>
+                        <div class="member-info-text"><span style="color:#66c0f4">●</span>Alpha_Gamer_ZA</div>
+                        <p style="color:#94a3b8; font-size:0.85rem;">Premium Member</p>
+                    </div>
+                    <img src="../Assets/images/Member 1.jpg" alt="Member 1">
+                </div>
+
+                <div class="member-profile-card">
+                    <div>
+                        <div class="member-info-text"><span style="color:#ff007f">●</span>Dev_Matrix_Node</div>
+                        <p style="color:#94a3b8; font-size:0.85rem;">Solo Developer</p>
+                    </div>
+                    <img src="../Assets/images/Member 2.jpg" alt="Member 2">
+                </div>
+
+                <div class="member-profile-card">
+                    <div>
+                        <div class="member-info-text"><span style="color:#ffcc00">●</span>Support_Desk_BCI</div>
+                        <p style="color:#94a3b8; font-size:0.85rem;">System Admin</p>
+                    </div>
+                    <img src="../Assets/images/Member 3.jpg" alt="Member 3">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Blue Corp Industries. All rights reserved.</p>
+        <p>Cloud Infrastructure Node: ZA-South Base Server Frame</p>
+    </footer>
+
+</body>
+</html>
+

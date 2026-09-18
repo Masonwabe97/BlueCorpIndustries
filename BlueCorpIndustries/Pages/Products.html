@@ -1,0 +1,571 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Blue Corp Industries | Products & Services</title>
+
+    <!-- Typography: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Shared Stylesheet -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        /* General Page Layout */
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: #07111f;
+            color: #e2e8f0;
+            font-family: "Plus Jakarta Sans", sans-serif;
+        }
+
+        main {
+            flex: 1;
+            width: 100%;
+            padding: 3rem 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header-top {
+            width: 100%;
+            background: #0b132b;
+            border-bottom: 1px solid rgba(102, 192, 244, 0.15);
+        }
+
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .logo {
+            color: #66c0f4;
+            font-size: 1.5rem;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .main-nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 15px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-nav a {
+            color: #d2e3ed;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .main-nav a:hover,
+        .main-nav a.active {
+            color: #66c0f4;
+        }
+
+        /* Hero Section */
+        .hero-layout-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 2.5rem;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            background: #0d1b2a;
+            border: 1px solid #1e4055;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-text-block h2 {
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            font-size: 2.5rem;
+            line-height: 1.15;
+            font-weight: 800;
+        }
+
+        .hero-text-block p {
+            color: #d2e3ed;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .hero-graphic-canvas {
+            display: block;
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border: 1px solid rgba(102, 192, 244, 0.2);
+            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Services Grid */
+        .services-matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .service-feature-card {
+            padding: 2.2rem;
+            background: #0d1b2a;
+            border: 1px solid #1e4055;
+            border-bottom: 3px solid #66c0f4;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            transition:
+                transform 0.2s ease,
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .service-feature-card:hover {
+            transform: translateY(-4px);
+            border-color: #66c0f4;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .service-number {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: #66c0f4;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .service-feature-card h2 {
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-size: 1.3rem;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        .service-feature-card p {
+            margin-bottom: 0;
+            color: #d2e3ed;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* Rewards Section */
+        .contact-summary-strip {
+            padding: 2.5rem;
+            margin: 3rem 0;
+            background: #0d1b2a;
+            border: 1px dashed rgba(102, 192, 244, 0.35);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rewards-badge {
+            display: inline-block;
+            padding: 6px 10px;
+            margin-bottom: 1.25rem;
+            background: rgba(102, 192, 244, 0.12);
+            border: 1px solid rgba(102, 192, 244, 0.25);
+            border-radius: 5px;
+            color: #66c0f4;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .contact-summary-strip h2 {
+            margin-bottom: 0.7rem;
+            color: #ffffff;
+            font-size: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .contact-summary-strip p {
+            color: #94a3b8;
+            line-height: 1.8;
+        }
+
+        .rewards-button {
+            display: inline-block;
+            padding: 0.85rem 1.5rem;
+            margin-top: 1rem;
+            background: #66c0f4;
+            border: none;
+            border-radius: 5px;
+            color: #07111f;
+            cursor: pointer;
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .rewards-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(102, 192, 244, 0.3);
+        }
+
+        .rewards-button:focus-visible {
+            outline: 2px solid #ffffff;
+            outline-offset: 3px;
+        }
+
+        /* Footer */
+        .main-footer {
+            width: 100%;
+            padding: 30px 0;
+            background: #060b1a;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #94a3b8;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .main-footer p {
+            margin-bottom: 8px;
+        }
+
+        .main-footer p:last-child {
+            margin-bottom: 0;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1000px) {
+            .header-top .container {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .main-nav ul {
+                justify-content: center;
+            }
+
+            .services-matrix-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-layout-box {
+                grid-template-columns: 1fr;
+                padding: 1.8rem;
+            }
+
+            .hero-text-block h2 {
+                font-size: 2rem;
+            }
+
+            .hero-graphic-canvas {
+                height: 240px;
+            }
+
+            .services-matrix-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            main {
+                padding: 1.5rem 0;
+            }
+
+            .header-top .container {
+                padding: 15px 20px;
+            }
+
+            .main-nav {
+                width: 100%;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .hero-layout-box {
+                padding: 1.2rem;
+            }
+
+            .hero-text-block h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero-graphic-canvas {
+                height: 200px;
+            }
+
+            .service-feature-card,
+            .contact-summary-strip {
+                padding: 1.5rem;
+            }
+
+            .rewards-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Global Navigation -->
+    <header class="header-top">
+
+        <div class="container">
+
+            <div class="logo">
+                Blue Corp Industries
+            </div>
+
+            <nav class="main-nav" aria-label="Primary site navigation">
+
+                <ul>
+                    <li>
+                        <a href="../index.html">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="../Pages/AboutUs.html">About</a>
+                    </li>
+
+                    <li>
+                        <a href="../Pages/contact.html">Contact</a>
+                    </li>
+
+                    <li>
+                        <a href="../Pages/GameDetail.html">Games</a>
+                    </li>
+
+                    <li>
+                        <a href="../Pages/enquiry.html">Enquiry</a>
+                    </li>
+
+                    <li>
+                        <a href="../Pages/CommunityHub&Workshop.html">
+                            Community Hub
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="../Pages/Wishlist.html">Wishlist</a>
+                    </li>
+
+                    <li>
+                        <a href="../Pages/UserProfile&Inventory.html">
+                            Profile
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="../Pages/Menu.html" class="active">
+                            Menu
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <div class="container">
+
+            <!-- Hero Section -->
+            <section
+                class="hero-layout-box"
+                aria-label="Products and Services Overview"
+            >
+
+                <div class="hero-text-block">
+
+                    <h2>
+                        Products &amp; Services
+                    </h2>
+
+                    <p>
+                        Explore the Blue Corp Industries ecosystem,
+                        including digital commerce, live gaming
+                        experiences, creator commission systems,
+                        and seasonal rewards.
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <img
+                        src="../Assets/images/Logo - Edited.png"
+                        class="hero-graphic-canvas"
+                        alt="Blue Corp Industries gaming logo"
+                    >
+
+                </div>
+
+            </section>
+
+            <!-- Services Section -->
+            <section
+                class="services-matrix-grid"
+                aria-label="Ecosystem Capabilities"
+            >
+
+                <!-- Service 01 -->
+                <article class="service-feature-card">
+
+                    <span class="service-number">
+                        Service 01
+                    </span>
+
+                    <h2>
+                        Digital Commerce System
+                    </h2>
+
+                    <p>
+                        Instant transaction routing offering
+                        anti-review bombing protections,
+                        optimized game bundling patterns,
+                        and explicit hardware deployment models.
+                    </p>
+
+                </article>
+
+                <!-- Service 02 -->
+                <article class="service-feature-card">
+
+                    <span class="service-number">
+                        Service 02
+                    </span>
+
+                    <h2>
+                        Live Streams &amp; Festival Nodes
+                    </h2>
+
+                    <p>
+                        Running structural demo systems
+                        and open testing parameters directly
+                        over CDN matrices to maximize
+                        audience hype matrices.
+                    </p>
+
+                </article>
+
+                <!-- Service 03 -->
+                <article class="service-feature-card">
+
+                    <span class="service-number">
+                        Service 03
+                    </span>
+
+                    <h2>
+                        Commission Infrastructure
+                    </h2>
+
+                    <p>
+                        Rewarding high-reach external content
+                        creators with programmatic conversion
+                        link codes that pay a clear margin
+                        cut dynamically.
+                    </p>
+
+                </article>
+
+            </section>
+
+            <!-- Seasonal Rewards Section -->
+            <section
+                class="contact-summary-strip"
+                aria-labelledby="rewards-strip-title"
+            >
+
+                <span class="rewards-badge">
+                    Featured Rewards
+                </span>
+
+                <h2 id="rewards-strip-title">
+                    ★ Seasonal Gamification Rewards
+                </h2>
+
+                <p>
+                    Earn progressive tier profile account marks
+                    automatically for every platform game
+                    transaction cleared throughout the
+                    seasonal calendar cycle.
+                </p>
+
+                <form action="#" method="POST">
+
+                    <button
+                        type="submit"
+                        class="rewards-button"
+                    >
+                        Review Earned Badges Inventory
+                        (Authentication Required)
+                    </button>
+
+                </form>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="main-footer">
+
+        <div class="container">
+
+            <p>
+                &copy; 2026 Blue Corp Industries.
+                All rights reserved.
+            </p>
+
+            <p>
+                Cloud Infrastructure Node:
+                ZA-South Base Server Frame
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
