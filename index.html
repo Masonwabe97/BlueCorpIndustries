@@ -4,55 +4,197 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blue Corp Industries | Welcome</title>
+    
+    <!-- Typography: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Link to the core external stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* Specific Page Level Structural Refinements */
+        .hero-layout-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+            background: var(--surface-secondary, #1c2541);
+            padding: 3rem;
+            border-radius: 8px;
+            margin: 2rem 0 3rem 0;
+            border: 1px solid rgba(102, 192, 244, 0.1);
+        }
+
+        .hero-text-block h2 {
+            font-size: 2.5rem;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+        }
+
+        .hero-graphic-canvas {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(102, 192, 244, 0.2);
+        }
+
+        .services-matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .service-feature-card {
+            background: var(--surface-secondary, #1c2541);
+            padding: 2.2rem;
+            border-radius: 8px;
+            border-bottom: 3px solid var(--accent-cyber, #66c0f4);
+            transition: transform 0.2s ease;
+        }
+
+        .service-feature-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .service-feature-card h2 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-summary-strip {
+            background: rgba(28, 37, 65, 0.5);
+            border: 1px dashed rgba(102, 192, 244, 0.2);
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin: 3rem 0;
+        }
+
+        .contact-links-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-tag-pill {
+            background: var(--bg-primary, #0b132b);
+            padding: 0.75rem 1.25rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-tag-pill strong {
+            color: var(--accent-cyber, #66c0f4);
+        }
+
+        @media (max-width: 768px) {
+            .hero-layout-box {
+                grid-template-columns: 1fr;
+                padding: 1.5rem;
+            }
+            .hero-graphic-canvas {
+                height: 220px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <nav>
-            <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./Pages/AboutUs.html">About</a></li>
-                <li><a href="./Pages/contact.html">Contact</a></li>
-                <li><a href="./Pages/GameDetail.html">Games</a></li>
-                <li><a href="./Pages/enquiry.html">Enquiry</a></li>
-                <li><a href="./Pages/CommunityHub&Workshop.html">Community Hub & Workshop</a></li>
-                <li><a href="./Pages/Wishlist.html">Wishlist</a></li>
-                <li><a href="./Pages/UserProfile&Inventory.html">User Profile & Inventory</a></li>
-                <li><a href="./Pages/Menu.html">Menu</a></li>
-            </ul>
-        </nav>
+    <!-- Global Accessible Navigation System header -->
+    <header class="header-top">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px;">
+            <div class="logo" style="font-size: 1.5rem; font-weight: 800; color: #66c0f4;">
+                Blue Corp<span style="color: var(--accent-cyber, #66c0f4);"> Industries</span>
+            </div>
+            <nav class="main-nav" aria-label="Primary site navigation">
+                <ul style="display: flex; list-style: none; gap: 15px; margin: 0; padding: 0;">
+                    <li><a href="./index.html" style="color: var(--accent-cyber, #66c0f4); font-weight: 700;">Home</a></li>
+                    <li><a href="./Pages/AboutUs.html">About</a></li>
+                    <li><a href="./Pages/contact.html">Contact</a></li>
+                    <li><a href="./Pages/GameDetail.html">Games</a></li>
+                    <li><a href="./Pages/enquiry.html">Enquiry</a></li>
+                    <li><a href="./Pages/CommunityHub&Workshop.html">Community Hub</a></li>
+                    <li><a href="./Pages/Wishlist.html">Wishlist</a></li>
+                    <li><a href="./Pages/UserProfile&Inventory.html">Profile</a></li>
+                    <li><a href="./Pages/Menu.html">Menu</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <section>
-            <h1>Blue Corp Industries</h1>
-            <p>Blue Corp Industries is a premier platform dedicated to distributing top-tier video games across all major consoles and PC formats at unmatched competitive pricing, alongside comprehensive custom PC building assistance for beginners.</p>
-            <img src="./Assets/images/image.jpg" alt="A modern neon-lit custom gaming PC hardware build station setup">
+    <!-- Main Content Area Context Wrapper -->
+    <main class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        
+        <!-- High Impact Modular Hero Banner Canvas -->
+        <section class="hero-layout-box" aria-label="Welcome Canvas">
+            <div class="hero-text-block">
+                <h2>Blue Corp Industries</h2>
+                <p style="color: var(--text-main, #66c0f4); font-size: 1.1rem; line-height: 1.6;">
+                    A premier platform dedicated to distributing top-tier video games across all major consoles and PC formats at unmatched competitive pricing, alongside comprehensive custom PC building assistance for beginners.
+                </p>
+            </div>
+            <div>
+                <img src="./Assets/images/Logo - Edited.png" class="hero-graphic-canvas" alt="A modern neon-lit custom gaming PC hardware build station setup">
+            </div>
         </section>
 
-        <section>
-            <h2>About Our Team</h2>
-            <p>We specialize in scouting the best video game deals on the market and removing the guesswork from custom PC assembly. Our goal is to make hardware configurations accessible to everyday gamers around the globe.</p>
-            <p><a href="./Pages/AboutUs.html">Read our full Mission & Vision →</a></p>
+        <!-- Informational Core Matrix Blocks -->
+        <section class="services-matrix-grid" aria-label="Ecosystem Capabilities">
+            
+            <!-- Service Block 1: About Team -->
+            <article class="service-feature-card">
+                <h2>About Our Team</h2>
+                <p style="color: var(--text-main, #e2e8f0); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                    We specialize in scouting the best video game deals on the market and removing the guesswork from custom PC assembly. Our goal is to make hardware configurations accessible to everyday gamers around the globe.
+                </p>
+                <p><a href="./Pages/AboutUs.html" style="font-weight: 700;">Read our full Mission & Vision &rarr;</a></p>
+            </article>
+
+            <!-- Service Block 2: Digital Ecosystem -->
+            <article class="service-feature-card">
+                <h2>Digital Services</h2>
+                <p style="color: var(--text-main, #e2e8f0); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                    We provide instant cross-platform game transaction routing, live community alpha stream networks, and hands-on guidance for beginner hardware selection setups.
+                </p>
+                <p><a href="./Pages/enquiry.html" style="font-weight: 700;">Submit a project enquiry form &rarr;</a></p>
+            </article>
+
         </section>
 
-        <section>
-            <h2>Our Digital Ecosystem Services</h2>
-            <p>We provide instant cross-platform game transaction routing, live community alpha stream networks, and hands-on guidance for beginner hardware selection setups.</p>
-            <p><a href="./Pages/enquiry.html">Submit a project enquiry form →</a></p>
+        <!-- Instant Contact Access Strip -->
+        <section class="contact-summary-strip" aria-labelledby="contact-strip-title">
+            <h2 id="contact-strip-title" style="font-size: 1.5rem; margin-bottom: 0.5rem;">Quick Communication Links</h2>
+            <p style="color: var(--text-muted, #94a3b8);">Connect directly with our operational command or stream channels.</p>
+            
+            <div class="contact-links-row">
+                <div class="contact-tag-pill">
+                    <strong>Email:</strong> bluecorpindustries@gmail.com
+                </div>
+                <div class="contact-tag-pill">
+                    <strong>Support Phone:</strong> +27 993 458 773
+                </div>
+                <div class="contact-tag-pill">
+                    <strong>Instagram:</strong> @bluecorpindustries
+                </div>
+            </div>
+            <p style="margin-top: 1.5rem;"><a href="./Pages/contact.html" style="font-weight: 700;">View our physical operational map location &rarr;</a></p>
         </section>
 
-        <section>
-            <h2>Contact Us</h2>
-            <p>Get in touch with our operations center at: bluecorpindustries@gmail.com</p>
-            <p>Or call our support desk line at: +27 993 458 773</p>
-            <p>Follow our official media stream on Instagram: @bluecorpindustries</p>
-            <p><a href="./Pages/contact.html">View our physical operational map location →</a></p>
-        </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 Blue Corp Industries. All rights reserved.</p>
+    <!-- Project Compliant Global Footer framework -->
+    <footer class="main-footer" style="background-color: #060b1a; border-top: 1px solid rgba(255,255,255,0.05); padding: 30px 0; margin-top: 50px; text-align: center; font-size: 0.9rem; color: var(--text-muted, #94a3b8);">
+        <div class="container">
+            <p style="margin-bottom: 8px;">&copy; 2026 Blue Corp Industries. All rights reserved.</p>
+            <p style="font-size: 0.8rem; opacity: 0.7;">Cloud Infrastructure Node: ZA-South Base Server Frame</p>
+        </div>
     </footer>
 
 </body>

@@ -4,67 +4,211 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Wishlist Registry Matrix | Alerts - Blue Corp Industries</title>
+    
+    <!-- Typography: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Link back up to directory stylesheet -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        /* Wishlist E-Commerce Pipeline Grid Matrix */
+        .wishlist-header-banner {
+            background: linear-gradient(135deg, rgba(28, 37, 65, 0.8), rgba(11, 19, 43, 0.9));
+            border-left: 4px solid var(--accent-cyber, #66c0f4);
+            padding: 2rem;
+            border-radius: 6px;
+            margin: 2rem 0;
+        }
+
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .wishlist-item-card {
+            background: var(--surface-secondary, #1c2541);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .wishlist-item-card:hover {
+            border-color: rgba(102, 192, 244, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .wishlist-item-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: #ffffff;
+        }
+
+        .alert-state-indicator {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Dynamic Visual Color Codes matching Proposal KPIs */
+        .state-active-sale {
+            background: rgba(72, 202, 228, 0.15);
+            color: var(--accent-sale, #48cae4);
+            border: 1px solid rgba(72, 202, 228, 0.3);
+        }
+
+        .state-monitoring {
+            background: rgba(148, 163, 184, 0.1);
+            color: var(--text-muted, #94a3b8);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .price-metrics-wrapper {
+            margin: 1rem 0 1.5rem 0;
+            font-size: 1rem;
+        }
+
+        .price-old {
+            text-decoration: line-through;
+            color: var(--text-muted, #94a3b8);
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        .price-current {
+            font-weight: 800;
+            color: #ffffff;
+            font-size: 1.2rem;
+        }
+
+        .price-current.sale-highlight {
+            color: var(--accent-sale, #48cae4);
+        }
+
+        .btn-simulate-trigger {
+            width: 100%;
+            background: transparent;
+            color: var(--accent-cyber, #66c0f4);
+            border: 1px solid var(--accent-cyber, #66c0f4);
+            padding: 10px;
+            font-family: var(--font-primary), inherit;
+            font-weight: 700;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .btn-simulate-trigger:hover {
+            background: var(--accent-cyber, #66c0f4);
+            color: var(--bg-primary, #0b132b);
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <h1>Blue Corp Industries.</h1>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../Pages/AboutUs.html">About</a></li>
-                <li><a href="../Pages/contact.html">Contact</a></li>
-                <li><a href="../Pages/GameDetail.html">Games</a></li>
-                <li><a href="../Pages/enquiry.html">Enquiry</a></li>
-                <li><a href="../Pages/CommunityHub&Workshop.html">Community Hub & Workshop</a></li>
-                <li><a href="../Pages/Wishlist.html">Wishlist</a></li>
-                <li><a href="../Pages/UserProfile&Inventory.html">User Profile & Inventory</a></li>
-                <li><a href="../Pages/Menu.html">Menu</a></li>
-            </ul>
-        </nav>
+    <!-- Shared Navigation Matrix Bar Header -->
+    <header class="header-top">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px;">
+            <div class="logo" style="font-size: 1.5rem; font-weight: 800; color: #66c0f4;">
+                Blue Corp<span style="color: var(--accent-cyber, #66c0f4);"> Industries.</span>
+            </div>
+            <nav class="main-nav" aria-label="Primary site navigation">
+                <ul style="display: flex; list-style: none; gap: 15px; margin: 0; padding: 0;">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../Pages/AboutUs.html">About</a></li>
+                    <li><a href="../Pages/contact.html">Contact</a></li>
+                    <li><a href="../Pages/GameDetail.html">Games</a></li>
+                    <li><a href="../Pages/enquiry.html">Enquiry</a></li>
+                    <li><a href="../Pages/CommunityHub&Workshop.html">Community Hub</a></li>
+                    <li><a href="../Pages/Wishlist.html" style="color: var(--accent-cyber, #66c0f4); font-weight: 700;">Wishlist</a></li>
+                    <li><a href="../Pages/UserProfile&Inventory.html">Profile</a></li>
+                    <li><a href="../Pages/Menu.html">Menu</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main id="wishlistContainer">
-        <div>
-            <h2>Personalized Wishlist Sales Pipeline Monitor</h2>
-            <p>The system monitors price tracking variations continually and outputs automated warning emails the instant flash events trigger.</p>
+    <!-- Custom Main Metric Tracker Wrapper -->
+    <main id="wishlistContainer" class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        
+        <div class="wishlist-header-banner">
+            <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Personalized Wishlist Sales Pipeline Monitor</h2>
+            <p style="color: var(--text-main, #e2e8f0); margin: 0; font-size: 0.95rem;">
+                The system monitors price tracking variations continually and outputs automated warning emails the instant flash events trigger.
+            </p>
         </div>
 
-        <div>
-            <section>
-                <h3>Tactical Alliance: Extraction</h3>
-                <p>Current Alert State: 20% Discount Sale Running</p>
-                <p>Original Price: R500 | Current Price: R400</p>
+        <div class="wishlist-grid">
+            
+            <!-- Game Row Item 1 -->
+            <section class="wishlist-item-card">
+                <div>
+                    <h3>Tactical Alliance: Extraction</h3>
+                    <span class="alert-state-indicator state-active-sale">20% Discount Sale Running</span>
+                    <div class="price-metrics-wrapper">
+                        <span class="price-old">R500</span>
+                        <span class="price-current sale-highlight">R400</span>
+                    </div>
+                </div>
                 <form action="#" method="POST">
                     <input type="hidden" name="game" value="Tactical Alliance: Extraction">
-                    <button type="submit">Request Email Alert Simulation</button>
+                    <button type="submit" class="btn-simulate-trigger">Request Email Alert Simulation</button>
                 </form>
             </section>
-            <br>
-            <section>
-                <h3>Resident Evil Village</h3>
-                <p>Alert State: Monitoring (Base Price)</p>
-                <p>Current Price: R600</p>
+
+            <!-- Game Row Item 2 -->
+            <section class="wishlist-item-card">
+                <div>
+                    <h3>Resident Evil Village</h3>
+                    <span class="alert-state-indicator state-monitoring">Monitoring (Base Price)</span>
+                    <div class="price-metrics-wrapper">
+                        <span class="price-current">R600</span>
+                    </div>
+                </div>
                 <form action="#" method="POST">
                     <input type="hidden" name="game" value="Resident Evil Village">
-                    <button type="submit">Request Email Alert Simulation</button>
+                    <button type="submit" class="btn-simulate-trigger">Request Email Alert Simulation</button>
                 </form>
             </section>
-            <br>
-            <section>
-                <h3>God of War IV</h3>
-                <p>Current Alert State: 15% Price Drop</p>
-                <p>Original Price: R700 | Current Price: R595</p>
+
+            <!-- Game Row Item 3 -->
+            <section class="wishlist-item-card">
+                <div>
+                    <h3>God of War IV</h3>
+                    <span class="alert-state-indicator state-active-sale">15% Price Drop</span>
+                    <div class="price-metrics-wrapper">
+                        <span class="price-old">R700</span>
+                        <span class="price-current sale-highlight">R595</span>
+                    </div>
+                </div>
                 <form action="#" method="POST">
                     <input type="hidden" name="game" value="God of War IV">
-                    <button type="submit">Request Email Alert Simulation</button>
+                    <button type="submit" class="btn-simulate-trigger">Request Email Alert Simulation</button>
                 </form>
             </section>
+            
         </div>
     </main>
 
     <footer>
         <p>&copy; 2026 Blue Corp Industries. Automated Pricing Framework System.</p>
+        <p>Cloud Infrastructure Node: ZA-South Base Server Frame</p>
     </footer>
 
 </body>

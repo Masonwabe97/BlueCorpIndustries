@@ -4,6 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecosystem Framework Matrix | Products & Services</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Embedding design system background grid pattern matching wishlist parameters */
+        body {
+            background-image: 
+                linear-gradient(rgba(102, 192, 244, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(102, 192, 244, 0.02) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* SVG Layout graphic element enhancements */
+        section::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            width: 100px;
+            height: 100px;
+            opacity: 0.05;
+            background-repeat: no-repeat;
+            background-size: contain;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        section:nth-of-type(1)::after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='none' stroke='%23ff007f' stroke-width='2'%3E%3Cpath d='M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z'%3E%3C/path%3E%3Cline x1='3' y1='6' x2='21' y2='6'%3E%3C/line%3E%3Cpath d='M16 10a4 4 0 0 1-8 0'%3E%3C/path%3E%3C/svg%3E");
+        }
+
+        section:nth-of-type(2)::after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='none' stroke='%23ff007f' stroke-width='2'%3E%3Cpolygon points='23 7 16 12 23 17 23 7'%3E%3C/polygon%3E%3Crect x='1' y='5' width='15' height='14' rx='2' ry='2'%3E%3C/rect%3E%3C/svg%3E");
+        }
+
+        section:nth-of-type(3)::after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='none' stroke='%23ff007f' stroke-width='2'%3E%3Cpath d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71'%3E%3C/path%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71'%3E%3C/path%3E%3C/svg%3E");
+        }
+
+        section.featured-rewards::after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='none' stroke='%2366c0f4' stroke-width='2'%3E%3Cpolygon points='12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2'%3E%3C/polygon%3E%3Cpolygon points='12 7 14.7 12.4 20.7 13.3 16.4 17.5 17.4 23.5 12 20.7 6.6 23.5 7.6 17.5 3.3 13.3 9.3 12.4 12 7'%3E%3C/polygon%3E%3C/svg%3E");
+        }
+
+        section:hover::after {
+            opacity: 0.15;
+            transform: scale(1.08) rotate(-4deg);
+        }
+    </style>
 </head>
 <body>
 
@@ -23,28 +68,33 @@
             </ul>
         </nav>
     </header>
-    <hr>
 
     <main>
-        <h2>Ecosystem Products & Operations Architecture</h2>
-        
-        <section>
-            <h3>1. Digital Commerce System</h3>
-            <p>Instant transaction routing offering anti-review bombing protections, optimized game bundling patterns, and explicit hardware deployment models.</p>
-        </section>
+        <div>
+            <h2>Ecosystem Products & Operations Architecture</h2>
+            <p>Comprehensive overview of infrastructure layers and consumer portal applications.</p>
+        </div>
 
-        <section>
-            <h3>2. Live Streams & Festival Nodes</h3>
-            <p>Running structural demo systems and open testing parameters directly over CDN matrices to maximize audience hype matrices.</p>
-        </section>
+        <!-- Transformed layout structure from list layout into multi-column dashboard grid -->
+        <div class="wishlist-grid">
+            <section>
+                <h3>1. Digital Commerce System</h3>
+                <p>Instant transaction routing offering anti-review bombing protections, optimized game bundling patterns, and explicit hardware deployment models.</p>
+            </section>
 
-        <section>
-            <h3>3. Commission Infrastructure</h3>
-            <p>Rewarding high-reach external content creators with programmatic conversion link codes that pay a clear margin cut dynamically.</p>
-        </section>
-        <hr>
+            <section>
+                <h3>2. Live Streams & Festival Nodes</h3>
+                <p>Running structural demo systems and open testing parameters directly over CDN matrices to maximize audience hype matrices.</p>
+            </section>
 
-        <section>
+            <section>
+                <h3>3. Commission Infrastructure</h3>
+                <p>Rewarding high-reach external content creators with programmatic conversion link codes that pay a clear margin cut dynamically.</p>
+            </section>
+        </div>
+
+        <!-- Highlighted reward module mapped to the lower grid line layout -->
+        <section class="featured-rewards" style="margin-top: 2.5rem;">
             <h3>★ Seasonal Gamification Rewards</h3>
             <p>Earn progressive tier profile account marks automatically for every platform game transaction cleared throughout the seasonal calendar cycle.</p>
             <form action="#" method="POST">
@@ -52,7 +102,6 @@
             </form>
         </section>
     </main>
-    <hr>
 
     <footer>
         <p>&copy; 2026 Blue Corp Industries. All rights reserved.</p>
