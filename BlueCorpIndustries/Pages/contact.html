@@ -6,60 +6,44 @@
     <title>Contact Hub Matrix - Blue Corp Industries</title>
     <link rel="stylesheet" href="../css/style.css">
     <style>
-        .logo-wrapper {
-            display: flex !important;
-            align-items: center !important;
-            gap: 0.75rem !important;
-            text-decoration: none;
+        .logo-wrapper { display: flex !important; align-items: center !important; gap: 0.75rem !important; text-decoration: none; }
+        .header-logo-icon { width: 35px !important; height: auto !important; margin: 0 !important; border: none !important; box-shadow: none !important; background: transparent !important; }
+        header h1 { margin-bottom: 0 !important; white-space: nowrap; }
+
+        @keyframes matrixFadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        .header-logo-icon {
-            width: 35px !important;
-            height: auto !important;
-            margin: 0 !important;
-            border: none !important;
-            box-shadow: none !important;
-            background: transparent !important;
+
+        main section, .contact-col-item {
+            animation: matrixFadeIn 0.6s ease-out forwards;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
-        header h1 {
-            margin-bottom: 0 !important;
-            white-space: nowrap;
+
+        main section:hover, .contact-col-item:hover {
+            transform: translateY(-3px);
+            border-color: rgba(0, 210, 255, 0.25);
+            box-shadow: 0 8px 30px rgba(0, 210, 255, 0.1);
         }
-        .contact-media-row {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: space-between;
-            align-items: stretch;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
-        .contact-col-item {
-            flex: 1;
-            min-width: 280px;
-            background-color: rgba(6, 11, 24, 0.25);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.02);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .contact-col-item img, 
-        .contact-col-item iframe {
-            width: 100%;
-            height: 220px;
-            border-radius: 6px;
-            object-fit: cover;
-            margin-top: 1rem;
-            border: 1px solid rgba(102, 192, 244, 0.2);
-        }
-        .contact-col-item h3 {
-            color: #66c0f4;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
-        }
+
+        .contact-media-row { display: flex; gap: 1.5rem; justify-content: space-between; align-items: stretch; flex-wrap: wrap; margin-top: 1.5rem; }
+        .contact-col-item { flex: 1; min-width: 280px; background-color: rgba(13, 17, 28, 0.4); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.03); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25); display: flex; flex-direction: column; justify-content: space-between; }
+        .contact-col-item img { width: 100%; height: 180px; object-fit: contain; background: rgba(0, 0, 0, 0.3); border-radius: 6px; margin-top: 1rem; padding: 8px; border: 1px solid rgba(0, 210, 255, 0.2); cursor: zoom-in; transition: transform 0.3s ease, border-color 0.3s ease; }
+        .contact-col-item img:hover { transform: scale(1.01); border-color: rgba(0, 210, 255, 0.5); }
+        .contact-col-item iframe { width: 100%; height: 220px; border-radius: 6px; margin-top: 1rem; border: 1px solid rgba(102, 192, 244, 0.2); }
+        .contact-col-item h3 { color: #66c0f4; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+
+        /* Header Utility Cluster Styles */
+        .header-utility-cluster { display: flex; align-items: center; gap: 1rem; margin-left: auto; margin-right: 1.5rem; position: relative; }
+        .product-search-wrapper { position: relative; margin: 0; }
+        .product-search input[type="search"] { padding: 6px 12px; background: rgba(13, 17, 28, 0.8); border: 1px solid rgba(0, 210, 255, 0.3); border-radius: 4px; color: #fff; font-size: 0.85rem; width: 180px; outline: none; transition: width 0.3s ease, border-color 0.3s ease; }
+        .product-search input[type="search"]:focus { width: 240px; border-color: #00d2ff; box-shadow: 0 0 10px rgba(0, 210, 255, 0.25); }
+        .search-count { position: absolute; top: 100%; left: 0; font-size: 0.75rem; color: #00d2ff; margin-top: 4px; white-space: nowrap; }
+        .search-suggestions { position: absolute; top: calc(100% + 6px); left: 0; width: 240px; background: #0d111c; border: 1px solid rgba(0,210,255,0.3); border-radius: 4px; box-shadow: 0 8px 25px rgba(0,0,0,0.6); z-index: 10000; overflow: hidden; }
+        .cart-trigger-btn { background: rgba(0, 210, 255, 0.1); border: 1px solid #00d2ff; color: #00d2ff; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 0.85rem; display: flex; align-items: center; gap: 6px; transition: background 0.2s; }
+        .cart-trigger-btn:hover { background: rgba(0, 210, 255, 0.2); }
+        .bci-cart-counter-badge { background: #ff5252; color: #fff; font-size: 0.65rem; padding: 1px 5px; border-radius: 50px; display: none; }
+        .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
     </style>
 </head>
 <body>
@@ -71,11 +55,7 @@
         </a>
         
         <input type="checkbox" id="nav-trigger">
-        <label for="nav-trigger" class="menu-toggle-btn">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
+        <label for="nav-trigger" class="menu-toggle-btn"><span></span><span></span><span></span></label>
 
         <nav>
             <ul>
@@ -84,12 +64,26 @@
                 <li><a href="../Pages/contact.html" class="active">Contact</a></li>
                 <li><a href="../Pages/GameDetail.html">Games</a></li>
                 <li><a href="../Pages/enquiry.html">Enquiry</a></li>
-                <li><a href="../Pages/CommunityHub&Workshop.html">Community Hub & Workshop</a></li>
-                <li><a href="../Pages/Wishlist.html">Wishlist</a></li>
-                <li><a href="../Pages/UserProfile&Inventory.html">User Profile & Inventory</a></li>
+                <li><a href="../Pages/CommunityHub-Workshop.html">Community Hub</a></li>
+                <li><a href="../Pages/wishlist.html">Wishlist</a></li>
+                <li><a href="../Pages/UserProfile-Inventory.html">User Profile</a></li>
                 <li><a href="../Pages/Menu.html">Menu</a></li>
             </ul>
         </nav>
+
+        <div class="header-utility-cluster">
+            <div class="product-search-wrapper">
+                <div class="product-search">
+                    <label for="product-search" class="visually-hidden">Search products</label>
+                    <input type="search" id="product-search" placeholder="Search games, PCs & gear..." autocomplete="off">
+                    <p id="search-count" class="search-count" role="status" aria-live="polite"></p>
+                </div>
+                <div id="search-suggestions" class="search-suggestions" hidden></div>
+            </div>
+            <button onclick="toggleCartDrawer(true)" class="cart-trigger-btn">
+                🛒 Cart <span class="bci-cart-counter-badge">0</span>
+            </button>
+        </div>
     </header>
 
     <div class="sub-nav-bar">
@@ -114,7 +108,7 @@
                     <h3>Voice Support Desk</h3>
                     <p>Connect immediately to our local telemetry communication nodes for live assistance.</p>
                 </div>
-                <img src="../Assets/images/Call Icon.jpg" alt="Call support line visual">
+                <img src="../Assets/images/Call Icon.jpg" alt="Call support line visual" class="lightbox-trigger-img">
             </div>
 
             <div class="contact-col-item">
@@ -122,7 +116,7 @@
                     <h3>Digital Mailing Core</h3>
                     <p>Submit platform inquiries directly to our secure central operations data pool.</p>
                 </div>
-                <img src="../Assets/images/Message Icon - Edited.png" alt="Message delivery icon">
+                <img src="../Assets/images/Message Icon - Edited.png" alt="Message delivery icon" class="lightbox-trigger-img">
             </div>
 
             <div class="contact-col-item">
@@ -143,21 +137,21 @@
 
         <section id="message">
             <h2>Send us a Message</h2>
-            <form action="#" method="POST">
+            <form id="contactForm" action="#" method="POST" novalidate>
                 <p>
                     <label for="contact-name">Your Profile Name:</label>
-                    <input type="text" id="contact-name" placeholder="Name" required>
+                    <input type="text" id="contact-name" name="from_name" placeholder="Name" required>
                 </p>
                 <p>
                     <label for="contact-email">Email Node Endpoint:</label>
-                    <input type="email" id="contact-email" placeholder="Email" required>
+                    <input type="email" id="contact-email" name="reply_to" placeholder="Email" required>
                 </p>
                 <p>
                     <label for="contact-msg">Message Core Details:</label>
-                    <textarea id="contact-msg" placeholder="Type your message text here..." rows="5" required></textarea>
+                    <textarea id="contact-msg" name="message" placeholder="Type your message text here..." rows="5" required></textarea>
                 </p>
                 <p>
-                    <button type="submit">Submit Platform Message</button>
+                    <button type="submit" id="contactSubmitBtn">Submit Platform Message</button>
                 </p>
             </form>
         </section>
@@ -168,5 +162,6 @@
         <p>SSL/TLS Infrastructure Node: ZA-South Base Server Frame</p>
     </footer>
 
+    <script src="../js/script.js"></script>
 </body>
 </html>

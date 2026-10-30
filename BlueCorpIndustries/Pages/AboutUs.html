@@ -24,6 +24,59 @@
             margin-bottom: 0 !important;
             white-space: nowrap;
         }
+
+        @keyframes matrixFadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        main section {
+            animation: matrixFadeIn 0.6s ease-out forwards;
+            background: rgba(13, 17, 28, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        main section:hover {
+            transform: translateY(-3px);
+            border-color: rgba(0, 210, 255, 0.25);
+            box-shadow: 0 8px 30px rgba(0, 210, 255, 0.1);
+        }
+
+        main section img {
+            display: block;
+            width: 100%;
+            max-height: 280px;
+            object-fit: contain;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 6px;
+            margin-top: 1.25rem;
+            padding: 8px;
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            cursor: zoom-in;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        main section img:hover {
+            transform: scale(1.01);
+            border-color: rgba(0, 210, 255, 0.5);
+        }
+
+        /* Header Utility Cluster Styles */
+        .header-utility-cluster { display: flex; align-items: center; gap: 1rem; margin-left: auto; margin-right: 1.5rem; position: relative; }
+        .product-search-wrapper { position: relative; margin: 0; }
+        .product-search input[type="search"] { padding: 6px 12px; background: rgba(13, 17, 28, 0.8); border: 1px solid rgba(0, 210, 255, 0.3); border-radius: 4px; color: #fff; font-size: 0.85rem; width: 180px; outline: none; transition: width 0.3s ease, border-color 0.3s ease; }
+        .product-search input[type="search"]:focus { width: 240px; border-color: #00d2ff; box-shadow: 0 0 10px rgba(0, 210, 255, 0.25); }
+        .search-count { position: absolute; top: 100%; left: 0; font-size: 0.75rem; color: #00d2ff; margin-top: 4px; white-space: nowrap; }
+        .search-suggestions { position: absolute; top: calc(100% + 6px); left: 0; width: 240px; background: #0d111c; border: 1px solid rgba(0,210,255,0.3); border-radius: 4px; box-shadow: 0 8px 25px rgba(0,0,0,0.6); z-index: 10000; overflow: hidden; }
+        .cart-trigger-btn { background: rgba(0, 210, 255, 0.1); border: 1px solid #00d2ff; color: #00d2ff; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 0.85rem; display: flex; align-items: center; gap: 6px; transition: background 0.2s; }
+        .cart-trigger-btn:hover { background: rgba(0, 210, 255, 0.2); }
+        .bci-cart-counter-badge { background: #ff5252; color: #fff; font-size: 0.65rem; padding: 1px 5px; border-radius: 50px; display: none; }
+        .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
     </style>
 </head>
 <body>
@@ -35,11 +88,7 @@
         </a>
         
         <input type="checkbox" id="nav-trigger">
-        <label for="nav-trigger" class="menu-toggle-btn">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
+        <label for="nav-trigger" class="menu-toggle-btn"><span></span><span></span><span></span></label>
 
         <nav>
             <ul>
@@ -48,12 +97,26 @@
                 <li><a href="../Pages/contact.html">Contact</a></li>
                 <li><a href="../Pages/GameDetail.html">Games</a></li>
                 <li><a href="../Pages/enquiry.html">Enquiry</a></li>
-                <li><a href="../Pages/CommunityHub-Workshop.html">Community Hub & Workshop</a></li>
+                <li><a href="../Pages/CommunityHub-Workshop.html">Community Hub</a></li>
                 <li><a href="../Pages/wishlist.html">Wishlist</a></li>
-                <li><a href="../Pages/UserProfile-Inventory.html">User Profile & Inventory</a></li>
+                <li><a href="../Pages/UserProfile-Inventory.html">User Profile</a></li>
                 <li><a href="../Pages/Menu.html">Menu</a></li>
             </ul>
         </nav>
+
+        <div class="header-utility-cluster">
+            <div class="product-search-wrapper">
+                <div class="product-search">
+                    <label for="product-search" class="visually-hidden">Search products</label>
+                    <input type="search" id="product-search" placeholder="Search games, PCs & gear..." autocomplete="off">
+                    <p id="search-count" class="search-count" role="status" aria-live="polite"></p>
+                </div>
+                <div id="search-suggestions" class="search-suggestions" hidden></div>
+            </div>
+            <button onclick="toggleCartDrawer(true)" class="cart-trigger-btn">
+                🛒 Cart <span class="bci-cart-counter-badge">0</span>
+            </button>
+        </div>
     </header>
 
     <div class="sub-nav-bar">
@@ -70,13 +133,13 @@
         <section id="mission">
             <h2>Our Mission</h2>
             <p>Help game developers become global, make buying, selling and playing games easier for consumers while helping them build their own PCs at an affordable price.</p>
-            <img src="../Assets/images/PC building 1.jpg" alt="A technician assembling a custom gaming PC hardware build">
+            <img src="../Assets/images/PC building 1.jpg" alt="A technician assembling a custom gaming PC hardware build" class="lightbox-trigger-img">
         </section>
 
         <section id="vision">
             <h2>Our Vision</h2>
             <p>Create an open, flexible, and scalable digital and physical ecosystem for the global gaming community.</p>
-            <img src="../Assets/images/gamers.jpg" alt="A diverse group of happy gamers laughing together at a LAN party">
+            <img src="../Assets/images/gamers.jpg" alt="A diverse group of happy gamers laughing together at a LAN party" class="lightbox-trigger-img">
         </section>
 
         <section id="values">
@@ -95,5 +158,6 @@
         <p>SSL/TLS Infrastructure Node: ZA-South Base Server Frame</p>
     </footer>
 
+    <script src="../js/script.js"></script>
 </body>
 </html>
