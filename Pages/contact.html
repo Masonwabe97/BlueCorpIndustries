@@ -43,6 +43,12 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .contact-col-item:hover {
+            transform: translateY(-4px);
+            border-color: rgba(102, 192, 244, 0.25);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
         }
         .contact-col-item img, 
         .contact-col-item iframe {
@@ -59,6 +65,33 @@
             text-transform: uppercase;
             letter-spacing: 0.05em;
             margin-bottom: 0.5rem;
+        }
+        .form-status-msg {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            display: none;
+            border: 1px solid transparent;
+        }
+        .form-status-msg.success {
+            display: block;
+            background: rgba(46, 204, 113, 0.1);
+            color: #2ecc71;
+            border-color: rgba(46, 204, 113, 0.2);
+        }
+        .form-status-msg.error {
+            display: block;
+            background: rgba(231, 76, 60, 0.1);
+            color: #e74c3c;
+            border-color: rgba(231, 76, 60, 0.2);
+        }
+        .sub-nav-bar ul li a {
+            transition: color 0.2s ease;
+        }
+        .sub-nav-bar ul li a.active-node {
+            color: #66c0f4 !important;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -84,9 +117,9 @@
                 <li><a href="../Pages/contact.html" class="active">Contact</a></li>
                 <li><a href="../Pages/GameDetail.html">Games</a></li>
                 <li><a href="../Pages/enquiry.html">Enquiry</a></li>
-                <li><a href="../Pages/CommunityHub&Workshop.html">Community Hub & Workshop</a></li>
+                <li><a href="../Pages/CommunityHub-Workshop.html">Community Hub & Workshop</a></li>
                 <li><a href="../Pages/Wishlist.html">Wishlist</a></li>
-                <li><a href="../Pages/UserProfile&Inventory.html">User Profile & Inventory</a></li>
+                <li><a href="../Pages/UserProfile-Inventory.html">User Profile & Inventory</a></li>
                 <li><a href="../Pages/Menu.html">Menu</a></li>
             </ul>
         </nav>
@@ -94,9 +127,9 @@
 
     <div class="sub-nav-bar">
         <ul>
-            <li><a href="#desk">Support Desk</a></li>
-            <li><a href="#info">Information Node</a></li>
-            <li><a href="#message">Secure Form</a></li>
+            <li><a href="#desk" class="sub-nav-link">Support Desk</a></li>
+            <li><a href="#info" class="sub-nav-link">Information Node</a></li>
+            <li><a href="#message" class="sub-nav-link">Secure Form</a></li>
         </ul>
     </div>
 
@@ -130,7 +163,7 @@
                     <h3>Operational Base Map</h3>
                     <p>Review geographical positioning parameters for our advanced logistics server center.</p>
                 </div>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3346.690525784862!2d27.899190011772454!3d-32.985565773746124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e66e028faa5e7fb%3A0x82924b3462ee96c9!2sBlue-Corp!5e0!3m2!1sen!2sza!4v1789740499546!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <iframe src="https://google.com" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
         </div>
 
@@ -143,22 +176,23 @@
 
         <section id="message">
             <h2>Send us a Message</h2>
-            <form action="#" method="POST">
+            <form id="contactMatrixForm">
                 <p>
                     <label for="contact-name">Your Profile Name:</label>
-                    <input type="text" id="contact-name" placeholder="Name" required>
+                    <input type="text" id="contact-name" name="name" placeholder="Name" required>
                 </p>
                 <p>
                     <label for="contact-email">Email Node Endpoint:</label>
-                    <input type="email" id="contact-email" placeholder="Email" required>
+                    <input type="email" id="contact-email" name="email" placeholder="Email" required>
                 </p>
                 <p>
                     <label for="contact-msg">Message Core Details:</label>
-                    <textarea id="contact-msg" placeholder="Type your message text here..." rows="5" required></textarea>
+                    <textarea id="contact-msg" name="message" placeholder="Type your message text here..." rows="5" required></textarea>
                 </p>
                 <p>
-                    <button type="submit">Submit Platform Message</button>
+                    <button type="submit" id="submitBtn">Submit Platform Message</button>
                 </p>
+                <div id="formStatus" class="form-status-msg"></div>
             </form>
         </section>
     </main>
@@ -168,6 +202,16 @@
         <p>SSL/TLS Infrastructure Node: ZA-South Base Server Frame</p>
     </footer>
 
+    <div id="matrixLightboxOverlay" class="matrix-lightbox-overlay">
+        <button class="matrix-lightbox-close" id="matrixLightboxClose">&times;</button>
+        <img class="matrix-lightbox-content" id="matrixLightboxImage" src="" alt="Enlarged Telemetry Visual Matrix">
+    </div>
+
+    <!-- 🚀 EXACT SEQUENCE LOADING PIPELINE -->
+    <script src="https://jsdelivr.net"></script>
+    <script type="text/javascript">
+        emailjs.init("SO9F5KEvIMHjvswWH");
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>
-

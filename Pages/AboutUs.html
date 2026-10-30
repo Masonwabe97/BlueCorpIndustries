@@ -24,6 +24,13 @@
             margin-bottom: 0 !important;
             white-space: nowrap;
         }
+        .sub-nav-bar ul li a {
+            transition: color 0.2s ease;
+        }
+        .sub-nav-bar ul li a.active-node {
+            color: #66c0f4 !important;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -48,9 +55,9 @@
                 <li><a href="../Pages/contact.html">Contact</a></li>
                 <li><a href="../Pages/GameDetail.html">Games</a></li>
                 <li><a href="../Pages/enquiry.html">Enquiry</a></li>
-                <li><a href="../Pages/CommunityHub&Workshop.html">Community Hub & Workshop</a></li>
+                <li><a href="../Pages/CommunityHub-Workshop.html">Community Hub & Workshop</a></li>
                 <li><a href="../Pages/Wishlist.html">Wishlist</a></li>
-                <li><a href="../Pages/UserProfile&Inventory.html">User Profile & Inventory</a></li>
+                <li><a href="../Pages/UserProfile-Inventory.html">User Profile & Inventory</a></li>
                 <li><a href="../Pages/Menu.html">Menu</a></li>
             </ul>
         </nav>
@@ -58,9 +65,9 @@
 
     <div class="sub-nav-bar">
         <ul>
-            <li><a href="#mission">Our Mission</a></li>
-            <li><a href="#vision">Our Vision</a></li>
-            <li><a href="#values">Core Values</a></li>
+            <li><a href="#mission" class="sub-nav-link">Our Mission</a></li>
+            <li><a href="#vision" class="sub-nav-link">Our Vision</a></li>
+            <li><a href="#values" class="sub-nav-link">Core Values</a></li>
         </ul>
     </div>
 
@@ -95,6 +102,11 @@
         <p>SSL/TLS Infrastructure Node: ZA-South Base Server Frame</p>
     </footer>
 
+    <div id="matrixLightboxOverlay" class="matrix-lightbox-overlay">
+        <button class="matrix-lightbox-close" id="matrixLightboxClose">&times;</button>
+        <img class="matrix-lightbox-content" id="matrixLightboxImage" src="" alt="Enlarged Telemetry Visual Matrix">
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
-

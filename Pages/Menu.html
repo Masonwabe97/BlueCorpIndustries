@@ -6,6 +6,16 @@
     <title>Ecosystem Framework Matrix - Blue Corp Industries</title>
     <link rel="stylesheet" href="../css/style.css">
     <style>
+        /* --- Base Layout --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            position: relative;
+            background-color: #1a1a1a; /* Background color behind the logo/hamburger */
+            z-index: 1000;
+        }
         .logo-wrapper {
             display: flex !important;
             align-items: center !important;
@@ -23,6 +33,86 @@
         header h1 {
             margin-bottom: 0 !important;
             white-space: nowrap;
+            font-size: 1.5rem;
+            color: #ffffff;
+        }
+
+        /* --- Pure CSS Checkbox Logic (Hidden Engine) --- */
+        #nav-trigger {
+            display: none;
+        }
+
+        /* --- The Three Lines Hamburger Button (Always Visible) --- */
+        .menu-toggle-btn {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1010;
+        }
+        .menu-toggle-btn span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background-color: #ffffff; /* White color for the lines */
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        /* --- Collapsible Navigation Menu --- */
+        nav {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #1a1a1a;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            max-height: 0; /* Keeps the menu closed by default */
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+        }
+        nav ul {
+            flex-direction: column;
+            gap: 0;
+            width: 100%;
+            text-align: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            width: 100%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        nav ul li a {
+            display: block;
+            padding: 1rem;
+            width: 100%;
+            box-sizing: border-box;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 500;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            color: #007bff; /* Accent color on click/hover */
+        }
+
+        /* --- Trigger Actions When Clicked --- */
+        
+        /* 1. Open Menu Dropdown */
+        #nav-trigger:checked ~ nav {
+            max-height: 500px; /* Expands open to fit all 9 links */
+        }
+
+        /* 2. Transform the 3 lines into an "X" close icon */
+        #nav-trigger:checked ~ .menu-toggle-btn span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        #nav-trigger:checked ~ .menu-toggle-btn span:nth-child(2) {
+            opacity: 0;
+        }
+        #nav-trigger:checked ~ .menu-toggle-btn span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
         }
     </style>
 </head>
@@ -34,7 +124,10 @@
             <h1>Blue Corp <span>Industries.</span></h1>
         </a>
         
+        <!-- Toggle Engine -->
         <input type="checkbox" id="nav-trigger">
+        
+        <!-- Three Lines Graphic Target Link -->
         <label for="nav-trigger" class="menu-toggle-btn">
             <span></span>
             <span></span>
@@ -48,9 +141,9 @@
                 <li><a href="../Pages/contact.html">Contact</a></li>
                 <li><a href="../Pages/GameDetail.html">Games</a></li>
                 <li><a href="../Pages/enquiry.html">Enquiry</a></li>
-                <li><a href="../Pages/CommunityHub&Workshop.html">Community Hub & Workshop</a></li>
+                <li><a href="../Pages/CommunityHub-Workshop.html">Community Hub & Workshop</a></li>
                 <li><a href="../Pages/Wishlist.html">Wishlist</a></li>
-                <li><a href="../Pages/UserProfile&Inventory.html">User Profile & Inventory</a></li>
+                <li><a href="../Pages/UserProfile-Inventory.html">User Profile & Inventory</a></li>
                 <li><a href="../Pages/Menu.html" class="active">Menu</a></li>
             </ul>
         </nav>
@@ -103,7 +196,3 @@
 
 </body>
 </html>
-
-
-
-
