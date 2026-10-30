@@ -76,7 +76,9 @@
                     <h3>Tactical Alliance: Extraction</h3>
                     <p style="color:var(--proposal-mint)">State: 20% Discount Sale Active</p>
                     <p>Original Price: R500 | Current Price: R400</p>
-                    <form action="#" method="POST">
+                    <form class="alert-trigger-form">
+                        <input type="hidden" name="game_name" value="Tactical Alliance: Extraction">
+                        <input type="hidden" name="price_status" value="20% Discount Sale Active (R400)">
                         <button type="submit">Simulate Email Alert Trigger</button>
                     </form>
                 </div>
@@ -86,7 +88,9 @@
                     <h3>Resident Evil Village</h3>
                     <p style="color:var(--proposal-muted)">State: Monitoring (Base Price)</p>
                     <p>Current Price: R600</p>
-                    <form action="#" method="POST">
+                    <form class="alert-trigger-form">
+                        <input type="hidden" name="game_name" value="Resident Evil Village">
+                        <input type="hidden" name="price_status" value="Monitoring Base Price (R600)">
                         <button type="submit">Simulate Email Alert Trigger</button>
                     </form>
                 </div>
@@ -96,7 +100,9 @@
                     <h3>God of War IV</h3>
                     <p style="color:var(--proposal-cyan)">State: 15% Price Drop Tracked</p>
                     <p>Original Price: R700 | Current Price: R595</p>
-                    <form action="#" method="POST">
+                    <form class="alert-trigger-form">
+                        <input type="hidden" name="game_name" value="God of War IV">
+                        <input type="hidden" name="price_status" value="15% Price Drop Tracked (R595)">
                         <button type="submit">Simulate Email Alert Trigger</button>
                     </form>
                 </div>
@@ -109,5 +115,13 @@
         <p>Cloud Infrastructure Node: ZA-South Base Server Frame</p>
     </footer>
 
+    <!-- Interactive Lightbox Module Overlay Anchor -->
+    <div id="matrixLightboxOverlay" class="matrix-lightbox-overlay">
+        <button class="matrix-lightbox-close" id="matrixLightboxClose" aria-label="Close Lightbox">&times;</button>
+        <img class="matrix-lightbox-content" id="matrixLightboxImage" src="" alt="Enlarged Telemetry Visual Matrix">
+    </div>
+
+    <script type="text/javascript" src="https://jsdelivr.net"></script>
+    <script src="../JS/script.js"></script>
 </body>
 </html>
