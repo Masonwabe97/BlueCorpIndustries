@@ -60,83 +60,6 @@
             letter-spacing: 0.05em;
             margin-bottom: 0.5rem;
         }
-
-        /* ------------------------------------------------------------- */
-        /* Stylish Input Elements for the Enquiry Form Section          */
-        /* ------------------------------------------------------------- */
-        select, input, textarea {
-            width: 100%;
-            padding: 0.65rem;
-            background: rgba(6, 11, 24, 0.4);
-            border: 1px solid rgba(102, 192, 244, 0.2);
-            color: #fff;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-family: inherit;
-            transition: border-color 0.25s ease, box-shadow 0.25s ease;
-        }
-        select:focus, input:focus, textarea:focus {
-            border-color: #66c0f4;
-            box-shadow: 0 0 8px rgba(102, 192, 244, 0.25);
-            outline: none;
-        }
-        option {
-            background: #060b18;
-            color: #fff;
-        }
-        .enquiry-calc-box {
-            background-color: rgba(6, 11, 24, 0.35);
-            padding: 1.25rem;
-            border-radius: 6px;
-            border: 1px dashed rgba(102, 192, 244, 0.2);
-            margin: 1rem 0 1.5rem 0;
-        }
-        .calc-metric {
-            font-size: 1.35rem;
-            color: #66c0f4;
-            font-weight: bold;
-            margin-top: 0.5rem;
-            letter-spacing: 0.03em;
-        }
-        .form-status-msg {
-            margin-top: 1rem;
-            padding: 0.75rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            display: none;
-            border: 1px solid transparent;
-        }
-        .form-status-msg.success {
-            display: block;
-            background: rgba(46, 204, 113, 0.1);
-            color: #2ecc71;
-            border-color: rgba(46, 204, 113, 0.2);
-        }
-        .form-status-msg.error {
-            display: block;
-            background: rgba(231, 76, 60, 0.1);
-            color: #e74c3c;
-            border-color: rgba(231, 76, 60, 0.2);
-        }
-        #submitEnquiryBtn {
-            background: #66c0f4; 
-            color: #060b18; 
-            font-weight: bold; 
-            cursor: pointer; 
-            border: none; 
-            padding: 0.8rem 1.75rem; 
-            border-radius: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: background 0.25s ease, opacity 0.25s ease;
-        }
-        #submitEnquiryBtn:hover:not(:disabled) {
-            background: #4faee3;
-        }
-        #submitEnquiryBtn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
     </style>
 </head>
 <body>
@@ -158,12 +81,12 @@
             <ul>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../Pages/AboutUs.html">About</a></li>
-                <li><a href="../Pages/contact.html">Contact</a></li>
+                <li><a href="../Pages/contact.html" class="active">Contact</a></li>
                 <li><a href="../Pages/GameDetail.html">Games</a></li>
-                <li><a href="../Pages/enquiry.html" class="active">Enquiry</a></li>
-                <li><a href="../Pages/CommunityHub-Workshop.html">Community Hub & Workshop</a></li>
-                <li><a href="../Pages/wishlist.html">Wishlist</a></li>
-                <li><a href="../Pages/UserProfile-Inventory.html">User Profile & Inventory</a></li>
+                <li><a href="../Pages/enquiry.html">Enquiry</a></li>
+                <li><a href="../Pages/CommunityHub&Workshop.html">Community Hub & Workshop</a></li>
+                <li><a href="../Pages/Wishlist.html">Wishlist</a></li>
+                <li><a href="../Pages/UserProfile&Inventory.html">User Profile & Inventory</a></li>
                 <li><a href="../Pages/Menu.html">Menu</a></li>
             </ul>
         </nav>
@@ -185,7 +108,6 @@
             <p>Get in touch with Blue Corp Industries support desk nodes.</p>
         </section>
 
-        <!-- Unchanged Pre-Form Information Layout Blocks -->
         <div class="contact-media-row">
             <div class="contact-col-item">
                 <div>
@@ -208,7 +130,7 @@
                     <h3>Operational Base Map</h3>
                     <p>Review geographical positioning parameters for our advanced logistics server center.</p>
                 </div>
-                <iframe src="https://google.com" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3346.690525784862!2d27.899190011772454!3d-32.985565773746124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e66e028faa5e7fb%3A0x82924b3462ee96c9!2sBlue-Corp!5e0!3m2!1sen!2sza!4v1789740499546!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
             </div>
         </div>
 
@@ -219,122 +141,32 @@
             <p><strong>Operations Mail Terminal:</strong> bluecorpindustries@gmail.com</p>
         </section>
 
-        <!-- Upgraded Functional Enquiry Section -->
-         <section id="message" style="margin-top: 3rem; margin-bottom: 3rem;">
-    <h2>Send us a Project Enquiry</h2>
-    <form id="enquiryMatrixForm" action="#" method="POST">
-        <p>
-            <label for="enquiry-name">Developer / Entity Name:</label>
-            
-        </p>
-        
-        <p>
-            <label for="enquiry-email">Email Node Endpoint:</label>
-            <input type="email" id="enquiry-email" placeholder="name@domain.com" required>
-        </p>
-        
-        <p>
-            <label for="service-tier">Core Framework Pipeline:</label>
-            <select id="service-tier" required>
-                <option value="" disabled selected>-- Select Operational Node Architecture --</option>
-                <option value="engine" data-base="1500">Custom Game Engine Architecture (Base: R1 500)</option>
-                <option value="pricing" data-base="600">Automated Pricing Framework Node (Base: R600)</option>
-                <option value="database" data-base="950">Workshop Inventory Database Cluster (Base: R950)</option>
-                <option value="security" data-base="1200">SSL/TLS Server Infrastructure Security (Base: R1 200)</option>
-            </select>
-        </p>
-
-        <div class="enquiry-calc-box">
-            <label for="node-quantity">Deployment Scale Nodes (Quantity Scaling Metric):</label>
-            <input type="number" id="node-quantity" value="1" min="1" max="100" style="margin-top: 0.5rem;">
-            <p style="margin-bottom: 0; margin-top: 1rem;">Estimated Infrastructure Allocation Cost:</p>
-            <div id="costEstimateDisplay" class="calc-metric">R0.00</div>
-        </div>
-
-        <p>
-            <label for="enquiry-specs">Functional Matrix Requirements & Scope Specs:</label>
-            <textarea id="enquiry-specs" placeholder="Detail explicit system dependencies or custom parameters..." rows="6" required></textarea>
-        </p>
-
-        <p style="margin-top: 1.5rem;">
-            <button type="submit" id="submitEnquiryBtn">Transmit Project Enquiry</button>
-        </p>
-        
-        <div id="enquiryStatus" class="form-status-msg"></div>
-    </form>
-</section>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const form = document.getElementById('enquiryMatrixForm');
-        const serviceTier = document.getElementById('service-tier');
-        const nodeQuantity = document.getElementById('node-quantity');
-        const costDisplay = document.getElementById('costEstimateDisplay');
-        const submitBtn = document.getElementById('submitEnquiryBtn');
-        const statusBox = document.getElementById('enquiryStatus');
-
-        // 1. Live Matrix Estimation Calculator
-        const evaluateCostMatrix = () => {
-            const selectedOption = serviceTier.options[serviceTier.selectedIndex];
-            if (!selectedOption || selectedOption.value === "") {
-                costDisplay.textContent = "R0.00";
-                return;
-            }
-
-            const basePrice = parseFloat(selectedOption.getAttribute('data-base')) || 0;
-            let quantity = parseInt(nodeQuantity.value) || 1;
-            
-            if (quantity < 1) {
-                quantity = 1;
-                nodeQuantity.value = 1;
-            }
-
-            const calculationResult = basePrice * quantity;
-            costDisplay.textContent = `R${calculationResult.toLocaleString('en-ZA')}.00`;
-        };
-
-        serviceTier.addEventListener('change', evaluateCostMatrix);
-        nodeQuantity.addEventListener('input', evaluateCostMatrix);
-
-        // 2. Data Packet Transmission Simulation
-        if (form) {
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-
-                const name = document.getElementById('enquiry-name').value.trim();
-                const email = document.getElementById('enquiry-email').value.trim();
-                const tier = serviceTier.value;
-                const specs = document.getElementById('enquiry-specs').value.trim();
-
-                if (!name || !email || !tier || !specs) {
-                    displayStatus('Matrix Error: Processing configuration missing operational parameters.', 'error');
-                    return;
-                }
-
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Transmitting Allocation Packet...';
-                displayStatus('Connecting to Blue Corp Procurement core clusters...', 'success');
-
-                setTimeout(() => {
-                    displayStatus(`Enquiry packet deployed! Thank you, ${name}. Configuration details compiled and routed to endpoint: ${email}.`, 'success');
-                    form.reset();
-                    costDisplay.textContent = "R0.00";
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Transmit Project Enquiry';
-                }, 1600);
-            });
-        }
-
-        function displayStatus(msg, className) {
-            statusBox.className = `form-status-msg ${className}`;
-            statusBox.textContent = msg;
-        }
-    });
-</script>
-
+        <section id="message">
+            <h2>Send us a Message</h2>
+            <form action="#" method="POST">
+                <p>
+                    <label for="contact-name">Your Profile Name:</label>
+                    <input type="text" id="contact-name" placeholder="Name" required>
+                </p>
+                <p>
+                    <label for="contact-email">Email Node Endpoint:</label>
+                    <input type="email" id="contact-email" placeholder="Email" required>
+                </p>
+                <p>
+                    <label for="contact-msg">Message Core Details:</label>
+                    <textarea id="contact-msg" placeholder="Type your message text here..." rows="5" required></textarea>
+                </p>
+                <p>
+                    <button type="submit">Submit Platform Message</button>
+                </p>
+            </form>
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2026 Blue Corp Industries. Fulfilling Frictional UI Framework Requirements.</p>
         <p>SSL/TLS Infrastructure Node: ZA-South Base Server Frame</p>
     </footer>
+
+</body>
+</html>
