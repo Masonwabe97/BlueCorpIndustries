@@ -6,51 +6,43 @@
     <title>Enquiry Desk - Blue Corp Industries</title>
     <link rel="stylesheet" href="../css/style.css">
     <style>
-        .logo-wrapper {
-            display: flex !important;
-            align-items: center !important;
-            gap: 0.75rem !important;
-            text-decoration: none;
+        .logo-wrapper { display: flex !important; align-items: center !important; gap: 0.75rem !important; text-decoration: none; }
+        .header-logo-icon { width: 35px !important; height: auto !important; margin: 0 !important; border: none !important; box-shadow: none !important; background: transparent !important; }
+        header h1 { margin-bottom: 0 !important; white-space: nowrap; }
+
+        @keyframes matrixFadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        .header-logo-icon {
-            width: 35px !important;
-            height: auto !important;
-            margin: 0 !important;
-            border: none !important;
-            box-shadow: none !important;
-            background: transparent !important;
+
+        main section {
+            animation: matrixFadeIn 0.6s ease-out forwards;
+            background: rgba(13, 17, 28, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
-        header h1 {
-            margin-bottom: 0 !important;
-            white-space: nowrap;
+
+        main section:hover {
+            transform: translateY(-3px);
+            border-color: rgba(0, 210, 255, 0.25);
+            box-shadow: 0 8px 30px rgba(0, 210, 255, 0.1);
         }
-        .form-status-msg {
-            margin-top: 1rem;
-            padding: 0.75rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            display: none;
-            border: 1px solid transparent;
-        }
-        .form-status-msg.success {
-            display: block;
-            background: rgba(46, 204, 113, 0.1);
-            color: #2ecc71;
-            border-color: rgba(46, 204, 113, 0.2);
-        }
-        .form-status-msg.error {
-            display: block;
-            background: rgba(231, 76, 60, 0.1);
-            color: #e74c3c;
-            border-color: rgba(231, 76, 60, 0.2);
-        }
-        .sub-nav-bar ul li a {
-            transition: color 0.2s ease;
-        }
-        .sub-nav-bar ul li a.active-node {
-            color: #66c0f4 !important;
-            font-weight: bold;
-        }
+
+        /* Header Utility Cluster Styles */
+        .header-utility-cluster { display: flex; align-items: center; gap: 1rem; margin-left: auto; margin-right: 1.5rem; position: relative; }
+        .product-search-wrapper { position: relative; margin: 0; }
+        .product-search input[type="search"] { padding: 6px 12px; background: rgba(13, 17, 28, 0.8); border: 1px solid rgba(0, 210, 255, 0.3); border-radius: 4px; color: #fff; font-size: 0.85rem; width: 180px; outline: none; transition: width 0.3s ease, border-color 0.3s ease; }
+        .product-search input[type="search"]:focus { width: 240px; border-color: #00d2ff; box-shadow: 0 0 10px rgba(0, 210, 255, 0.25); }
+        .search-count { position: absolute; top: 100%; left: 0; font-size: 0.75rem; color: #00d2ff; margin-top: 4px; white-space: nowrap; }
+        .search-suggestions { position: absolute; top: calc(100% + 6px); left: 0; width: 240px; background: #0d111c; border: 1px solid rgba(0,210,255,0.3); border-radius: 4px; box-shadow: 0 8px 25px rgba(0,0,0,0.6); z-index: 10000; overflow: hidden; }
+        .cart-trigger-btn { background: rgba(0, 210, 255, 0.1); border: 1px solid #00d2ff; color: #00d2ff; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 0.85rem; display: flex; align-items: center; gap: 6px; transition: background 0.2s; }
+        .cart-trigger-btn:hover { background: rgba(0, 210, 255, 0.2); }
+        .bci-cart-counter-badge { background: #ff5252; color: #fff; font-size: 0.65rem; padding: 1px 5px; border-radius: 50px; display: none; }
+        .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
     </style>
 </head>
 <body>
@@ -62,11 +54,7 @@
         </a>
         
         <input type="checkbox" id="nav-trigger">
-        <label for="nav-trigger" class="menu-toggle-btn">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
+        <label for="nav-trigger" class="menu-toggle-btn"><span></span><span></span><span></span></label>
 
         <nav>
             <ul>
@@ -75,17 +63,31 @@
                 <li><a href="../Pages/contact.html">Contact</a></li>
                 <li><a href="../Pages/GameDetail.html">Games</a></li>
                 <li><a href="../Pages/enquiry.html" class="active">Enquiry</a></li>
-                <li><a href="../Pages/CommunityHub-Workshop.html">Community Hub & Workshop</a></li>
+                <li><a href="../Pages/CommunityHub-Workshop.html">Community Hub</a></li>
                 <li><a href="../Pages/wishlist.html">Wishlist</a></li>
-                <li><a href="../Pages/UserProfile-Inventory.html">User Profile & Inventory</a></li>
+                <li><a href="../Pages/UserProfile-Inventory.html">User Profile</a></li>
                 <li><a href="../Pages/Menu.html">Menu</a></li>
             </ul>
         </nav>
+
+        <div class="header-utility-cluster">
+            <div class="product-search-wrapper">
+                <div class="product-search">
+                    <label for="product-search" class="visually-hidden">Search products</label>
+                    <input type="search" id="product-search" placeholder="Search games, PCs & gear..." autocomplete="off">
+                    <p id="search-count" class="search-count" role="status" aria-live="polite"></p>
+                </div>
+                <div id="search-suggestions" class="search-suggestions" hidden></div>
+            </div>
+            <button onclick="toggleCartDrawer(true)" class="cart-trigger-btn">
+                🛒 Cart <span class="bci-cart-counter-badge">0</span>
+            </button>
+        </div>
     </header>
 
     <div class="sub-nav-bar">
         <ul>
-            <li><a href="#intake" class="sub-nav-link">Project Intake Form</a></li>
+            <li><a href="#intake">Project Intake Form</a></li>
         </ul>
     </div>
 
@@ -94,41 +96,36 @@
         
         <section id="intake">
             <h2>Submit an Enquiry</h2>
-            <form id="enquiryMatrixForm">
+            
+            <form id="enquiryForm" action="#" method="POST" novalidate>
                 <p>
-                    <label for="enquiry-name">Your Name:</label>
-                    <input type="text" id="enquiry-name" name="name" placeholder="Tell us who you are" required>
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="from_name" placeholder="Tell us who you are" required>
                 </p>
                 <p>
-                    <label for="enquiry-email">Email Address Node:</label>
-                    <input type="email" id="enquiry-email" name="email" placeholder="Where we can reply to you" required>
+                    <label for="email">Email Address Node:</label>
+                    <input type="email" id="email" name="reply_to" placeholder="Where we can reply to you" required>
                 </p>
                 <p>
-                    <label for="service-tier">Project Framework Matrix:</label>
-                    <select id="service-tier" name="service-tier" required>
-                        <option value="" disabled selected>--Select Configuration--</option>
-                        <option value="pc-build" data-base="450">PC Build Assistance (Base: R450)</option>
-                        <option value="game-dev" data-base="1200">Solo Developer Program Enrollment (Base: R1 200)</option>
-                        <option value="other" data-base="800">Other Architecture Inquiry (Base: R800)</option>
+                    <label for="project-type">Project Framework Matrix:</label>
+                    <select id="project-type" name="project_type" required>
+                        <option value="">--Select Configuration--</option>
+                        <option value="pc-build">PC Build Assistance (Beginners)</option>
+                        <option value="game-dev">Solo Developer Program Enrollment</option>
+                        <option value="other">Other Architecture Inquiry</option>
                     </select>
                 </p>
-                
-                <div class="enquiry-calc-box" style="background-color: rgba(6, 11, 24, 0.35); padding: 1.25rem; border-radius: 6px; border: 1px dashed rgba(102, 192, 244, 0.2); margin: 1rem 0 1.5rem 0;">
-                    <label for="node-quantity">Deployment Scale Nodes (Quantity):</label>
-                    <input type="number" id="node-quantity" name="node-quantity" value="1" min="1" max="100" style="margin-top: 0.5rem; width: 100%;">
-                    <p style="margin-bottom: 0; margin-top: 1rem; font-size: 0.9rem;">Estimated Cost Parametric Metric:</p>
-                    <div id="costEstimateDisplay" class="calc-metric" style="font-size: 1.35rem; color: #66c0f4; font-weight: bold; margin-top: 0.5rem;">R0.00</div>
-                </div>
-
                 <p>
-                    <label for="enquiry-specs">Detailed Request Message:</label>
-                    <textarea id="enquiry-specs" name="enquiry-specs" placeholder="Provide extra project details here..." rows="8" required></textarea>
+                    <label for="budget">Estimated Budget Parameter:</label>
+                    <input type="text" id="budget" name="budget" placeholder="Helps us suggest the right hardware parts">
                 </p>
                 <p>
-                    <button type="submit" id="submitEnquiryBtn">Submit Request Parameter</button>
+                    <label for="message">Detailed Request Message:</label>
+                    <textarea id="message" name="message" placeholder="Provide extra project details here..." rows="8" required></textarea>
                 </p>
-                
-                <div id="enquiryStatus" class="form-status-msg"></div>
+                <p>
+                    <button type="submit" id="submitBtn">Submit Request Parameter</button>
+                </p>
             </form>
         </section>
     </main>
@@ -138,16 +135,6 @@
         <p>SSL/TLS Infrastructure Node: ZA-South Base Server Frame</p>
     </footer>
 
-    <div id="matrixLightboxOverlay" class="matrix-lightbox-overlay">
-        <button class="matrix-lightbox-close" id="matrixLightboxClose">&times;</button>
-        <img class="matrix-lightbox-content" id="matrixLightboxImage" src="" alt="Enlarged Telemetry Visual Matrix">
-    </div>
-
-    <!-- 🚀 EXACT SEQUENCE LOADING PIPELINE -->
-    <script src="https://jsdelivr.net"></script>
-    <script type="text/javascript">
-        emailjs.init("SO9F5KEvIMHjvswWH");
-    </script>
-    <script src="script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>
