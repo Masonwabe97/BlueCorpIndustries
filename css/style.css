@@ -4,10 +4,10 @@
    ========================================================================== */
 
 /* Import Web Proposal Font Face Setup */
-@import url('https://googleapis.com');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap');
 
 /* Base Reset Layout */
-* {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -34,6 +34,8 @@ body {
     color: var(--proposal-offwhite);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 /* ==========================================================================
@@ -76,24 +78,50 @@ strong {
 header {
     background-color: var(--nav-bg);
     border-bottom: 2px solid var(--proposal-cyan);
-    padding: 1.25rem 2rem;
+    padding: 0.75rem 1.5rem;
     position: sticky;
     top: 0;
-    z-index: 999;
+    z-index: 1000;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    backdrop-filter: blur(8px);
+    flex-wrap: wrap;
+}
+
+.logo-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    text-decoration: none;
+    color: #fff;
+}
+
+.header-logo-icon {
+    width: 35px !important;
+    height: auto !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
 }
 
 header h1 {
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     letter-spacing: 0.05em;
-    color: #ffffff;
+    color: #fff;
+    margin: 0 !important;
+    white-space: nowrap;
 }
 
 header h1 span {
     color: var(--proposal-cyan);
+}
+
+nav {
+    display: flex;
+    align-items: center;
 }
 
 nav ul {
@@ -101,12 +129,15 @@ nav ul {
     display: flex;
     align-items: center;
     gap: 1rem;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
 }
 
 nav a {
     color: var(--proposal-offwhite);
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -127,7 +158,7 @@ nav a:hover, nav a.active {
     flex-direction: column;
     justify-content: space-between;
     width: 28px;
-    height: 20px;
+    height: 24px;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -142,24 +173,124 @@ nav a:hover, nav a.active {
 }
 
 /* ==========================================================================
+   Header Utility Cluster (Search + Cart Badge)
+   ========================================================================== */
+.header-utility-cluster {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+}
+
+.product-search-wrapper {
+    position: relative;
+    margin: 0;
+}
+
+.product-search input[type="search"] {
+    padding: 6px 12px;
+    background: rgba(13, 17, 28, 0.8);
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    border-radius: 4px;
+    color: #fff;
+    font-size: 0.85rem;
+    width: 180px;
+    outline: none;
+    transition: width 0.3s ease, border-color 0.3s ease;
+}
+
+.product-search input[type="search"]:focus {
+    width: 220px;
+    border-color: var(--proposal-cyan);
+    box-shadow: 0 0 10px rgba(102, 192, 244, 0.25);
+}
+
+.search-count {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    font-size: 0.75rem;
+    color: var(--proposal-cyan);
+    margin-top: 4px;
+    white-space: nowrap;
+}
+
+.search-suggestions {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 100%;
+    max-width: 240px;
+    background: #0d111c;
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    border-radius: 4px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    z-index: 10000;
+    overflow: hidden;
+}
+
+.cart-trigger-btn {
+    background: rgba(0, 210, 255, 0.1);
+    border: 1px solid var(--proposal-cyan);
+    color: var(--proposal-cyan);
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    transition: background 0.2s;
+}
+
+.cart-trigger-btn:hover {
+    background: rgba(0, 210, 255, 0.2);
+}
+
+.bci-cart-counter-badge {
+    background: #ff5252;
+    color: #fff;
+    font-size: 0.65rem;
+    padding: 1px 5px;
+    border-radius: 50px;
+    display: none;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* ==========================================================================
    Sub-Navigation Bar & Component Cards Section
    ========================================================================== */
 .sub-nav-bar {
-    background-color: rgba(28, 37, 65, 0.5);
+    background-color: rgba(13, 17, 28, 0.6);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 0.75rem 1rem;
+    padding: 0.5rem 1.5rem;
 }
 
 .sub-nav-bar ul {
     list-style: none;
     display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+    white-space: nowrap;
     justify-content: center;
 }
 
 .sub-nav-bar a {
-    color: var(--proposal-muted);
+    color: var(--proposal-cyan);
     font-size: 0.85rem;
     text-transform: uppercase;
     font-weight: 700;
@@ -174,18 +305,26 @@ nav a:hover, nav a.active {
 
 main {
     max-width: 1200px;
-    margin: 3rem auto;
-    padding: 0 1.5rem;
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+    width: 100%;
 }
 
 section, article {
     background-color: var(--proposal-surface);
     border-radius: 8px;
-    padding: 2.5rem;
+    padding: 2rem;
     margin-bottom: 2.5rem;
     border-left: 4px solid var(--neon-pink);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
     position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover, article:hover {
+    transform: translateY(-3px);
+    border-color: rgba(0, 210, 255, 0.25);
+    box-shadow: 0 8px 30px rgba(0, 210, 255, 0.1);
 }
 
 section:nth-of-type(even), article:nth-of-type(even),
@@ -205,31 +344,32 @@ img {
 }
 
 /* Grid Layout Framework Configurations */
-.wishlist-grid, .dashboard-grid, .showroom-grid {
+.wishlist-grid, .dashboard-grid, .showroom-grid, .featured-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
     margin-top: 1.5rem;
 }
 
-.wishlist-item-card, .showroom-card {
-    background: rgba(6, 11, 24, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.03);
-    border-radius: 8px;
-    padding: 2rem;
+.wishlist-item-card, .showroom-card, .featured-card, .contact-col-item, .guide-col-item, .member-profile-card {
+    background: rgba(20, 25, 40, 0.6);
+    border: 1px solid rgba(0, 210, 255, 0.15);
+    border-radius: 6px;
+    padding: 1.25rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.wishlist-item-card:hover, .showroom-card:hover {
-    border-color: rgba(102, 192, 244, 0.3);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+.wishlist-item-card:hover, .showroom-card:hover, .featured-card:hover, .contact-col-item:hover, .guide-col-item:hover, .member-profile-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 210, 255, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 210, 255, 0.15);
 }
 
 /* Interactive Action Buttons styling */
-button, .btn-action {
+button, .btn-action, button[type="submit"] {
     background: linear-gradient(135deg, var(--neon-pink), #b30059);
     color: #ffffff;
     border: none;
@@ -243,10 +383,10 @@ button, .btn-action {
     width: 100%;
     margin-top: 1.25rem;
     letter-spacing: 0.05em;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
 }
 
-button:hover, .btn-action:hover {
+button:hover, .btn-action:hover, button[type="submit"]:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(255, 0, 127, 0.4);
 }
@@ -257,7 +397,7 @@ form p {
 }
 
 label {
-    display: inline-block;
+    display: block;
     color: var(--proposal-cyan);
     font-weight: 700;
     font-size: 0.9rem;
@@ -268,20 +408,25 @@ label {
 
 input[type="text"], input[type="email"], select, textarea {
     width: 100%;
-    background-color: #060B18;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: rgba(6, 11, 24, 0.8);
+    border: 1px solid rgba(0, 210, 255, 0.3);
     border-radius: 4px;
-    padding: 0.85rem 1rem;
+    padding: 0.75rem 1rem;
     color: var(--proposal-offwhite);
     font-family: inherit;
-    font-size: 1rem;
-    transition: border-color 0.2s ease;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 input:focus, select:focus, textarea:focus {
-    outline: none;
     border-color: var(--proposal-cyan);
-    box-shadow: 0 0 8px rgba(102, 192, 244, 0.25);
+    box-shadow: 0 0 10px rgba(102, 192, 244, 0.25);
+}
+
+select option {
+    background-color: #0d111c;
+    color: #fff;
 }
 
 /* Footer layout */
@@ -289,11 +434,11 @@ footer {
     background-color: var(--nav-bg);
     color: var(--proposal-muted);
     text-align: center;
-    padding: 2rem 1.5rem;
+    padding: 1.5rem;
     margin-top: 5rem;
     width: 100%;
     font-size: 0.85rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(0, 210, 255, 0.2);
 }
 
 footer p:last-child {
@@ -307,27 +452,61 @@ footer p:last-child {
 /* ==========================================================================
    Responsive Architecture Breakdown (Media Triggers)
    ========================================================================== */
-@media (max-width: 900px) {
+@media (max-width: 992px) {
+    header {
+        gap: 0.75rem;
+    }
+    .header-utility-cluster {
+        width: 100%;
+        justify-content: space-between;
+        order: 3;
+        margin-top: 0.5rem;
+    }
+    .product-search-wrapper {
+        flex: 1;
+    }
+    .product-search input[type="search"],
+    .product-search input[type="search"]:focus {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
     .menu-toggle-btn {
         display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 28px;
+        height: 24px;
+        cursor: pointer;
+    }
+
+    .menu-toggle-btn span {
+        width: 100%;
+        height: 3px;
+        background-color: var(--proposal-cyan);
+        border-radius: 2px;
     }
 
     header nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
+        display: none;
         width: 100%;
-        background-color: var(--nav-bg);
-        border-bottom: 2px solid var(--neon-pink);
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        order: 4;
+        margin-top: 1rem;
+    }
+
+    /* Checkbox Hack Interlock Toggles */
+    #nav-trigger:checked ~ nav {
+        display: block;
     }
 
     header nav ul {
         flex-direction: column;
-        gap: 0;
-        padding: 1rem 0;
+        gap: 0.75rem;
+        background: rgba(13, 17, 28, 0.98);
+        padding: 1rem;
+        border-radius: 6px;
+        border: 1px solid rgba(0, 210, 255, 0.2);
     }
 
     header nav li {
@@ -336,14 +515,9 @@ footer p:last-child {
 
     header nav a {
         display: block;
-        padding: 1rem !important;
+        padding: 0.75rem 1rem !important;
         text-align: center;
         border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-    }
-
-    /* Checkbox Hack Interlock Toggles */
-    #nav-trigger:checked ~ nav {
-        max-height: 480px;
     }
 
     #nav-trigger:checked ~ .menu-toggle-btn span:nth-child(1) {
@@ -358,5 +532,24 @@ footer p:last-child {
     #nav-trigger:checked ~ .menu-toggle-btn span:nth-child(3) {
         transform: translateY(-9px) rotate(-45deg);
         background-color: var(--neon-pink);
+    }
+
+    main section, .contact-col-item {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1rem;
+    }
+
+    .featured-grid, .showroom-grid, .wishlist-grid {
+        grid-template-columns: 1fr;
+    }
+
+    button[type="submit"], .btn-action {
+        font-size: 0.85rem;
+        padding: 0.75rem 1rem;
     }
 }

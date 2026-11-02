@@ -67,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (searchInput) {
         // Master global index mapping items across all site pages
         const isInPagesDir = window.location.pathname.includes("/Pages/");
-        const prefix = isInPagesDir ? "" : "Pages/";
 
         const masterSearchIndex = [
             // Catalog & Games
@@ -305,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
     [contactForm, enquiryForm].forEach(form => {
         if (form) {
             form.addEventListener('submit', function(event) {
-                event.preventDefault();
+                event.preventDefault(); // <-- STOPS BROWSER POST TO FIX 405 NOT ALLOWED ERROR ON GITHUB PAGES
 
                 // Check for empty required fields manually
                 const requiredFields = form.querySelectorAll('[required]');
