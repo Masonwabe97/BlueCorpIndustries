@@ -1,514 +1,613 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Enquiry Desk - Blue Corp Industries</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css" />
     <style>
-        /* Base Reset & Box Sizing */
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
+      /* Base Reset & Box Sizing */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
 
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            overflow-x: hidden;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #080b12;
-            color: #e0e6ed;
-        }
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        overflow-x: hidden;
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          sans-serif;
+        background-color: #080b12;
+        color: #e0e6ed;
+      }
 
-        /* Header Layout & Responsiveness */
+      /* Header Layout & Responsiveness */
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 1.5rem;
+        background: rgba(13, 17, 28, 0.95);
+        border-bottom: 1px solid rgba(0, 210, 255, 0.2);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(8px);
+      }
+
+      .logo-wrapper {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.75rem !important;
+        text-decoration: none;
+        color: #fff;
+      }
+
+      .header-logo-icon {
+        width: 35px !important;
+        height: auto !important;
+        margin: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+      }
+
+      header h1 {
+        margin: 0 !important;
+        font-size: 1.25rem;
+        white-space: nowrap;
+      }
+
+      header h1 span {
+        color: #00d2ff;
+      }
+
+      /* Nav Menu Styling */
+      nav {
+        display: flex;
+        align-items: center;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        color: #a0aec0;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.2s ease;
+      }
+
+      nav a:hover,
+      nav a.active {
+        color: #00d2ff;
+      }
+
+      #nav-trigger,
+      .menu-toggle-btn {
+        display: none;
+      }
+
+      /* Header Utility Cluster Styles */
+      .header-utility-cluster {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-left: auto;
+        position: relative;
+      }
+
+      .product-search-wrapper {
+        position: relative;
+        margin: 0;
+      }
+
+      .product-search input[type="search"] {
+        padding: 6px 12px;
+        background: rgba(13, 17, 28, 0.8);
+        border: 1px solid rgba(0, 210, 255, 0.3);
+        border-radius: 4px;
+        color: #fff;
+        font-size: 0.85rem;
+        width: 160px;
+        outline: none;
+        transition:
+          width 0.3s ease,
+          border-color 0.3s ease;
+      }
+
+      .product-search input[type="search"]:focus {
+        width: 200px;
+        border-color: #00d2ff;
+        box-shadow: 0 0 10px rgba(0, 210, 255, 0.25);
+      }
+
+      .search-count {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        font-size: 0.75rem;
+        color: #00d2ff;
+        margin-top: 4px;
+        white-space: nowrap;
+      }
+
+      .search-suggestions {
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 0;
+        width: 100%;
+        max-width: 240px;
+        background: #0d111c;
+        border: 1px solid rgba(0, 210, 255, 0.3);
+        border-radius: 4px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+        z-index: 10000;
+        overflow: hidden;
+      }
+
+      .cart-trigger-btn {
+        background: rgba(0, 210, 255, 0.1);
+        border: 1px solid #00d2ff;
+        color: #00d2ff;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+        transition: background 0.2s;
+      }
+
+      .cart-trigger-btn:hover {
+        background: rgba(0, 210, 255, 0.2);
+      }
+
+      .bci-cart-counter-badge {
+        background: #ff5252;
+        color: #fff;
+        font-size: 0.65rem;
+        padding: 1px 5px;
+        border-radius: 50px;
+        display: none;
+      }
+
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+
+      /* Sub-nav Bar */
+      .sub-nav-bar {
+        background: rgba(13, 17, 28, 0.6);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 0.5rem 1.5rem;
+      }
+
+      .sub-nav-bar ul {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        overflow-x: auto;
+        white-space: nowrap;
+        justify-content: center;
+      }
+
+      .sub-nav-bar a {
+        color: #00d2ff;
+        text-decoration: none;
+        font-size: 0.85rem;
+      }
+
+      /* Main Container & Layout */
+      main {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 1.5rem 1rem;
+        width: 100%;
+      }
+
+      main > h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: #fff;
+      }
+
+      @keyframes matrixFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(15px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      main section {
+        animation: matrixFadeIn 0.6s ease-out forwards;
+        background: rgba(13, 17, 28, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        border-radius: 8px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      main section:hover {
+        transform: translateY(-3px);
+        border-color: rgba(0, 210, 255, 0.25);
+        box-shadow: 0 8px 30px rgba(0, 210, 255, 0.1);
+      }
+
+      /* Form Controls Styling */
+      form p {
+        margin-bottom: 1.25rem;
+      }
+
+      label {
+        display: block;
+        color: #00d2ff;
+        font-weight: 700;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.5rem;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      select,
+      textarea {
+        width: 100%;
+        background-color: rgba(6, 11, 24, 0.8);
+        border: 1px solid rgba(0, 210, 255, 0.3);
+        border-radius: 4px;
+        padding: 0.75rem 1rem;
+        color: #fff;
+        font-family: inherit;
+        font-size: 0.95rem;
+        outline: none;
+        transition:
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: #00d2ff;
+        box-shadow: 0 0 10px rgba(0, 210, 255, 0.25);
+      }
+
+      select option {
+        background-color: #0d111c;
+        color: #fff;
+      }
+
+      button[type="submit"] {
+        width: 100%;
+        background: #00d2ff;
+        color: #000;
+        border: none;
+        padding: 0.85rem 1.5rem;
+        font-family: inherit;
+        font-size: 0.95rem;
+        font-weight: bold;
+        border-radius: 4px;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        transition:
+          background 0.2s ease,
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+
+      button[type="submit"]:hover {
+        background: #48cae4;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 210, 255, 0.4);
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 1.5rem;
+        background: rgba(13, 17, 28, 0.95);
+        border-top: 1px solid rgba(0, 210, 255, 0.2);
+        font-size: 0.85rem;
+        color: #718096;
+      }
+
+      /* Media Queries for Tablets & Mobile Devices */
+      @media (max-width: 992px) {
         header {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.75rem 1.5rem;
-            background: rgba(13, 17, 28, 0.95);
-            border-bottom: 1px solid rgba(0, 210, 255, 0.2);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(8px);
+          gap: 1rem;
+        }
+        .header-utility-cluster {
+          margin-left: 0;
+          width: 100%;
+          justify-content: space-between;
+          order: 3;
+          margin-top: 0.75rem;
+        }
+        .product-search input[type="search"] {
+          width: 100%;
+        }
+        .product-search input[type="search"]:focus {
+          width: 100%;
+        }
+        .product-search-wrapper {
+          flex: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .menu-toggle-btn {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          width: 28px;
+          height: 24px;
+          cursor: pointer;
         }
 
-        .logo-wrapper { 
-            display: flex !important; 
-            align-items: center !important; 
-            gap: 0.75rem !important; 
-            text-decoration: none; 
-            color: #fff;
+        .menu-toggle-btn span {
+          width: 100%;
+          height: 3px;
+          background-color: #00d2ff;
+          border-radius: 2px;
         }
 
-        .header-logo-icon { 
-            width: 35px !important; 
-            height: auto !important; 
-            margin: 0 !important; 
-            border: none !important; 
-            box-shadow: none !important; 
-            background: transparent !important; 
-        }
-
-        header h1 { 
-            margin: 0 !important; 
-            font-size: 1.25rem;
-            white-space: nowrap; 
-        }
-
-        header h1 span {
-            color: #00d2ff;
-        }
-
-        /* Nav Menu Styling */
         nav {
-            display: flex;
-            align-items: center;
+          display: none;
+          width: 100%;
+          order: 4;
+          margin-top: 1rem;
+        }
+
+        #nav-trigger:checked ~ nav {
+          display: block;
         }
 
         nav ul {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            gap: 1rem;
-            flex-wrap: wrap;
+          flex-direction: column;
+          gap: 0.75rem;
+          background: rgba(13, 17, 28, 0.98);
+          padding: 1rem;
+          border-radius: 6px;
+          border: 1px solid rgba(0, 210, 255, 0.2);
         }
 
-        nav a {
-            color: #a0aec0;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s ease;
+        main section {
+          padding: 1.25rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        header h1 {
+          font-size: 1rem;
         }
 
-        nav a:hover, nav a.active {
-            color: #00d2ff;
-        }
-
-        #nav-trigger, .menu-toggle-btn {
-            display: none;
-        }
-
-        /* Header Utility Cluster Styles */
-        .header-utility-cluster { 
-            display: flex; 
-            align-items: center; 
-            gap: 0.75rem; 
-            margin-left: auto; 
-            position: relative; 
-        }
-
-        .product-search-wrapper { 
-            position: relative; 
-            margin: 0; 
-        }
-
-        .product-search input[type="search"] { 
-            padding: 6px 12px; 
-            background: rgba(13, 17, 28, 0.8); 
-            border: 1px solid rgba(0, 210, 255, 0.3); 
-            border-radius: 4px; 
-            color: #fff; 
-            font-size: 0.85rem; 
-            width: 160px; 
-            outline: none; 
-            transition: width 0.3s ease, border-color 0.3s ease; 
-        }
-
-        .product-search input[type="search"]:focus { 
-            width: 200px; 
-            border-color: #00d2ff; 
-            box-shadow: 0 0 10px rgba(0, 210, 255, 0.25); 
-        }
-
-        .search-count { 
-            position: absolute; 
-            top: 100%; 
-            left: 0; 
-            font-size: 0.75rem; 
-            color: #00d2ff; 
-            margin-top: 4px; 
-            white-space: nowrap; 
-        }
-
-        .search-suggestions { 
-            position: absolute; 
-            top: calc(100% + 6px); 
-            left: 0; 
-            width: 100%;
-            max-width: 240px; 
-            background: #0d111c; 
-            border: 1px solid rgba(0,210,255,0.3); 
-            border-radius: 4px; 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.6); 
-            z-index: 10000; 
-            overflow: hidden; 
-        }
-
-        .cart-trigger-btn { 
-            background: rgba(0, 210, 255, 0.1); 
-            border: 1px solid #00d2ff; 
-            color: #00d2ff; 
-            padding: 6px 12px; 
-            border-radius: 4px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            font-size: 0.85rem; 
-            display: flex; 
-            align-items: center; 
-            gap: 6px; 
-            white-space: nowrap;
-            transition: background 0.2s; 
-        }
-
-        .cart-trigger-btn:hover { 
-            background: rgba(0, 210, 255, 0.2); 
-        }
-
-        .bci-cart-counter-badge { 
-            background: #ff5252; 
-            color: #fff; 
-            font-size: 0.65rem; 
-            padding: 1px 5px; 
-            border-radius: 50px; 
-            display: none; 
-        }
-
-        .visually-hidden { 
-            position: absolute; 
-            width: 1px; 
-            height: 1px; 
-            padding: 0; 
-            margin: -1px; 
-            overflow: hidden; 
-            clip: rect(0, 0, 0, 0); 
-            border: 0; 
-        }
-
-        /* Sub-nav Bar */
-        .sub-nav-bar {
-            background: rgba(13, 17, 28, 0.6);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 0.5rem 1.5rem;
-        }
-
-        .sub-nav-bar ul {
-            display: flex;
-            gap: 1.5rem;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            overflow-x: auto;
-            white-space: nowrap;
-            justify-content: center;
-        }
-
-        .sub-nav-bar a {
-            color: #00d2ff;
-            text-decoration: none;
-            font-size: 0.85rem;
-        }
-
-        /* Main Container & Layout */
-        main {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 1.5rem 1rem;
-            width: 100%;
-        }
-
-        main > h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: #fff;
-        }
-
-        @keyframes matrixFadeIn { 
-            from { opacity: 0; transform: translateY(15px); } 
-            to { opacity: 1; transform: translateY(0); } 
-        }
-
-        main section { 
-            animation: matrixFadeIn 0.6s ease-out forwards; 
-            background: rgba(13, 17, 28, 0.4); 
-            border: 1px solid rgba(255, 255, 255, 0.03); 
-            border-radius: 8px; 
-            padding: 2rem; 
-            margin-bottom: 2rem; 
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25); 
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; 
-        }
-
-        main section:hover { 
-            transform: translateY(-3px); 
-            border-color: rgba(0, 210, 255, 0.25); 
-            box-shadow: 0 8px 30px rgba(0, 210, 255, 0.1); 
-        }
-
-        /* Form Controls Styling */
-        form p {
-            margin-bottom: 1.25rem;
-        }
-
-        label {
-            display: block;
-            color: #00d2ff;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
-        }
-
-        input[type="text"], 
-        input[type="email"], 
-        select, 
-        textarea {
-            width: 100%;
-            background-color: rgba(6, 11, 24, 0.8);
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            border-radius: 4px;
-            padding: 0.75rem 1rem;
-            color: #fff;
-            font-family: inherit;
-            font-size: 0.95rem;
-            outline: none;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        input:focus, 
-        select:focus, 
-        textarea:focus {
-            border-color: #00d2ff;
-            box-shadow: 0 0 10px rgba(0, 210, 255, 0.25);
-        }
-
-        select option {
-            background-color: #0d111c;
-            color: #fff;
+        main section {
+          padding: 1rem;
         }
 
         button[type="submit"] {
-            width: 100%;
-            background: #00d2ff;
-            color: #000;
-            border: none;
-            padding: 0.85rem 1.5rem;
-            font-family: inherit;
-            font-size: 0.95rem;
-            font-weight: bold;
-            border-radius: 4px;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
+          font-size: 0.85rem;
+          padding: 0.75rem 1rem;
         }
-
-        button[type="submit"]:hover {
-            background: #48CAE4;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 210, 255, 0.4);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            background: rgba(13, 17, 28, 0.95);
-            border-top: 1px solid rgba(0, 210, 255, 0.2);
-            font-size: 0.85rem;
-            color: #718096;
-        }
-
-        /* Media Queries for Tablets & Mobile Devices */
-        @media (max-width: 992px) {
-            header {
-                gap: 1rem;
-            }
-            .header-utility-cluster {
-                margin-left: 0;
-                width: 100%;
-                justify-content: space-between;
-                order: 3;
-                margin-top: 0.75rem;
-            }
-            .product-search input[type="search"] {
-                width: 100%;
-            }
-            .product-search input[type="search"]:focus {
-                width: 100%;
-            }
-            .product-search-wrapper {
-                flex: 1;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle-btn {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-                width: 28px;
-                height: 24px;
-                cursor: pointer;
-            }
-
-            .menu-toggle-btn span {
-                width: 100%;
-                height: 3px;
-                background-color: #00d2ff;
-                border-radius: 2px;
-            }
-
-            nav {
-                display: none;
-                width: 100%;
-                order: 4;
-                margin-top: 1rem;
-            }
-
-            #nav-trigger:checked ~ nav {
-                display: block;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 0.75rem;
-                background: rgba(13, 17, 28, 0.98);
-                padding: 1rem;
-                border-radius: 6px;
-                border: 1px solid rgba(0, 210, 255, 0.2);
-            }
-
-            main section {
-                padding: 1.25rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 1rem;
-            }
-
-            main section {
-                padding: 1rem;
-            }
-
-            button[type="submit"] {
-                font-size: 0.85rem;
-                padding: 0.75rem 1rem;
-            }
-        }
+      }
     </style>
 
     <!-- Primary Meta Tags -->
-<meta name="title" content="Blue Corp Industries - Ecosystem Game Distribution & Hardware Matrix">
-<meta name="description" content="Explore custom PC configurations, digital game distribution, hardware telemetry, and active gaming community nodes at Blue Corp Industries.">
-<meta name="keywords" content="Blue Corp Industries, Game Showroom, PC Building, Resident Evil Village, God of War, Custom Hardware, South Africa Gaming">
-<meta name="robots" content="index, follow">
+    <meta
+      name="title"
+      content="Blue Corp Industries - Ecosystem Game Distribution & Hardware Matrix"
+    />
+    <meta
+      name="description"
+      content="Explore custom PC configurations, digital game distribution, hardware telemetry, and active gaming community nodes at Blue Corp Industries."
+    />
+    <meta
+      name="keywords"
+      content="Blue Corp Industries, Game Showroom, PC Building, Resident Evil Village, God of War, Custom Hardware, South Africa Gaming"
+    />
+    <meta name="robots" content="index, follow" />
 
-<!-- Open Graph / Social Media Sharing -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.bluecorpindustries.co.za/">
-<meta property="og:title" content="Blue Corp Industries - Digital Ecosystem">
-<meta property="og:description" content="Custom PC hardware configurations, game distribution, and developer community hub.">
-<meta property="og:image" content="../Assets/images/ChatGPT Image Sep 18, 2026, 03_52_37 PM (1).png">
-
-</head>
-<body>
-
+    <!-- Open Graph / Social Media Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.bluecorpindustries.co.za/" />
+    <meta
+      property="og:title"
+      content="Blue Corp Industries - Digital Ecosystem"
+    />
+    <meta
+      property="og:description"
+      content="Custom PC hardware configurations, game distribution, and developer community hub."
+    />
+    <meta
+      property="og:image"
+      content="../Assets/images/ChatGPT Image Sep 18, 2026, 03_52_37 PM (1).png"
+    />
+  </head>
+  <body>
     <header>
-        <a href="../index.html" class="logo-wrapper">
-            <img src="../Assets/images/ChatGPT Image Sep 18, 2026, 03_52_37 PM (1).png" class="header-logo-icon" alt="Blue Corp Industries Microchip Emblem">
-            <h1>Blue Corp <span>Industries.</span></h1>
-        </a>
-        
-        <input type="checkbox" id="nav-trigger">
-        <label for="nav-trigger" class="menu-toggle-btn"><span></span><span></span><span></span></label>
+      <a href="../index.html" class="logo-wrapper">
+        <img
+          src="../Assets/images/ChatGPT Image Sep 18, 2026, 03_52_37 PM (1).png"
+          class="header-logo-icon"
+          alt="Blue Corp Industries Microchip Emblem"
+        />
+        <h1>Blue Corp <span>Industries.</span></h1>
+      </a>
 
-        <nav>
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../Pages/AboutUs.html">About</a></li>
-                <li><a href="../Pages/contact.html">Contact</a></li>
-                <li><a href="../Pages/GameDetail.html">Games</a></li>
-                <li><a href="../Pages/enquiry.html" class="active">Enquiry</a></li>
-                <li><a href="../Pages/CommunityHub-Workshop.html">Community Hub</a></li>
-                <li><a href="../Pages/wishlist.html">Wishlist</a></li>
-                <li><a href="../Pages/UserProfile-Inventory.html">User Profile</a></li>
-                <li><a href="../Pages/Menu.html">Menu</a></li>
-            </ul>
-        </nav>
+      <input type="checkbox" id="nav-trigger" />
+      <label for="nav-trigger" class="menu-toggle-btn"
+        ><span></span><span></span><span></span
+      ></label>
 
-        <div class="header-utility-cluster">
-            <div class="product-search-wrapper">
-                <div class="product-search">
-                    <label for="product-search" class="visually-hidden">Search products</label>
-                    <input type="search" id="product-search" placeholder="Search games, PCs & gear..." autocomplete="off">
-                    <p id="search-count" class="search-count" role="status" aria-live="polite"></p>
-                </div>
-                <div id="search-suggestions" class="search-suggestions" hidden></div>
-            </div>
-            <button onclick="toggleCartDrawer(true)" class="cart-trigger-btn">
-                🛒 Cart <span class="bci-cart-counter-badge">0</span>
-            </button>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../Pages/AboutUs.html">About</a></li>
+          <li><a href="../Pages/contact.html">Contact</a></li>
+          <li><a href="../Pages/GameDetail.html">Games</a></li>
+          <li><a href="../Pages/enquiry.html" class="active">Enquiry</a></li>
+          <li>
+            <a href="../Pages/CommunityHub-Workshop.html">Community Hub</a>
+          </li>
+          <li><a href="../Pages/wishlist.html">Wishlist</a></li>
+          <li>
+            <a href="../Pages/UserProfile-Inventory.html">User Profile</a>
+          </li>
+          <li><a href="../Pages/Menu.html">Menu</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-utility-cluster">
+        <div class="product-search-wrapper">
+          <div class="product-search">
+            <label for="product-search" class="visually-hidden"
+              >Search products</label
+            >
+            <input
+              type="search"
+              id="product-search"
+              placeholder="Search games, PCs & gear..."
+              autocomplete="off"
+            />
+            <p
+              id="search-count"
+              class="search-count"
+              role="status"
+              aria-live="polite"
+            ></p>
+          </div>
+          <div id="search-suggestions" class="search-suggestions" hidden></div>
         </div>
+        <button onclick="toggleCartDrawer(true)" class="cart-trigger-btn">
+          🛒 Cart <span class="bci-cart-counter-badge">0</span>
+        </button>
+      </div>
     </header>
 
     <div class="sub-nav-bar">
-        <ul>
-            <li><a href="#intake">Project Intake Form</a></li>
-        </ul>
+      <ul>
+        <li><a href="#intake">Project Intake Form</a></li>
+      </ul>
     </div>
 
     <main>
-        <h2>Custom Configuration Intake Desk</h2>
-        
-        <section id="intake">
-            <h2>Submit an Enquiry</h2>
-            
-            <form id="enquiryForm" action="#" method="POST" novalidate>
-                <p>
-                    <label for="name">Your Name:</label>
-                    <input type="text" id="name" name="from_name" placeholder="Tell us who you are" required>
-                </p>
-                <p>
-                    <label for="email">Email Address Node:</label>
-                    <input type="email" id="email" name="reply_to" placeholder="Where we can reply to you" required>
-                </p>
-                <p>
-                    <label for="project-type">Project Framework Matrix:</label>
-                    <select id="project-type" name="project_type" required>
-                        <option value="">--Select Configuration--</option>
-                        <option value="pc-build">PC Build Assistance (Beginners)</option>
-                        <option value="game-dev">Solo Developer Program Enrollment</option>
-                        <option value="other">Other Architecture Inquiry</option>
-                    </select>
-                </p>
-                <p>
-                    <label for="budget">Estimated Budget Parameter:</label>
-                    <input type="text" id="budget" name="budget" placeholder="Helps us suggest the right hardware parts">
-                </p>
-                <p>
-                    <label for="message">Detailed Request Message:</label>
-                    <textarea id="message" name="message" placeholder="Provide extra project details here..." rows="8" required></textarea>
-                </p>
-                <p>
-                    <button type="submit" id="submitBtn">Submit Request Parameter</button>
-                </p>
-            </form>
-        </section>
+      <h2>Custom Configuration Intake Desk</h2>
+
+      <section id="intake">
+        <h2>Submit an Enquiry</h2>
+
+        <form id="enquiryForm" action="#" method="POST" novalidate>
+          <p>
+            <label for="name">Your Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="from_name"
+              placeholder="Tell us who you are"
+              required
+            />
+          </p>
+          <p>
+            <label for="email">Email Address Node:</label>
+            <input
+              type="email"
+              id="email"
+              name="reply_to"
+              placeholder="Where we can reply to you"
+              required
+            />
+          </p>
+          <p>
+            <label for="project-type">Project Framework Matrix:</label>
+            <select id="project-type" name="project_type" required>
+              <option value="">--Select Configuration--</option>
+              <option value="pc-build">PC Build Assistance (Beginners)</option>
+              <option value="game-dev">
+                Solo Developer Program Enrollment
+              </option>
+              <option value="other">Other Architecture Inquiry</option>
+            </select>
+          </p>
+          <p>
+            <label for="budget">Estimated Budget Parameter:</label>
+            <input
+              type="text"
+              id="budget"
+              name="budget"
+              placeholder="Helps us suggest the right hardware parts"
+            />
+          </p>
+          <p>
+            <label for="message">Detailed Request Message:</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Provide extra project details here..."
+              rows="8"
+              required
+            ></textarea>
+          </p>
+          <p>
+            <button type="submit" id="submitBtn">
+              Submit Request Parameter
+            </button>
+          </p>
+        </form>
+      </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Blue Corp Industries. Fulfilling Frictional UI Framework Requirements.</p>
-        <p>SSL/TLS Infrastructure Node: ZA-South Base Server Frame</p>
+      <p>
+        &copy; 2026 Blue Corp Industries. Fulfilling Frictional UI Framework
+        Requirements.
+      </p>
+      <p>SSL/TLS Infrastructure Node: ZA-South Base Server Frame</p>
     </footer>
 
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="../js/script.js"></script>
-</body>
+  </body>
 </html>

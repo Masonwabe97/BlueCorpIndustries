@@ -1,505 +1,603 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ecosystem Framework Matrix - Blue Corp Industries</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css" />
     <style>
-        /* Base Reset & Box Sizing */
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
+      /* Base Reset & Box Sizing */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
 
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            overflow-x: hidden;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #080b12;
-            color: #e0e6ed;
-        }
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        overflow-x: hidden;
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          sans-serif;
+        background-color: #080b12;
+        color: #e0e6ed;
+      }
 
-        /* Header Layout & Responsiveness */
+      /* Header Layout & Responsiveness */
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 1.5rem;
+        background: rgba(13, 17, 28, 0.95);
+        border-bottom: 1px solid rgba(0, 210, 255, 0.2);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(8px);
+      }
+
+      .logo-wrapper {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.75rem !important;
+        text-decoration: none;
+        color: #fff;
+      }
+
+      .header-logo-icon {
+        width: 35px !important;
+        height: auto !important;
+        margin: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+      }
+
+      header h1 {
+        margin: 0 !important;
+        font-size: 1.25rem;
+        white-space: nowrap;
+      }
+
+      header h1 span {
+        color: #00d2ff;
+      }
+
+      /* Nav Menu Styling */
+      nav {
+        display: flex;
+        align-items: center;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        color: #a0aec0;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.2s ease;
+      }
+
+      nav a:hover,
+      nav a.active {
+        color: #00d2ff;
+      }
+
+      #nav-trigger,
+      .menu-toggle-btn {
+        display: none;
+      }
+
+      /* Header Utility Cluster */
+      .header-utility-cluster {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-left: auto;
+        position: relative;
+      }
+
+      .product-search-wrapper {
+        position: relative;
+        margin: 0;
+      }
+
+      .product-search input[type="search"] {
+        padding: 6px 12px;
+        background: rgba(13, 17, 28, 0.8);
+        border: 1px solid rgba(0, 210, 255, 0.3);
+        border-radius: 4px;
+        color: #fff;
+        font-size: 0.85rem;
+        width: 160px;
+        outline: none;
+        transition:
+          width 0.3s ease,
+          border-color 0.3s ease;
+      }
+
+      .product-search input[type="search"]:focus {
+        width: 200px;
+        border-color: #00d2ff;
+        box-shadow: 0 0 10px rgba(0, 210, 255, 0.25);
+      }
+
+      .search-count {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        font-size: 0.75rem;
+        color: #00d2ff;
+        margin-top: 4px;
+        white-space: nowrap;
+      }
+
+      .search-suggestions {
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 0;
+        width: 100%;
+        max-width: 240px;
+        background: #0d111c;
+        border: 1px solid rgba(0, 210, 255, 0.3);
+        border-radius: 4px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+        z-index: 10000;
+        overflow: hidden;
+      }
+
+      .cart-trigger-btn {
+        background: rgba(0, 210, 255, 0.1);
+        border: 1px solid #00d2ff;
+        color: #00d2ff;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+        transition: background 0.2s;
+      }
+
+      .cart-trigger-btn:hover {
+        background: rgba(0, 210, 255, 0.2);
+      }
+
+      .bci-cart-counter-badge {
+        background: #ff5252;
+        color: #fff;
+        font-size: 0.65rem;
+        padding: 1px 5px;
+        border-radius: 50px;
+        display: none;
+      }
+
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+
+      /* Sub-nav Bar */
+      .sub-nav-bar {
+        background: rgba(13, 17, 28, 0.6);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 0.5rem 1.5rem;
+      }
+
+      .sub-nav-bar ul {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        overflow-x: auto;
+        white-space: nowrap;
+        justify-content: center;
+      }
+
+      .sub-nav-bar a {
+        color: #00d2ff;
+        text-decoration: none;
+        font-size: 0.85rem;
+      }
+
+      /* Main Container & Layout */
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.5rem 1rem;
+        width: 100%;
+      }
+
+      main > h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: #fff;
+      }
+
+      @keyframes matrixFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(15px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      main section {
+        animation: matrixFadeIn 0.6s ease-out forwards;
+        background: rgba(13, 17, 28, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      }
+
+      /* Grid Layout & Cards */
+      .wishlist-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.25rem;
+        margin-top: 1.5rem;
+      }
+
+      .wishlist-item-card {
+        background: rgba(20, 25, 40, 0.6);
+        border: 1px solid rgba(0, 210, 255, 0.15);
+        border-radius: 6px;
+        padding: 1.25rem;
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .wishlist-item-card h3 a {
+        color: #ffffff;
+        text-decoration: none;
+      }
+
+      .wishlist-item-card h3 a:hover {
+        color: #00d2ff;
+      }
+
+      .wishlist-item-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(0, 210, 255, 0.4);
+        box-shadow: 0 8px 25px rgba(0, 210, 255, 0.15);
+      }
+
+      .directory-thumb {
+        display: block;
+        width: 100%;
+        height: 160px;
+        object-fit: contain;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+        margin: 1rem 0;
+        padding: 8px;
+        border: 1px solid rgba(0, 210, 255, 0.2);
+        cursor: zoom-in;
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease;
+      }
+
+      .directory-thumb:hover {
+        transform: scale(1.01);
+        border-color: rgba(0, 210, 255, 0.5);
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 1.5rem;
+        background: rgba(13, 17, 28, 0.95);
+        border-top: 1px solid rgba(0, 210, 255, 0.2);
+        font-size: 0.85rem;
+        color: #718096;
+      }
+
+      /* Media Queries for Tablets & Mobile Devices */
+      @media (max-width: 992px) {
         header {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.75rem 1.5rem;
-            background: rgba(13, 17, 28, 0.95);
-            border-bottom: 1px solid rgba(0, 210, 255, 0.2);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(8px);
+          gap: 1rem;
+        }
+        .header-utility-cluster {
+          margin-left: 0;
+          width: 100%;
+          justify-content: space-between;
+          order: 3;
+          margin-top: 0.75rem;
+        }
+        .product-search input[type="search"] {
+          width: 100%;
+        }
+        .product-search input[type="search"]:focus {
+          width: 100%;
+        }
+        .product-search-wrapper {
+          flex: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .menu-toggle-btn {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          width: 28px;
+          height: 24px;
+          cursor: pointer;
         }
 
-        .logo-wrapper {
-            display: flex !important;
-            align-items: center !important;
-            gap: 0.75rem !important;
-            text-decoration: none;
-            color: #fff;
+        .menu-toggle-btn span {
+          width: 100%;
+          height: 3px;
+          background-color: #00d2ff;
+          border-radius: 2px;
         }
 
-        .header-logo-icon {
-            width: 35px !important;
-            height: auto !important;
-            margin: 0 !important;
-            border: none !important;
-            box-shadow: none !important;
-            background: transparent !important;
-        }
-
-        header h1 {
-            margin: 0 !important;
-            font-size: 1.25rem;
-            white-space: nowrap;
-        }
-
-        header h1 span {
-            color: #00d2ff;
-        }
-
-        /* Nav Menu Styling */
         nav {
-            display: flex;
-            align-items: center;
+          display: none;
+          width: 100%;
+          order: 4;
+          margin-top: 1rem;
+        }
+
+        #nav-trigger:checked ~ nav {
+          display: block;
         }
 
         nav ul {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: #a0aec0;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s ease;
-        }
-
-        nav a:hover, nav a.active {
-            color: #00d2ff;
-        }
-
-        #nav-trigger, .menu-toggle-btn {
-            display: none;
-        }
-
-        /* Header Utility Cluster */
-        .header-utility-cluster { 
-            display: flex; 
-            align-items: center; 
-            gap: 0.75rem; 
-            margin-left: auto; 
-            position: relative; 
-        }
-
-        .product-search-wrapper { 
-            position: relative; 
-            margin: 0; 
-        }
-
-        .product-search input[type="search"] { 
-            padding: 6px 12px; 
-            background: rgba(13, 17, 28, 0.8); 
-            border: 1px solid rgba(0, 210, 255, 0.3); 
-            border-radius: 4px; 
-            color: #fff; 
-            font-size: 0.85rem; 
-            width: 160px; 
-            outline: none; 
-            transition: width 0.3s ease, border-color 0.3s ease; 
-        }
-
-        .product-search input[type="search"]:focus { 
-            width: 200px; 
-            border-color: #00d2ff; 
-            box-shadow: 0 0 10px rgba(0, 210, 255, 0.25); 
-        }
-
-        .search-count { 
-            position: absolute; 
-            top: 100%; 
-            left: 0; 
-            font-size: 0.75rem; 
-            color: #00d2ff; 
-            margin-top: 4px; 
-            white-space: nowrap; 
-        }
-
-        .search-suggestions { 
-            position: absolute; 
-            top: calc(100% + 6px); 
-            left: 0; 
-            width: 100%;
-            max-width: 240px; 
-            background: #0d111c; 
-            border: 1px solid rgba(0,210,255,0.3); 
-            border-radius: 4px; 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.6); 
-            z-index: 10000; 
-            overflow: hidden; 
-        }
-
-        .cart-trigger-btn { 
-            background: rgba(0, 210, 255, 0.1); 
-            border: 1px solid #00d2ff; 
-            color: #00d2ff; 
-            padding: 6px 12px; 
-            border-radius: 4px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            font-size: 0.85rem; 
-            display: flex; 
-            align-items: center; 
-            gap: 6px; 
-            white-space: nowrap;
-            transition: background 0.2s; 
-        }
-
-        .cart-trigger-btn:hover { 
-            background: rgba(0, 210, 255, 0.2); 
-        }
-
-        .bci-cart-counter-badge { 
-            background: #ff5252; 
-            color: #fff; 
-            font-size: 0.65rem; 
-            padding: 1px 5px; 
-            border-radius: 50px; 
-            display: none; 
-        }
-
-        .visually-hidden { 
-            position: absolute; 
-            width: 1px; 
-            height: 1px; 
-            padding: 0; 
-            margin: -1px; 
-            overflow: hidden; 
-            clip: rect(0, 0, 0, 0); 
-            border: 0; 
-        }
-
-        /* Sub-nav Bar */
-        .sub-nav-bar {
-            background: rgba(13, 17, 28, 0.6);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 0.5rem 1.5rem;
-        }
-
-        .sub-nav-bar ul {
-            display: flex;
-            gap: 1.5rem;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            overflow-x: auto;
-            white-space: nowrap;
-            justify-content: center;
-        }
-
-        .sub-nav-bar a {
-            color: #00d2ff;
-            text-decoration: none;
-            font-size: 0.85rem;
-        }
-
-        /* Main Container & Layout */
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.5rem 1rem;
-            width: 100%;
-        }
-
-        main > h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: #fff;
-        }
-
-        @keyframes matrixFadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
+          flex-direction: column;
+          gap: 0.75rem;
+          background: rgba(13, 17, 28, 0.98);
+          padding: 1rem;
+          border-radius: 6px;
+          border: 1px solid rgba(0, 210, 255, 0.2);
         }
 
         main section {
-            animation: matrixFadeIn 0.6s ease-out forwards;
-            background: rgba(13, 17, 28, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+          padding: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        header h1 {
+          font-size: 1rem;
         }
 
-        /* Grid Layout & Cards */
-        .wishlist-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
-            gap: 1.25rem; 
-            margin-top: 1.5rem; 
-        }
-
-        .wishlist-item-card {
-            background: rgba(20, 25, 40, 0.6);
-            border: 1px solid rgba(0, 210, 255, 0.15);
-            border-radius: 6px;
-            padding: 1.25rem;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .wishlist-item-card h3 a {
-            color: #ffffff;
-            text-decoration: none;
-        }
-
-        .wishlist-item-card h3 a:hover {
-            color: #00d2ff;
-        }
-
-        .wishlist-item-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(0, 210, 255, 0.4);
-            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.15);
+        .wishlist-grid {
+          grid-template-columns: 1fr;
         }
 
         .directory-thumb {
-            display: block;
-            width: 100%;
-            height: 160px;
-            object-fit: contain;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 4px;
-            margin: 1rem 0;
-            padding: 8px;
-            border: 1px solid rgba(0, 210, 255, 0.2);
-            cursor: zoom-in;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+          height: 140px;
         }
-
-        .directory-thumb:hover { 
-            transform: scale(1.01); 
-            border-color: rgba(0, 210, 255, 0.5); 
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            background: rgba(13, 17, 28, 0.95);
-            border-top: 1px solid rgba(0, 210, 255, 0.2);
-            font-size: 0.85rem;
-            color: #718096;
-        }
-
-        /* Media Queries for Tablets & Mobile Devices */
-        @media (max-width: 992px) {
-            header {
-                gap: 1rem;
-            }
-            .header-utility-cluster {
-                margin-left: 0;
-                width: 100%;
-                justify-content: space-between;
-                order: 3;
-                margin-top: 0.75rem;
-            }
-            .product-search input[type="search"] {
-                width: 100%;
-            }
-            .product-search input[type="search"]:focus {
-                width: 100%;
-            }
-            .product-search-wrapper {
-                flex: 1;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle-btn {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-                width: 28px;
-                height: 24px;
-                cursor: pointer;
-            }
-
-            .menu-toggle-btn span {
-                width: 100%;
-                height: 3px;
-                background-color: #00d2ff;
-                border-radius: 2px;
-            }
-
-            nav {
-                display: none;
-                width: 100%;
-                order: 4;
-                margin-top: 1rem;
-            }
-
-            #nav-trigger:checked ~ nav {
-                display: block;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 0.75rem;
-                background: rgba(13, 17, 28, 0.98);
-                padding: 1rem;
-                border-radius: 6px;
-                border: 1px solid rgba(0, 210, 255, 0.2);
-            }
-
-            main section {
-                padding: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 1rem;
-            }
-
-            .wishlist-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .directory-thumb {
-                height: 140px;
-            }
-        }
+      }
     </style>
 
     <!-- Primary Meta Tags -->
-<meta name="title" content="Blue Corp Industries - Ecosystem Game Distribution & Hardware Matrix">
-<meta name="description" content="Explore custom PC configurations, digital game distribution, hardware telemetry, and active gaming community nodes at Blue Corp Industries.">
-<meta name="keywords" content="Blue Corp Industries, Game Showroom, PC Building, Resident Evil Village, God of War, Custom Hardware, South Africa Gaming">
-<meta name="robots" content="index, follow">
+    <meta
+      name="title"
+      content="Blue Corp Industries - Ecosystem Game Distribution & Hardware Matrix"
+    />
+    <meta
+      name="description"
+      content="Explore custom PC configurations, digital game distribution, hardware telemetry, and active gaming community nodes at Blue Corp Industries."
+    />
+    <meta
+      name="keywords"
+      content="Blue Corp Industries, Game Showroom, PC Building, Resident Evil Village, God of War, Custom Hardware, South Africa Gaming"
+    />
+    <meta name="robots" content="index, follow" />
 
-<!-- Open Graph / Social Media Sharing -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.bluecorpindustries.co.za/">
-<meta property="og:title" content="Blue Corp Industries - Digital Ecosystem">
-<meta property="og:description" content="Custom PC hardware configurations, game distribution, and developer community hub.">
-<meta property="og:image" content="../Assets/images/ChatGPT Image Sep 18, 2026, 03_52_37 PM (1).png">
-
-</head>
-<body>
-
+    <!-- Open Graph / Social Media Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.bluecorpindustries.co.za/" />
+    <meta
+      property="og:title"
+      content="Blue Corp Industries - Digital Ecosystem"
+    />
+    <meta
+      property="og:description"
+      content="Custom PC hardware configurations, game distribution, and developer community hub."
+    />
+    <meta
+      property="og:image"
+      content="../Assets/images/ChatGPT Image Sep 18, 2026, 03_52_37 PM (1).png"
+    />
+  </head>
+  <body>
     <header>
-        <a href="../index.html" class="logo-wrapper">
-            <img src="../Assets/images/ChatGPT Image Sep 18, 2026, 03_52_37 PM (1).png" class="header-logo-icon" alt="Blue Corp Industries Microchip Emblem">
-            <h1>Blue Corp <span>Industries.</span></h1>
-        </a>
-        
-        <input type="checkbox" id="nav-trigger">
-        <label for="nav-trigger" class="menu-toggle-btn"><span></span><span></span><span></span></label>
+      <a href="../index.html" class="logo-wrapper">
+        <img
+          src="../Assets/images/ChatGPT Image Sep 18, 2026, 03_52_37 PM (1).png"
+          class="header-logo-icon"
+          alt="Blue Corp Industries Microchip Emblem"
+        />
+        <h1>Blue Corp <span>Industries.</span></h1>
+      </a>
 
-        <nav>
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../Pages/AboutUs.html">About</a></li>
-                <li><a href="../Pages/contact.html">Contact</a></li>
-                <li><a href="../Pages/GameDetail.html">Games</a></li>
-                <li><a href="../Pages/enquiry.html">Enquiry</a></li>
-                <li><a href="../Pages/CommunityHub-Workshop.html">Community Hub</a></li>
-                <li><a href="../Pages/wishlist.html">Wishlist</a></li>
-                <li><a href="../Pages/UserProfile-Inventory.html">User Profile</a></li>
-                <li><a href="../Pages/Menu.html" class="active">Menu</a></li>
-            </ul>
-        </nav>
+      <input type="checkbox" id="nav-trigger" />
+      <label for="nav-trigger" class="menu-toggle-btn"
+        ><span></span><span></span><span></span
+      ></label>
 
-        <div class="header-utility-cluster">
-            <div class="product-search-wrapper">
-                <div class="product-search">
-                    <label for="product-search" class="visually-hidden">Search products</label>
-                    <input type="search" id="product-search" placeholder="Search games, PCs & gear..." autocomplete="off">
-                    <p id="search-count" class="search-count" role="status" aria-live="polite"></p>
-                </div>
-                <div id="search-suggestions" class="search-suggestions" hidden></div>
-            </div>
-            <button onclick="toggleCartDrawer(true)" class="cart-trigger-btn">
-                🛒 Cart <span class="bci-cart-counter-badge">0</span>
-            </button>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../Pages/AboutUs.html">About</a></li>
+          <li><a href="../Pages/contact.html">Contact</a></li>
+          <li><a href="../Pages/GameDetail.html">Games</a></li>
+          <li><a href="../Pages/enquiry.html">Enquiry</a></li>
+          <li>
+            <a href="../Pages/CommunityHub-Workshop.html">Community Hub</a>
+          </li>
+          <li><a href="../Pages/wishlist.html">Wishlist</a></li>
+          <li>
+            <a href="../Pages/UserProfile-Inventory.html">User Profile</a>
+          </li>
+          <li><a href="../Pages/Menu.html" class="active">Menu</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-utility-cluster">
+        <div class="product-search-wrapper">
+          <div class="product-search">
+            <label for="product-search" class="visually-hidden"
+              >Search products</label
+            >
+            <input
+              type="search"
+              id="product-search"
+              placeholder="Search games, PCs & gear..."
+              autocomplete="off"
+            />
+            <p
+              id="search-count"
+              class="search-count"
+              role="status"
+              aria-live="polite"
+            ></p>
+          </div>
+          <div id="search-suggestions" class="search-suggestions" hidden></div>
         </div>
+        <button onclick="toggleCartDrawer(true)" class="cart-trigger-btn">
+          🛒 Cart <span class="bci-cart-counter-badge">0</span>
+        </button>
+      </div>
     </header>
 
     <div class="sub-nav-bar">
-        <ul><li><a href="#directory">Sitemap Directory Matrix</a></li></ul>
+      <ul>
+        <li><a href="#directory">Sitemap Directory Matrix</a></li>
+      </ul>
     </div>
 
     <main>
-        <h2>Ecosystem Products & Operations Architecture</h2>
-        
-        <section id="directory">
-            <h2>Sitemap Navigation Links</h2>
-            <div class="wishlist-grid">
-                <div class="wishlist-item-card">
-                    <div>
-                        <h3><a href="../index.html">Home Landing</a></h3>
-                        <img src="../Assets/images/Logo - Edited.png" alt="Home landing preview node" class="directory-thumb lightbox-trigger-img">
-                        <p>Main portal welcoming screen and overview updates.</p>
-                    </div>
-                </div>
-                <div class="wishlist-item-card">
-                    <div>
-                        <h3><a href="../Pages/AboutUs.html">About Us</a></h3>
-                        <img src="../Assets/images/explaining.jpg" alt="About us node overview preview" class="directory-thumb lightbox-trigger-img">
-                        <p>Platform mission parameters, core values, and vision statements.</p>
-                    </div>
-                </div>
-                <div class="wishlist-item-card">
-                    <div>
-                        <h3><a href="../Pages/contact.html">Contact Hub</a></h3>
-                        <img src="../Assets/images/Call Icon.jpg" alt="Contact hub support line visual" class="directory-thumb lightbox-trigger-img">
-                        <p>Physical base coordinates map location and support nodes.</p>
-                    </div>
-                </div>
-                <div class="wishlist-item-card">
-                    <div>
-                        <h3><a href="../Pages/GameDetail.html">Games Showroom</a></h3>
-                        <img src="../Assets/images/games pc&consol.jpg" alt="Games showroom catalog showcase preview" class="directory-thumb lightbox-trigger-img">
-                        <p>Catalog pricing, reviews, specs, and screenshots matrix.</p>
-                    </div>
-                </div>
-                <div class="wishlist-item-card">
-                    <div>
-                        <h3><a href="../Pages/enquiry.html">Enquiry Desk</a></h3>
-                        <img src="../Assets/images/Message Icon - Edited.png" alt="Enquiry desk secure message delivery icon" class="directory-thumb lightbox-trigger-img">
-                        <p>Submit solo developer programs and beginner build entries.</p>
-                    </div>
-                </div>
-                <div class="wishlist-item-card">
-                    <div>
-                        <h3><a href="../Pages/CommunityHub-Workshop.html">Community Hub</a></h3>
-                        <img src="../Assets/images/gamers.jpg" alt="Community hub workshop preview visual" class="directory-thumb lightbox-trigger-img">
-                        <p>Active discussion rooms, guides, and testing mod file uploads.</p>
-                    </div>
-                </div>
+      <h2>Ecosystem Products & Operations Architecture</h2>
+
+      <section id="directory">
+        <h2>Sitemap Navigation Links</h2>
+        <div class="wishlist-grid">
+          <div class="wishlist-item-card">
+            <div>
+              <h3><a href="../index.html">Home Landing</a></h3>
+              <img
+                src="../Assets/images/Logo - Edited.png"
+                alt="Home landing preview node"
+                class="directory-thumb lightbox-trigger-img"
+              />
+              <p>Main portal welcoming screen and overview updates.</p>
             </div>
-        </section>
+          </div>
+          <div class="wishlist-item-card">
+            <div>
+              <h3><a href="../Pages/AboutUs.html">About Us</a></h3>
+              <img
+                src="../Assets/images/explaining.jpg"
+                alt="About us node overview preview"
+                class="directory-thumb lightbox-trigger-img"
+              />
+              <p>
+                Platform mission parameters, core values, and vision statements.
+              </p>
+            </div>
+          </div>
+          <div class="wishlist-item-card">
+            <div>
+              <h3><a href="../Pages/contact.html">Contact Hub</a></h3>
+              <img
+                src="../Assets/images/Call Icon.jpg"
+                alt="Contact hub support line visual"
+                class="directory-thumb lightbox-trigger-img"
+              />
+              <p>Physical base coordinates map location and support nodes.</p>
+            </div>
+          </div>
+          <div class="wishlist-item-card">
+            <div>
+              <h3><a href="../Pages/GameDetail.html">Games Showroom</a></h3>
+              <img
+                src="../Assets/images/games pc&consol.jpg"
+                alt="Games showroom catalog showcase preview"
+                class="directory-thumb lightbox-trigger-img"
+              />
+              <p>Catalog pricing, reviews, specs, and screenshots matrix.</p>
+            </div>
+          </div>
+          <div class="wishlist-item-card">
+            <div>
+              <h3><a href="../Pages/enquiry.html">Enquiry Desk</a></h3>
+              <img
+                src="../Assets/images/Message Icon - Edited.png"
+                alt="Enquiry desk secure message delivery icon"
+                class="directory-thumb lightbox-trigger-img"
+              />
+              <p>Submit solo developer programs and beginner build entries.</p>
+            </div>
+          </div>
+          <div class="wishlist-item-card">
+            <div>
+              <h3>
+                <a href="../Pages/CommunityHub-Workshop.html">Community Hub</a>
+              </h3>
+              <img
+                src="../Assets/images/gamers.jpg"
+                alt="Community hub workshop preview visual"
+                class="directory-thumb lightbox-trigger-img"
+              />
+              <p>
+                Active discussion rooms, guides, and testing mod file uploads.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Blue Corp Industries. Automated Pricing Framework System.</p>
-        <p>Cloud Infrastructure Node: ZA-South Base Server Frame</p>
+      <p>
+        &copy; 2026 Blue Corp Industries. Automated Pricing Framework System.
+      </p>
+      <p>Cloud Infrastructure Node: ZA-South Base Server Frame</p>
     </footer>
 
     <script src="../js/script.js"></script>
-</body>
+  </body>
 </html>
