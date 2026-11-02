@@ -217,14 +217,14 @@ nav a:hover, nav a.active {
 
 .search-suggestions {
     position: absolute;
-    top: calc(100% + 6px);
+    top: calc(100% + 8px);
     left: 0;
     width: 100%;
-    max-width: 240px;
+    min-width: 280px;
     background: #0d111c;
-    border: 1px solid rgba(0, 210, 255, 0.3);
-    border-radius: 4px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 210, 255, 0.4);
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
     z-index: 10000;
     overflow: hidden;
 }
