@@ -1,0 +1,6 @@
+# Blue Corp Industries - Robots Telemetry Indexer Instructions
+User-agent: *
+Allow: /
+
+# Sitemap Location Node
+Sitemap: https://www.bluecorpindustries.co.za/sitemap.xml

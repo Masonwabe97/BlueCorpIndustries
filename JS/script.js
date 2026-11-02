@@ -1,6 +1,6 @@
 /**
  * Blue Corp Industries - Global Core Script & Engine
- * Handles navigation, lightbox inspection, live search, suggestions, cart stash, and EmailJS form dispatch with validation.
+ * Handles navigation, lightbox inspection, live multi-page search, suggestions, cart stash, and EmailJS form dispatch with validation.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -58,40 +58,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================================
-       2. LIVE PRODUCT SEARCH & SUGGESTIONS ENGINE
+       2. GLOBAL ECOSYSTEM SEARCH & SUGGESTIONS ENGINE
        ========================================================== */
     const searchInput = document.getElementById('product-search');
     const searchSuggestions = document.getElementById('search-suggestions');
     const searchCount = document.getElementById('search-count');
 
     if (searchInput) {
-        const searchableItems = Array.from(document.querySelectorAll('.showroom-card, .wishlist-item-card, .guide-col-item, .contact-col-item, .featured-card')).map(card => {
+        // Master global index mapping items across all site pages
+        const isInPagesDir = window.location.pathname.includes("/Pages/");
+        const prefix = isInPagesDir ? "" : "Pages/";
+
+        const masterSearchIndex = [
+            // Catalog & Games
+            { title: "Resident Evil Village", category: "Game / Catalog", url: `${isInPagesDir ? "GameDetail.html" : "Pages/GameDetail.html"}#resident-evil`, text: "resident evil village capcom 2021 r600 survival horror" },
+            { title: "God of War IV", category: "Game / Catalog", url: `${isInPagesDir ? "GameDetail.html" : "Pages/GameDetail.html"}#god-of-war`, text: "god of war iv kratos atreus norse r700" },
+            { title: "Peak", category: "Game / Catalog", url: `${isInPagesDir ? "GameDetail.html" : "Pages/GameDetail.html"}#peak`, text: "peak puzzle strategy indie r330" },
+            
+            // Enquiry & Intake
+            { title: "PC Build Assistance (Beginners)", category: "Enquiry Desk", url: `${isInPagesDir ? "enquiry.html" : "Pages/enquiry.html"}#intake`, text: "pc build assistance beginners hardware intake enquiry" },
+            { title: "Solo Developer Program Enrollment", category: "Enquiry Desk", url: `${isInPagesDir ? "enquiry.html" : "Pages/enquiry.html"}#intake`, text: "solo developer program enrollment enquiry" },
+            
+            // Contact & Support
+            { title: "Voice Support Desk & Map", category: "Support Hub", url: `${isInPagesDir ? "contact.html" : "Pages/contact.html"}#desk`, text: "voice support desk map 32 frere rd vincent kugompo city" },
+            
+            // Community & Guides
+            { title: "Community Discussions Feed", category: "Community Hub", url: `${isInPagesDir ? "CommunityHub-Workshop.html" : "Pages/CommunityHub-Workshop.html"}#discussions`, text: "community discussions feed patches developers" },
+            { title: "Beginner Custom Overclocking Setup", category: "Guide Node", url: `${isInPagesDir ? "CommunityHub-Workshop.html" : "Pages/CommunityHub-Workshop.html"}#guides`, text: "beginner custom overclocking setup guide hardware" },
+            { title: "Transaction Routing Debug Vectors", category: "Guide Node", url: `${isInPagesDir ? "CommunityHub-Workshop.html" : "Pages/CommunityHub-Workshop.html"}#guides`, text: "transaction routing debug vectors network" },
+            { title: "Tactical Alliance HD Texture Pack", category: "Workshop Mod", url: `${isInPagesDir ? "CommunityHub-Workshop.html" : "Pages/CommunityHub-Workshop.html"}#mods`, text: "tactical alliance hd texture pack mod" },
+            
+            // Account & Corporate
+            { title: "Operator Profile & Inventory", category: "User Account", url: `${isInPagesDir ? "UserProfile-Inventory.html" : "Pages/UserProfile-Inventory.html"}#profile`, text: "operator profile inventory license keys clearance tier-1" },
+            { title: "About Us Mission & Vision", category: "Corporate", url: `${isInPagesDir ? "AboutUs.html" : "Pages/AboutUs.html"}#mission`, text: "about us mission vision developer global PC building" }
+        ];
+
+        // Also index local elements if present on the current page
+        const localCards = Array.from(document.querySelectorAll('.showroom-card, .wishlist-item-card, .guide-col-item, .contact-col-item, .featured-card')).map(card => {
             const titleEl = card.querySelector('h3, h4');
             const linkEl = card.querySelector('a');
             return {
-                element: card,
                 title: titleEl ? titleEl.textContent.trim() : 'Telemetry Item',
+                category: 'Local View',
                 text: card.textContent.toLowerCase(),
-                url: linkEl ? linkEl.href : '#'
+                url: linkEl ? linkEl.href : window.location.href
             };
         });
+
+        const combinedIndex = [...masterSearchIndex, ...localCards];
 
         searchInput.addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase().trim();
             let matchCount = 0;
 
-            searchableItems.forEach(item => {
-                if (item.text.includes(query) || query === '') {
-                    item.element.style.display = '';
-                    item.element.style.animation = 'matrixFadeIn 0.4s ease-out forwards';
-                    matchCount++;
-                } else {
-                    item.element.style.display = 'none';
-                }
-            });
+            const matches = combinedIndex.filter(item => item.text.includes(query));
+            matchCount = matches.length;
 
             if (searchCount) {
-                searchCount.textContent = query === '' ? '' : `Found ${matchCount} matching telemetry node${matchCount === 1 ? '' : 's'}.`;
+                searchCount.textContent = query === '' ? '' : `Found ${matchCount} matching ecosystem node${matchCount === 1 ? '' : 's'}.`;
             }
 
             if (searchSuggestions) {
@@ -99,12 +123,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     searchSuggestions.hidden = true;
                     searchSuggestions.innerHTML = '';
                 } else {
-                    const matches = searchableItems.filter(item => item.text.includes(query)).slice(0, 5);
-                    if (matches.length > 0) {
+                    const topMatches = matches.slice(0, 6);
+                    if (topMatches.length > 0) {
                         searchSuggestions.hidden = false;
-                        searchSuggestions.innerHTML = matches.map(m => `
+                        searchSuggestions.innerHTML = topMatches.map(m => `
                             <div class="search-suggestion-item" style="padding: 10px 15px; cursor: pointer; border-bottom: 1px solid rgba(0,210,255,0.1); transition: background 0.2s;" onmouseover="this.style.background='rgba(0,210,255,0.1)'" onmouseout="this.style.background='transparent'" onclick="window.location.href='${m.url}'">
                                 <strong style="color: #00d2ff; display: block; font-size: 0.9rem;">${m.title}</strong>
+                                <span style="font-size: 0.75rem; color: #94a3b8;">${m.category}</span>
                             </div>
                         `).join('');
                     } else {
@@ -297,10 +322,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (!isValid) {
                     showNotification("Error: Please complete all required telemetry parameters before dispatch.");
-                    return; // Stop form execution if empty
+                    return;
                 }
 
-                // Proceed with EmailJS dispatch if valid
                 const submitBtn = form.querySelector('button[type="submit"]');
                 const originalText = submitBtn ? submitBtn.textContent : 'Submit';
 
@@ -315,7 +339,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         showNotification("Success: Message routed successfully to Blue Corp Operations!");
                         form.reset();
 
-                        // Reset field border styles
                         requiredFields.forEach(field => {
                             field.style.borderColor = 'rgba(0,210,255,0.3)';
                         });

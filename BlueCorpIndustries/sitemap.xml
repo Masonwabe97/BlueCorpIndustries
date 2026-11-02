@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Main Home Landing Node -->
+  <url>
+    <loc>https://www.bluecorpindustries.co.za/index.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Game Showroom & Details Matrix -->
+  <url>
+    <loc>https://www.bluecorpindustries.co.za/Pages/GameDetail.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Community Hub & Workshop Network -->
+  <url>
+    <loc>https://www.bluecorpindustries.co.za/Pages/CommunityHub-Workshop.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Custom Configuration Intake Desk -->
+  <url>
+    <loc>https://www.bluecorpindustries.co.za/Pages/enquiry.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Contact Hub Operations Center -->
+  <url>
+    <loc>https://www.bluecorpindustries.co.za/Pages/contact.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Corporate Architecture & Profiles -->
+  <url>
+    <loc>https://www.bluecorpindustries.co.za/Pages/AboutUs.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Operator Account Telemetry & Inventory -->
+  <url>
+    <loc>https://www.bluecorpindustries.co.za/Pages/UserProfile-Inventory.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>
