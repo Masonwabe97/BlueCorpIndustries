@@ -6,27 +6,388 @@
     <title>Game Showroom - Blue Corp Industries</title>
     <link rel="stylesheet" href="../css/style.css">
     <style>
-        .logo-wrapper { display: flex !important; align-items: center !important; gap: 0.75rem !important; text-decoration: none; }
-        .header-logo-icon { width: 35px !important; height: auto !important; margin: 0 !important; border: none !important; box-shadow: none !important; background: transparent !important; }
-        header h1 { margin-bottom: 0 !important; white-space: nowrap; }
-        @keyframes matrixFadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        main section, main article { animation: matrixFadeIn 0.6s ease-out forwards; background: rgba(13, 17, 28, 0.4); border: 1px solid rgba(255, 255, 255, 0.03); border-radius: 8px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25); transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; }
-        main section:hover, main article:hover { transform: translateY(-3px); border-color: rgba(0, 210, 255, 0.25); box-shadow: 0 8px 30px rgba(0, 210, 255, 0.1); }
-        .showroom-card { background: rgba(20, 25, 40, 0.6); border: 1px solid rgba(0, 210, 255, 0.15); border-radius: 6px; padding: 1.25rem; transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; }
-        .showroom-card img, .screenshot-gallery img { display: block; width: 100%; height: 180px; object-fit: contain; background: rgba(0, 0, 0, 0.3); border-radius: 4px; margin-top: 1rem; padding: 6px; border: 1px solid rgba(0, 210, 255, 0.2); cursor: zoom-in; transition: transform 0.3s ease, border-color 0.3s ease; }
-        .showroom-card img:hover, .screenshot-gallery img:hover { transform: scale(1.01); border-color: rgba(0, 210, 255, 0.5); }
-        
-        /* Header Utility Styles */
-        .header-utility-cluster { display: flex; align-items: center; gap: 1rem; margin-left: auto; margin-right: 1.5rem; position: relative; }
-        .product-search-wrapper { position: relative; margin: 0; }
-        .product-search input[type="search"] { padding: 6px 12px; background: rgba(13, 17, 28, 0.8); border: 1px solid rgba(0, 210, 255, 0.3); border-radius: 4px; color: #fff; font-size: 0.85rem; width: 180px; outline: none; transition: width 0.3s ease, border-color 0.3s ease; }
-        .product-search input[type="search"]:focus { width: 240px; border-color: #00d2ff; box-shadow: 0 0 10px rgba(0, 210, 255, 0.25); }
-        .search-count { position: absolute; top: 100%; left: 0; font-size: 0.75rem; color: #00d2ff; margin-top: 4px; white-space: nowrap; }
-        .search-suggestions { position: absolute; top: calc(100% + 6px); left: 0; width: 240px; background: #0d111c; border: 1px solid rgba(0,210,255,0.3); border-radius: 4px; box-shadow: 0 8px 25px rgba(0,0,0,0.6); z-index: 10000; overflow: hidden; }
-        .cart-trigger-btn { background: rgba(0, 210, 255, 0.1); border: 1px solid #00d2ff; color: #00d2ff; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 0.85rem; display: flex; align-items: center; gap: 6px; transition: background 0.2s; }
-        .cart-trigger-btn:hover { background: rgba(0, 210, 255, 0.2); }
-        .bci-cart-counter-badge { background: #ff5252; color: #fff; font-size: 0.65rem; padding: 1px 5px; border-radius: 50px; display: none; }
-        .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+        /* Base Reset & Box Sizing */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #080b12;
+            color: #e0e6ed;
+        }
+
+        /* Header Layout & Responsiveness */
+        header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1.5rem;
+            background: rgba(13, 17, 28, 0.95);
+            border-bottom: 1px solid rgba(0, 210, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .logo-wrapper { 
+            display: flex !important; 
+            align-items: center !important; 
+            gap: 0.75rem !important; 
+            text-decoration: none; 
+            color: #fff;
+        }
+
+        .header-logo-icon { 
+            width: 35px !important; 
+            height: auto !important; 
+            margin: 0 !important; 
+            border: none !important; 
+            box-shadow: none !important; 
+            background: transparent !important; 
+        }
+
+        header h1 { 
+            margin: 0 !important; 
+            font-size: 1.25rem;
+            white-space: nowrap; 
+        }
+
+        header h1 span {
+            color: #00d2ff;
+        }
+
+        /* Nav Menu Styling */
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #a0aec0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: #00d2ff;
+        }
+
+        #nav-trigger, .menu-toggle-btn {
+            display: none;
+        }
+
+        /* Header Utility Cluster Styles */
+        .header-utility-cluster { 
+            display: flex; 
+            align-items: center; 
+            gap: 0.75rem; 
+            margin-left: auto; 
+            position: relative; 
+        }
+
+        .product-search-wrapper { 
+            position: relative; 
+            margin: 0; 
+        }
+
+        .product-search input[type="search"] { 
+            padding: 6px 12px; 
+            background: rgba(13, 17, 28, 0.8); 
+            border: 1px solid rgba(0, 210, 255, 0.3); 
+            border-radius: 4px; 
+            color: #fff; 
+            font-size: 0.85rem; 
+            width: 160px; 
+            outline: none; 
+            transition: width 0.3s ease, border-color 0.3s ease; 
+        }
+
+        .product-search input[type="search"]:focus { 
+            width: 200px; 
+            border-color: #00d2ff; 
+            box-shadow: 0 0 10px rgba(0, 210, 255, 0.25); 
+        }
+
+        .search-count { 
+            position: absolute; 
+            top: 100%; 
+            left: 0; 
+            font-size: 0.75rem; 
+            color: #00d2ff; 
+            margin-top: 4px; 
+            white-space: nowrap; 
+        }
+
+        .search-suggestions { 
+            position: absolute; 
+            top: calc(100% + 6px); 
+            left: 0; 
+            width: 100%;
+            max-width: 240px; 
+            background: #0d111c; 
+            border: 1px solid rgba(0,210,255,0.3); 
+            border-radius: 4px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.6); 
+            z-index: 10000; 
+            overflow: hidden; 
+        }
+
+        .cart-trigger-btn { 
+            background: rgba(0, 210, 255, 0.1); 
+            border: 1px solid #00d2ff; 
+            color: #00d2ff; 
+            padding: 6px 12px; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            font-size: 0.85rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 6px; 
+            white-space: nowrap;
+            transition: background 0.2s; 
+        }
+
+        .cart-trigger-btn:hover { 
+            background: rgba(0, 210, 255, 0.2); 
+        }
+
+        .bci-cart-counter-badge { 
+            background: #ff5252; 
+            color: #fff; 
+            font-size: 0.65rem; 
+            padding: 1px 5px; 
+            border-radius: 50px; 
+            display: none; 
+        }
+
+        .visually-hidden { 
+            position: absolute; 
+            width: 1px; 
+            height: 1px; 
+            padding: 0; 
+            margin: -1px; 
+            overflow: hidden; 
+            clip: rect(0, 0, 0, 0); 
+            border: 0; 
+        }
+
+        /* Sub-nav Bar */
+        .sub-nav-bar {
+            background: rgba(13, 17, 28, 0.6);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 0.5rem 1.5rem;
+        }
+
+        .sub-nav-bar ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            overflow-x: auto;
+            white-space: nowrap;
+            justify-content: center;
+        }
+
+        .sub-nav-bar a {
+            color: #00d2ff;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        /* Main Container & Layout */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem;
+            width: 100%;
+        }
+
+        main > h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        @keyframes matrixFadeIn { 
+            from { opacity: 0; transform: translateY(15px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+
+        main section, main article { 
+            animation: matrixFadeIn 0.6s ease-out forwards; 
+            background: rgba(13, 17, 28, 0.4); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            border-radius: 8px; 
+            padding: 1.5rem; 
+            margin-bottom: 2rem; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25); 
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; 
+        }
+
+        main section:hover, main article:hover { 
+            transform: translateY(-3px); 
+            border-color: rgba(0, 210, 255, 0.25); 
+            box-shadow: 0 8px 30px rgba(0, 210, 255, 0.1); 
+        }
+
+        /* Showroom Grid & Cards */
+        .showroom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .showroom-card { 
+            background: rgba(20, 25, 40, 0.6); 
+            border: 1px solid rgba(0, 210, 255, 0.15); 
+            border-radius: 6px; 
+            padding: 1.25rem; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; 
+        }
+
+        .showroom-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 210, 255, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.15);
+        }
+
+        .showroom-card img, .screenshot-gallery img { 
+            display: block; 
+            width: 100%; 
+            height: 180px; 
+            object-fit: contain; 
+            background: rgba(0, 0, 0, 0.3); 
+            border-radius: 4px; 
+            margin-top: 1rem; 
+            padding: 6px; 
+            border: 1px solid rgba(0, 210, 255, 0.2); 
+            cursor: zoom-in; 
+            transition: transform 0.3s ease, border-color 0.3s ease; 
+        }
+
+        .showroom-card img:hover, .screenshot-gallery img:hover { 
+            transform: scale(1.01); 
+            border-color: rgba(0, 210, 255, 0.5); 
+        }
+
+        .screenshot-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(13, 17, 28, 0.95);
+            border-top: 1px solid rgba(0, 210, 255, 0.2);
+            font-size: 0.85rem;
+            color: #718096;
+        }
+
+        /* Media Queries for Tablets & Mobile Devices */
+        @media (max-width: 992px) {
+            header {
+                gap: 1rem;
+            }
+            .header-utility-cluster {
+                margin-left: 0;
+                width: 100%;
+                justify-content: space-between;
+                order: 3;
+                margin-top: 0.75rem;
+            }
+            .product-search input[type="search"] {
+                width: 100%;
+            }
+            .product-search input[type="search"]:focus {
+                width: 100%;
+            }
+            .product-search-wrapper {
+                flex: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle-btn {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                width: 28px;
+                height: 24px;
+                cursor: pointer;
+            }
+
+            .menu-toggle-btn span {
+                width: 100%;
+                height: 3px;
+                background-color: #00d2ff;
+                border-radius: 2px;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+                order: 4;
+                margin-top: 1rem;
+            }
+
+            #nav-trigger:checked ~ nav {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.75rem;
+                background: rgba(13, 17, 28, 0.98);
+                padding: 1rem;
+                border-radius: 6px;
+                border: 1px solid rgba(0, 210, 255, 0.2);
+            }
+
+            main section, main article {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1rem;
+            }
+
+            .showroom-grid, .screenshot-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .showroom-card img, .screenshot-gallery img {
+                height: 150px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -85,21 +446,27 @@
             <h2>Exciting Title Catalog Matrix</h2>
             <div class="showroom-grid">
                 <div class="showroom-card">
-                    <h3 style="color:#ffffff">Resident Evil Village</h3>
-                    <p style="color:var(--proposal-mint)">Price Parameters: R600</p>
-                    <img src="../Assets/images/Resident Evil village.jpg" alt="Resident Evil Village box cover artwork" class="lightbox-trigger-img">
+                    <div>
+                        <h3 style="color:#ffffff">Resident Evil Village</h3>
+                        <p style="color:var(--proposal-mint, #00ffaa)">Price Parameters: R600</p>
+                        <img src="../Assets/images/Resident Evil village.jpg" alt="Resident Evil Village box cover artwork" class="lightbox-trigger-img">
+                    </div>
                     <button class="bci-add-to-cart-btn" data-name="Resident Evil Village" data-price="600" data-image="../Assets/images/Resident Evil village.jpg" style="width:100%; margin-top:1rem; background:#00d2ff; color:#000; border:none; padding:8px; border-radius:4px; font-weight:bold; cursor:pointer;">Add to Cart Stash</button>
                 </div>
                 <div class="showroom-card">
-                    <h3 style="color:#ffffff">God of War IV</h3>
-                    <p style="color:var(--proposal-cyan)">Price Parameters: R700</p>
-                    <img src="../Assets/images/God_of_War_4_cover.webp" alt="God of War 4 cover art layout profile image" class="lightbox-trigger-img">
+                    <div>
+                        <h3 style="color:#ffffff">God of War IV</h3>
+                        <p style="color:var(--proposal-cyan, #00d2ff)">Price Parameters: R700</p>
+                        <img src="../Assets/images/God_of_War_4_cover.webp" alt="God of War 4 cover art layout profile image" class="lightbox-trigger-img">
+                    </div>
                     <button class="bci-add-to-cart-btn" data-name="God of War IV" data-price="700" data-image="../Assets/images/God_of_War_4_cover.webp" style="width:100%; margin-top:1rem; background:#00d2ff; color:#000; border:none; padding:8px; border-radius:4px; font-weight:bold; cursor:pointer;">Add to Cart Stash</button>
                 </div>
                 <div class="showroom-card">
-                    <h3 style="color:#ffffff">Peak</h3>
-                    <p style="color:var(--neon-pink)">Price Parameters: R330</p>
-                    <img src="../Assets/images/Peak.jpg" alt="Peak adventure puzzle experience cover visual profile" class="lightbox-trigger-img">
+                    <div>
+                        <h3 style="color:#ffffff">Peak</h3>
+                        <p style="color:var(--neon-pink, #ff007f)">Price Parameters: R330</p>
+                        <img src="../Assets/images/Peak.jpg" alt="Peak adventure puzzle experience cover visual profile" class="lightbox-trigger-img">
+                    </div>
                     <button class="bci-add-to-cart-btn" data-name="Peak" data-price="330" data-image="../Assets/images/Peak.jpg" style="width:100%; margin-top:1rem; background:#00d2ff; color:#000; border:none; padding:8px; border-radius:4px; font-weight:bold; cursor:pointer;">Add to Cart Stash</button>
                 </div>
             </div>
@@ -109,7 +476,7 @@
             <h2>Resident Evil Village</h2>
             <p>Released by Capcom in 2021, Resident Evil Village follows Ethan Winters as he navigates a snowy, myth-laden European village to rescue his kidnapped infant daughter from four eccentric mutant lords.</p>
             <p><strong>System Specifications Required:</strong> Intel Core i5-7500 / AMD Ryzen 3 1200 CPU, 8 GB RAM, and an NVIDIA GeForce GTX 1050 Ti 4GB.</p>
-            <div class="screenshot-gallery" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:1rem;">
+            <div class="screenshot-gallery">
                 <img src="../Assets/images/gameplay screenshot 1.jpg" alt="Resident Evil gameplay screenshot 1" class="lightbox-trigger-img">
                 <img src="../Assets/images/gameplay screenshot 2.jpg" alt="Resident Evil gameplay screenshot 2" class="lightbox-trigger-img">
                 <img src="../Assets/images/gameplay screenshot 3.jpg" alt="Resident Evil gameplay screenshot 3" class="lightbox-trigger-img">
@@ -120,7 +487,7 @@
             <h2>God of War IV</h2>
             <p>God of War IV follows Kratos and his son Atreus as they journey through the Norse realms on a deeply emotional quest to scatter his late wife's ashes at the highest peak.</p>
             <p><strong>System Specifications Required:</strong> Intel Core i5-6600K / AMD Ryzen 5 1400 CPU, 8 GB RAM, and an NVIDIA GeForce GTX 970 4GB.</p>
-            <div class="screenshot-gallery" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:1rem;">
+            <div class="screenshot-gallery">
                 <img src="../Assets/images/gameplay screenshot 4.jpg" alt="God of War gameplay screenshot 4" class="lightbox-trigger-img">
                 <img src="../Assets/images/gameplay screenshot 5.jpg" alt="God of War gameplay screenshot 5" class="lightbox-trigger-img">
                 <img src="../Assets/images/gameplay screenshot 6.jpg" alt="God of War gameplay screenshot 6" class="lightbox-trigger-img">
@@ -131,7 +498,7 @@
             <h2>Peak</h2>
             <p>Peak is a minimalist indie puzzle strategy title developed inside the Blue Corp program matrix challenging logic and strategical positioning parameters.</p>
             <p><strong>System Specifications Required:</strong> Intel Core i3-6100 / AMD Ryzen 3 1200 CPU, 4 GB RAM, and an NVIDIA GeForce GTX 750 2GB.</p>
-            <div class="screenshot-gallery" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:1rem;">
+            <div class="screenshot-gallery">
                 <img src="../Assets/images/gameplay screenshot 7.jpg" alt="Peak gameplay screenshot 7" class="lightbox-trigger-img">
                 <img src="../Assets/images/gameplay screenshot 8.jpg" alt="Peak gameplay screenshot 8" class="lightbox-trigger-img">
                 <img src="../Assets/images/gameplay screenshot 9.jpg" alt="Peak gameplay screenshot 9" class="lightbox-trigger-img">
