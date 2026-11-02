@@ -1,134 +1,135 @@
-# BlueCorpIndustries
-===========================
-#Organisation 
+# Blue Corp Industries
 
-#Blue Corp Industries: 
+Blue Corp Industries is a front-end gaming and PC hardware ecosystem website. The project brings together a game catalogue, product and PC-building information, community resources, customer support, enquiries, a wishlist, and a user inventory in one website.
 
-Blue Corp Industries is a well-known company for its ability to sell and advertise video games for all consols and even PC for a reasonable price, along that it also has PC build assistance for beginners. The only complaint about the company is that it never had a proper website so people would always end up on shady websites when trying to access their website. 
-=====================================
-#Mission: Help game developers become global, make buying, selling and playing games easier for consumers while helping them build their own PCs at an affordable price. 
+The website is built with **HTML, CSS, and JavaScript**, with a dark cyber-inspired interface and responsive page layouts.
 
-#Vision: Create an open, flexible, and scalable digital and physical ecosystem for the global gaming community. 
+## Project Overview
 
-Target audience: This website is for anyone who wants play PC and consol games, and aged 18 to 45. 
+The platform is intended to make it easier for customers to:
+- Explore featured PC and console games and view game information, screenshots, and system requirements.
+- Browse products and PC-building assistance.
+- Add displayed products to a shopping cart.
+- Save items to a wishlist and view sale-monitoring information.
+- Find community discussions, guides, and workshop content.
+- Contact the business or submit a PC-building and developer-program enquiry.
+- View a sample user profile and digital inventory.
 
-#Website Goals and Objectives 
+## Website Pages
 
-Enrol solo developers: lower platform fees than competitors to attract exclusive titles. 
+| Page | Description |
+| --- | --- |
+| `index.html` | Homepage with featured games, product highlights, and site navigation. |
+| `Pages/AboutUs.html` | Company background, mission, vision, and values. |
+| `Pages/contact.html` | Contact information and customer support form. |
+| `Pages/enquiry.html` | Enquiry form for PC-building assistance and solo developer programme requests. |
+| `Pages/GameDetail.html` | Game catalogue with descriptions, system requirements, and gameplay screenshots. |
+| `Pages/Products.html` | Products, services, user-profile and package-tracking content. |
+| `Pages/wishlist.html` | Wishlist items and sale-alert interface. |
+| `Pages/UserProfile-Inventory.html` | User profile, digital inventory, and account information. |
+| `Pages/CommunityHub-Workshop.html` | Community discussions, guides, member information, and workshop content. |
+| `Pages/Menu.html` | Directory of the website's main sections. |
 
-Host festivals: Launch online demo / play test events on live stream to attract new fans. 
+## Main Features
 
-Launch commission systems: Pay big-time streamers a percentage of game sales to play your new game through a unique link. 
+### Search and navigation
+- Shared navigation and responsive page layouts.
+- JavaScript-powered search suggestions for games, services, support information, community content, and other site sections.
+- Search results can direct users to relevant sections of the website.
 
-Web page refinement: Create landing pages for the trending game tags on the website like: “Co-op, Competitive multiplayer”. 
+### Game catalogue and media
+- Game descriptions and system requirement information.
+- Gameplay screenshot galleries.
+- Image lightbox for viewing supported images at a larger size.
 
-Wishlist notifications: Send notifications to email users about the game that they Wishlist to inform them when the game is on sale. 
+### Shopping cart
+- Add-to-cart controls on supported product cards.
+- Cart drawer with item quantities and removal controls.
+- Cart contents are stored in the browser using `localStorage`, so they remain available in that browser between page visits.
 
-Seasonal Rewards Badges: Reward players for buying games 
+### Wishlist and account content
+- Wishlist cards with sale-monitoring and alert interface elements.
+- User profile and digital inventory display.
+- Package-tracking and purchase-compensation example content.
 
-#KPIs: 
+### Contact and enquiry forms
+- Required-field validation for the contact and enquiry forms.
+- EmailJS integration for form submission.
+- On-page status and notification feedback.
 
-1.#“Reach 25 million by next year’s Christmas sales”   
+### Community and workshop
+- Community discussion and member sections.
+- Hardware guides and workshop/mod content.
+- Supporting images and visual resources.
 
-Launch hype: Promote exclusive holiday games along with its DLCs (Downloadable Content). 
+> **Note:** Some website content demonstrates proposed or simulated platform workflows. For example, wishlist sale alerts and package-tracking examples should not be interpreted as confirmation of a live notification or courier service. EmailJS form delivery also depends on the configured EmailJS service, template, public key, and account settings.
 
-Gamification: Run daily flash sales, plushies, and voting events  
+## Technology Stack
 
-===========================
+- **HTML5** – page structure and content.
+- **CSS3** – styling, responsive layouts, and visual effects.
+- **JavaScript** – search, lightbox, cart interactions, form validation, and interface feedback.
+- **EmailJS** – contact and enquiry form delivery.
+- **Browser localStorage** – client-side shopping cart persistence.
 
-2.#“Increase gross revenue within the next 8 months” 
+## Project Structure
 
-DLC Promotion: Encourage DLC and microtransactions  
+The main website files are organised as follows:
 
-Bundle Optimization: Auto-recommend games that are like the player’s playlist to increase average customer spending. 
+```text
+BlueCorpIndustries/
+├── index.html
+├── css/
+│   └── style.css
+├── JS/
+│   ├── GameDetail.js
+│   ├── Product.js
+│   ├── UserProfile-Inventory.js
+│   ├── Wishlist.js
+│   ├── contact.js
+│   ├── enquiry.js
+│   ├── globalsearch.js
+│   └── script.js
+├── Assets/
+│   └── images/
+└── Pages/
+    ├── AboutUs.html
+    ├── CommunityHub-Workshop.html
+    ├── GameDetail.html
+    ├── Menu.html
+    ├── Products.html
+    ├── UserProfile-Inventory.html
+    ├── contact.html
+    ├── enquiry.html
+    └── wishlist.html
+```
 
-#Current Website Analysis 
+The repository also contains a `BlueCorpIndustries/` subfolder with a secondary copy of project resources, including sitemap and crawler configuration files. Check the paths referenced by each page when working with either copy.
 
-#Strengths: 
+## Running the Website Locally
 
-It’s well known 
+1. Clone or download this repository.
+2. Open the project folder in Visual Studio Code or another code editor.
+3. Open `index.html` in a browser, or use the Live Server extension in Visual Studio Code.
+4. Navigate through the website using the page navigation.
+5. If you make changes to CSS, JavaScript, or images, refresh the browser to view the updates.
 
-Decent Pricing 
+For contact and enquiry email delivery, ensure the EmailJS SDK and account configuration are valid before testing form submissions.
 
-#Weaknesses: 
+## Recent Updates
 
-Unprofessional website 
+Recent commits (30 October – 2 November 2026) include:
 
-Package delays 
+- Updated the layouts and presentation across the homepage and the main website pages.
+- Added and refined shopping cart functionality on the homepage, wishlist, and user profile/inventory experience.
+- Added and updated JavaScript files for page interactions and global search suggestions.
+- Improved the search experience to help visitors find games, services, support information, and community content across the website.
+- Added sitemap and crawler configuration resources.
+- Updated the About Us and Community Hub pages with revised layouts and content.
+- Improved the contact and enquiry forms, including required-field validation.
+- Updated game catalogue content and gameplay screenshots.
+- Added image assets and refined the shared visual presentation.
 
-Unprofessional website: 
+## Project Purpose
 
-Fix website bugs and make it more professional do the users can easily access the website with ease. 
-
-Package delays: 
-
-Add a package tracker on the website for the user to easily track their package and issue than 30% of their purchase back as compensation for the delayed package arrival. 
-
-Proposed Website Features and Functionality: 
-
-#Core Website Pages: 
-
-Homepage 
-
-Game Detail pages 
-
-About us page 
-
-Contact page 
-
-Products/Services page 
-
-WIshlist page 
-
-Community Hub & Workshop 
-
-User profile & Inventory page 
-
-Menu page 
-
-Key features & functionality: 
-
-Digital Commerce & Smart Checkout 
-
-Content Delivery Network (CDN) & Launcher API 
-
-Social & Communication Network 
-
-Algorithmic Search & Tagging Filter 
-
-User Review & Anti-Review Bombing System 
-
-🌐 Blue Corp Industries - Digital Distribution & Hardware Ecosystem PortalWelcome to the official front-end repository for the Blue Corp Industries web platform portal.For a long time, our operations suffered from the lack of a centralized, secure digital home, occasionally resulting in users drifting onto unverified, questionable third-party mirrors. This complete software engineering overhaul provides a hyper-secure, blazing-fast, and deeply immersive marketplace hub explicitly designed for our target global gaming demographic aged 18 to 45.Built entirely from scratch to replace unprofessional, bug-ridden older frames, this portal establishes an immediate baseline of authority and consumer trust.⚡ Architectural Core Constraints & High-Impact Design TokensThe visual wrapper of this platform is directly engineered around our official Web Corporate Proposal KPI Design Matrix. Every single layout element is coded to be completely modular, fluidly responsive across all display formats, and strictly adheres to W3C Web Accessibility Guidelines (WCAG 2.1) for optimal contrast and structural legibility.🎨 Corporate Palette MatrixPrimary Deep Background Surface: #0B132B (Immersive deep cosmic space navy blue)Secondary Component Surface: #1C2541 (Polished classic slate blue for clean card division containers)Primary Accent Highlight: #66c0f4 (Vibrant electric cyber cyan for trust nodes and primary text headers)Secondary Sale Accent highlight: #48CAE4 (Bright cyan-mint green specifically isolated for discount KPIs)Typography Cool Off-White Tone: #E2E8F0 (High-contrast, strain-reducing reading profile for long gaming sessions)🔤 Platform TypographyPrimary Global Font Family: Plus Jakarta Sans (Pulled directly via Google Fonts API network streams)Title Configurations: Massive, assertive Extra Bold weights utilizing tailored tracking parameters (letter-spacing) to mirror premium modern launcher environments.General Reading Body: Crisp, clean Regular weights with a comfortable height scale (line-height: 1.6) for rapid scanning.🛠️ Detailed Breakthrough Implementations: What Has Been AddedWe completely stripped out fragile, competing layout dependencies and unified the entire workspace into a high-performance Component-Based structural framework. Here is exactly what was added and why:1. 🛡️ 100% Zero-JavaScript Interactive EngineTo ensure absolute platform speed and safety against browser script vulnerabilities, every single line of JavaScript has been entirely removed from the application loop.The CSS Checkbox Hack Mechanism: All interaction logic—including our mobile toggle menus—is completely driven natively via raw HTML5 <input type="checkbox"> switches and relative CSS sibling combinator selectors (#nav-trigger:checked ~ nav).2. 🍔 Permanent Global 3-Line Hamburger Drawer MenuThe primary layout header was completely refactored across all 9 primary web pages.Responsive Multi-Viewport Tracking: The main text links are now hidden by default inside a collapsed vertical layout drawer.Fluid Morph Animation: Clicking the three-line button triggers an immediate native CSS transformation that gracefully slides down the menu and morphs the lines into a Cyber-Pink "X" close icon with zero layout stuttering.3. 🧩 Inline Integrated Microchip Branding EmblemThe newly authorized corporate microchip emblem icon (ChatGPT Image Sep 18, 2026, 03_52_37 PM (1).png) has been deeply hard-coded into the header block of every file.By wrapping the asset inside a fluid flexbox container (.logo-wrapper), the icon scales down to a precise, non-disruptive 35px layout size, staying perfectly centered and inline with our uppercase corporate typography across all viewports.4. 📦 Live Logistics Tracker & Frictionless 30% Compensation BoxTo resolve the historical business weakness of parcel delivery delays, we engineered an active Live Package Logistics Tracker Matrix directly into the UserProfile&Inventory.html dashboard.This visual tracker includes an explicit progress bar filling model alongside an action-oriented Frictionless Refund Delivery Option, giving delayed users a bold, stylized button to claim a 30% purchase reimbursement directly onto their credential profiles.5. 📊 Side-by-Side Flexbox Grid Realignment NodesTo replace basic vertical bullet points with a professional, high-end marketplace interface, we introduced custom multi-column layout matrices across complex information sections.Community Hub (CommunityHub&Workshop.html): The Guides & Tutorials section and the Active Community Members section have been completely overhauled into a side-by-side flexbox container system (.guides-image-row and .members-profile-row).Images and avatars (Member 1.jpg, Member 2.jpg, Member 3.jpg) are constrained with clean aspect ratios (object-fit: cover), forced into uniform layout heights, and circularized perfectly to establish a beautiful, clean presentation next to their respective text descriptors.Contact Hub (contact.html): The voice support call icon, text mailing icon, and Google Maps iframe embed have been completely realigned into matching horizontal flex blocks (.contact-media-row), giving the layout a highly corporate, symmetrically organized aesthetic.6. 🚫 Anti-Review Bombing & Sales Pipeline MonitorsWishlist Sales Monitor (Wishlist.html): Transformed into a visual pricing pipeline matrix using custom alert state indicators (.state-active-sale, .state-monitoring) that color-code current title sale percentages natively based on proposal goals.Launcher Verification Reviews: Built structural code block nodes into our product catalog display layout grids (GameDetail.html) to demonstrate our anti-review bombing methodology, highlighting verified hardware spec limits right beneath our catalog lists.📂 Mapping the Project Directory StructureFor the platform to load correctly inside a web browser, files must maintain this precise folder hierarchy locally:text📁 Blue-Corp-Project-Directory/
-│
-├── 📄 index.html                       (Homepage Portal Master Entry)
-│
-├── 📁 css/
-│   └── 📄 style.css                    (Global Master Central Design CSS Stylesheet)
-│
-├── 📁 Assets/
-│   └── 📁 images/
-│       ├── 🖼️ ChatGPT Image Sep 18, 2026, 03_52_37 PM (1).png  (Microchip Emblem Icon)
-│       ├── 🖼️ Logo.png                  (Main Showcase Large PC Build Graphic)
-│       ├── 🖼️ Call Icon.jpg            (Contact Desk Voice Support Image)
-│       ├── 🖼️ Message Icon - Edited.png (Contact Form Digital Mail Image)
-│       ├── 🖼️ Discussions.jpg           (Community Forum Banner Artwork)
-│       ├── 🖼️ Guide pic.webp            (Custom PC Assembly Visual)
-│       ├── 🖼️ Transaction Routing.png   (Network Debug Diagnostic Layout)
-│       ├── 🖼️ PC building 2.avif        (Cross-Platform Patch Integration Visual)
-│       ├── 🖼️ Member 1.jpg              (Alpha_Gamer_ZA User Avatar)
-│       ├── 🖼️ Member 2.jpg              (Dev_Matrix_Node User Avatar)
-│       ├── 🖼️ Member 3.jpg              (Support_Desk_BCI User Avatar)
-│       ├── 🖼️ Resident Evil village.jpg (Catalog Box Cover Artwork)
-│       ├── 🖼️ God_of_War_4_cover.webp   (Catalog Box Cover Artwork)
-│       └── 🖼️ Peak.jpg                  (Catalog Box Cover Artwork)
-│
-└── 📁 Pages/
-    ├── 📄 AboutUs.html                  (Mission, Vision, and Values Node)
-    ├── 📄 contact.html                  (Contact Information & Form Center)
-    ├── 📄 GameDetail.html               (Games Showroom, Specs, & Verified Reviews)
-    ├── 📄 enquiry.html                  (Beginner Hardware Intake Desk Form)
-    ├── 📄 CommunityHub&Workshop.html    (Discussions, Guides, and User Mod Shares)
-    ├── 📄 Wishlist.html                 (Automated Flash Sales Pipeline Registry)
-    ├── 📄 UserProfile&Inventory.html    (User Dashboard, XP Credits, & Package Tracker)
-    └── 📄 Menu.html                     (Master Sitemap Navigation Directory Links)
-Use code with caution.🚀 Local Deployment and Cache Maintenance VerificationBecause this platform functions as a highly tuned external layout design engine, browsers will occasionally lock onto old files during active code modifications.When updating your codebase cells locally:Copy and paste the corresponding HTML code blocks into their proper directory paths.Confirm that all local raw image asset filenames match the code calls precisely.Open your project page in your browser window and perform a Complete Hard Refresh (Ctrl + F5 on Windows / Cmd + Shift + R on macOS) to drop the old cache and fire up the pure CSS responsive framework layout instantly.If you want to move forward with configuring more advanced styling additions, let me know if you would like me to:Design a pure CSS glowing outline border transition effect for the catalog title cards.Lay out a custom flexbox grid box container system for the text inputs inside your Enquiry desk.Add deep code variations for the PC Build Assistant block selections.
+This project demonstrates the design and front-end development of a gaming marketplace and PC hardware support website. It combines product discovery, community information, customer contact, and account-style interfaces into one connected website experience.
